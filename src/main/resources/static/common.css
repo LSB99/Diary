@@ -1,0 +1,18 @@
+div.container { width: 1100px; margin: 180px auto; font-size: 20pt; text-align: center;}
+
+.btn { padding: 1em 1em; border: 3px solid pink;
+       border-radius: 5em; background: linear-gradient(#fff, #ddd);
+       text-decoration: none; color: black; font-size: 10pt;
+       display: inline-block; }
+.btn:active {
+      -ms-transform: translateY(2px);
+      -webkit-transform: translateY(2px);
+      transform: translateY(2px);
+      background: #ccc; }
+
+table.list { border-collapse: collapse; width: 200%; }
+table.list td { padding: 50px; border: 10px solid gray; }
+table.list th { padding: 50px; border: 10px solid gray;  background-color: #eee; }
+
+input { padding: 4px; }
+select { padding: 4px; }
