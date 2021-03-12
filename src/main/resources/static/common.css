@@ -1,15 +1,20 @@
-div.container { width: 1000px; margin: 60px auto; font-size: 20pt; }
-div.title { width: 500px; margin: auto; font-size: 30pt; }
+div.container { width: 1100px; margin: 200px auto; font-size: 20pt; text-align: center;}
 
-table.list { border-collapse: collapse; height: 100px; width: 100%; font-size: 20pt; }
-table.list td { padding: auto; border: 2px solid pink; font-size: 17pt; text-align: center; }
-table.list th { padding: auto; border: 5px solid pink;  background-color: lightpink; }
+.btn { padding: 1em 1em; 
+       border-radius: 5em; background: linear-gradient(#fff, #ddd);
+       text-decoration: none; color: black; font-size: 10pt;
+       display: inline-block; }
+.btn:active {
+      -ms-transform: translateY(2px);
+      -webkit-transform: translateY(2px);
+      transform: translateY(2px);
+      background: #ccc; }
 
-form { box-shadow: 0 0 10px gray, 10px 10px 10px gray;
-      overflow: auto; font-size: 20pt; }      
-    div.title { font-size: 25pt; padding: 25px; background-color: lightpink; }
-    table { margin: auto; }
-    td { min-width: 200; padding: 10px; }
-    td:nth-child(1) { text-align: right; }
+table.list { border-collapse: collapse; width: 200%; }
+table.list td { padding: 50px; border: 10px solid gray; }
+table.list th { padding: 50px; border: 10px solid gray;  background-color: #eee; }
 
+table.index th { text-align:center; }
+input { padding: 4px; }
+select { padding: 4px; }
 

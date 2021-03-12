@@ -1,5 +1,6 @@
 package net.skhu.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,11 +11,21 @@ import net.skhu.dto.Bukit;
 import net.skhu.dto.Diary;
 import net.skhu.dto.Memos;
 import net.skhu.dto.User;
+import net.skhu.mepper.UserMapper;
 
 @Controller
 @RequestMapping("/diary")
 public class DiaryController {
 
+	@Autowired UserMapper userMapper;
+
+
+//표지 구현
+	@RequestMapping("home")
+	public String home(Model model) {
+		model.addAttribute("message", "my diary");
+		return "diary/home";
+	}
 
 //로그인 구현
 	@GetMapping("login")
@@ -24,8 +35,8 @@ public class DiaryController {
     }
 
 	@PostMapping("login")
-	 public String login(Model model, User user) {
-
+	 public String login(Model model, String userId) {
+		userMapper.findByuserId(userId);
 	        return "redirect:index";
 	}
 
@@ -38,9 +49,9 @@ public class DiaryController {
     }
 
 	@PostMapping("find")
-	 public String find(Model model, User user) {
-
-	        return "redirect:login";
+	 public String find(Model model, String userId) {
+		userMapper.findByuserId(userId);
+	    return "redirect:login";
 	}
 
 
@@ -53,8 +64,7 @@ public class DiaryController {
 
 	@PostMapping("join")
 	 public String join(Model model, User user) {
-	       //회원가입처리(저장구현)
-		model.addAttribute("message", "회원가입이 완료되었습니다.");
+		userMapper.insert(user);
 	    return "redirect:login";
 	}
 
@@ -67,7 +77,7 @@ public class DiaryController {
 
 
 
-//표지 구현
+//홈(메뉴)화면 구현
     @RequestMapping("index")
     public String index(Model model) {
     	  model.addAttribute("message", "오늘의 할 일을 내일로 미루지 말자");

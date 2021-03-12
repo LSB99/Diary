@@ -5,15 +5,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	 <link rel="stylesheet" type="text/css" href="/background.css" />
+  	<link rel="stylesheet" type="text/css" href="/account.css" />
   <style>
-  	h1 { margin: 100px auto; text-align: center; font-size: 50pt; }
-    form { width: 400px; height: 250px; margin: 100px auto;
-      box-shadow: 0 0 8px black, 5px 5px 4px gray; overflow: auto; }
-    div.title { font-size: 25pt; padding: 15px; background-color: #eee; }
-    table { margin: 30px; font-size: 15pt; }
-    td { min-width: 100; padding: 10px; }
-    td:nth-child(1) { text-align: right; }
-    .btn { margin: 30px 30px 20px 20px; }
+  	p { margin: -19px 60px; }
     
   </style>
 </head>
@@ -23,6 +17,10 @@
     <form method="post">
       <div class="title">Login</div>
       <table>
+       <tr>
+          <td>이름: </td>
+          <td><input type="text" name="name" value="${ user.name }" /></td>
+        </tr>
         <tr>
           <td>아이디: </td>
           <td><input type="text" name="userId" value="${ user.userId }" /></td>
@@ -32,9 +30,8 @@
           <td><input type="password" name="password" value="${ user.password }" /></td>
         </tr>
       </table>
-      <a href="index" class="btn">Login 하기</a>
-      <a href="find" class="btn">비밀번호 찾기</a>
-      <a href="join" class="btn">회원가입</a>
+      <a href="index" class="btn">로그인</a>
+      <p><a href="find" class="btn">비밀번호 찾기</a><p>
       
     </form>    
  </div>

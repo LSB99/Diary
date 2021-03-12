@@ -1,0 +1,15 @@
+div.container { width: 1000px; margin: 60px auto; font-size: 20pt; }
+div.title { width: 500px; margin: auto; font-size: 30pt; }
+
+table.list { border-collapse: collapse; height: 100px; width: 100%; font-size: 20pt; }
+table.list td { padding: auto; border: 2px solid pink; font-size: 17pt; text-align: center; }
+table.list th { padding: auto; border: 5px solid pink;  background-color: lightpink; }
+
+form { box-shadow: 0 0 10px gray, 10px 10px 10px gray;
+      overflow: auto; font-size: 20pt; }      
+    div.title { font-size: 25pt; padding: 25px; background-color: lightpink; }
+    table { margin: auto; }
+    td { min-width: 200; padding: 10px; }
+    td:nth-child(1) { text-align: right; }
+
+

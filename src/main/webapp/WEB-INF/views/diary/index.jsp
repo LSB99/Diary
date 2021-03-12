@@ -5,6 +5,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" type="text/css" href="/background.css" />
+  
   <style>
   h1 { margin: 5% auto; text-align: center; font-size: 50pt; }
   h3 { margin: 15% auto; text-align: center; font-size: 30pt; }
@@ -22,9 +23,9 @@ a.btn { width: 80%; margin: 1% auto; padding: 1em 3em; border: 8px solid pink;
       background: #ccc; }
 
 table.list { border-collapse: collapse; width: 200%; }
-table.list td { padding: 100px; border: 10px solid gray; }
 table.list th { padding: 100px; border: 10px solid gray;  background-color: #eee; }
 
+  
   
   </style>
 </head>

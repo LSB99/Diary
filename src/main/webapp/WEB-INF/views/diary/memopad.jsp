@@ -4,25 +4,32 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="/list.css" />
    <link rel="stylesheet" type="text/css" href="/background.css" />
+
   <style>
-  h1 {margin: 40px auto; text-align: center; font-size: 30pt; }
-  	div { width: 800px; margin: 40px auto; border: 1px solid purple; border-radius: 25px; }
-  	a.btn { float: right; font-size: 25px; margin: 20px 5% 5% 0; }
- 	.box1 { width: 50%; height: 50px; }
- 	.box2 { width: 50%; height: 50px; }
+  	a.btn { float: center; margin: -20px 0 5px 0; }
+  	p { float: right; margin: 100px 0 5px 0; }
+    td:nth-child(1) { text-align: center; }
   </style>
   
 </head>
 <body>
-<h1>${ message }</h1>
-<div class="box1">
-<a href="memoEdit" class="btn">메모 내용 1</a>
+<div class="container">
+  <table class="list">
+    <thead>
+      <tr>
+        <th>순번</th>
+        <th>메모 목록</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>1</td>
+    <td><a href="memoEdit" class="btn">메모 내용</a></td>
+    </tbody>
+  </table>
+  <p><a href="index" class="btn">처음으로 가기</a></p>
 </div>
-<div class="box2">
-<a href="memoEdit" class="btn">메모 내용 2</a>
-</div>
-<a href="index" class="btn">처음으로 가기</a>
-
 </body>
 </html>

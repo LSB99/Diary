@@ -13,12 +13,11 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src="${R}delete.js"></script>
-<link rel="stylesheet" href="${R}background.css" />
-<link rel="stylesheet" href="${R}account.css" />
+<link rel="stylesheet" type="text/css" href="/background.css" />
+<link rel="stylesheet" type="text/css" href="/account.css" />
   <style>
-  	 form { width: 500px; height: 400px; }
+  	 form { width: 500px; height: 300px; }
     a.btn { float: right; }
-    
     input { width: 250px; }
   </style>
 </head>
@@ -26,12 +25,8 @@
 <h1>~My Diary~</h1>
   <div class="container">
     <form method="post">
-      <div class="title">회원가입</div>
+      <div class="title">비밀번호 찾기</div>
       <table>
-      <tr>
-          <td>순번: </td>
-          <td><input type="text" name="id" readonly disabled value="${ user.id }" /></td>
-        </tr>
       	<tr>
           <td>이름: </td>
           <td><input type="text" name="name" value="${ user.name }" /></td>
@@ -40,12 +35,8 @@
           <td>아이디: </td>
           <td><input type="text" name="userId" value="${ user.userId }" /></td>
         </tr>
-        <tr>
-          <td>비밀번호: </td>
-          <td><input type="password" placeholder="대소문자, 숫자, 특수문자 포함 8자리 이상" name="password" value="${ user.password }" /></td>
-        </tr>
       </table>
-      <a href="login" class="btn">회원가입</a>
+      <a href="login" class="btn">비밀번호 찾기</a>
       
     </form>    
  </div>
