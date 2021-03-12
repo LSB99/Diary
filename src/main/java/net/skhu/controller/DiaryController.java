@@ -136,10 +136,6 @@ public class DiaryController {
 
 
 
-
-
-
-
 //일기 목록 구현
     @RequestMapping("diarySpace")
     public String diarySpace(Model model) {
