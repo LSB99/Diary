@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import net.skhu.dto.Bukit;
 import net.skhu.dto.Diary;
@@ -23,34 +24,44 @@ public class DiaryController {
 //표지 구현
 	@RequestMapping("home")
 	public String home(Model model) {
-		model.addAttribute("message", "my diary");
+
+		model.addAttribute("message", "My Diary");
+
 		return "diary/home";
 	}
 
 //로그인 구현
 	@GetMapping("login")
     public String login(Model model) {
+
     	model.addAttribute("user", new User());
+
     	return "diary/login";
     }
 
 	@PostMapping("login")
 	 public String login(Model model, String userId) {
+
 		userMapper.findByuserId(userId);
-	        return "redirect:index";
+
+	    return "redirect:index";
 	}
 
 
 //비밀번호 찾기 구현
 	@GetMapping("find")
     public String find(Model model) {
+
     	model.addAttribute("user", new User());
+
     	return "diary/find";
     }
 
 	@PostMapping("find")
 	 public String find(Model model, String userId) {
+
 		userMapper.findByuserId(userId);
+
 	    return "redirect:login";
 	}
 
@@ -58,21 +69,45 @@ public class DiaryController {
 //회원가입 구현
 	@GetMapping("join")
     public String join(Model model) {
+
     	model.addAttribute("user", new User());
+
     	return "diary/join";
     }
 
 	@PostMapping("join")
 	 public String join(Model model, User user) {
+
 		userMapper.insert(user);
+
 	    return "redirect:login";
 	}
 
+
 //회원탈퇴 구현
-	@RequestMapping("userDelete")
+	@GetMapping("userDelete")
     public String userDelete(Model model) {
 
-        return "redirect:login";
+		model.addAttribute("user", new User());
+
+        return "diary/userDelete";
+    }
+
+	@PostMapping("userDelete")
+	 public String userDelete(Model model, User user) {
+
+		model.addAttribute("user", user);
+
+        return "diary/userTrueDelete";
+    }
+
+//회원 최종탈퇴
+	@RequestMapping("userTrueDelete")
+    public String userDelete(Model model, @RequestParam("userId")String userId) {
+
+		userMapper.delete(userId);
+
+        return "redirect:home";
     }
 
 

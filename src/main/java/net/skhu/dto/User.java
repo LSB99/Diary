@@ -3,13 +3,13 @@ package net.skhu.dto;
 import lombok.Data;
 
 @Data
-	public class User {
+public class User {
 
-		int id;
+	int id;
 
-		String name;
+	String name;
 
-		String userId;
+	String userId;
 
-		String password;
-	}
+	String password;
+}
