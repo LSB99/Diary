@@ -18,7 +18,6 @@
   <style>
   	 form { width: 500px; height: 400px; }
     a.btn { float: right; }
-    
     input { width: 250px; }
   </style>
 </head>
@@ -45,7 +44,7 @@
           <td><input type="password" placeholder="대소문자, 숫자, 특수문자 포함 8자리 이상" name="password" value="${ user.password }" /></td>
         </tr>
       </table>
-      <a href="login" class="btn">회원가입</a>
+      <button type="submit" class="btn">회원가입</button>
       
     </form>    
  </div>

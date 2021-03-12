@@ -1,5 +1,6 @@
 package net.skhu.mepper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -19,6 +20,12 @@ public interface UserMapper {
 	User findByuserId(String userId);
 
 
+	@Select("select *  "
+			+"from user "
+			+ "where password = #{password} ")
+	User findByPassWord(String password);
+
+
     @Update("UPDATE user "
     		+ "SET name = #{name}, userId = #{userId} , password = #{password}   "
     		+ "WHERE userId = #{userId}")
@@ -29,5 +36,10 @@ public interface UserMapper {
     		+ "values(#{name}, #{userId}, #{password}) ")
     @Options(useGeneratedKeys=true, keyProperty="id")
     void insert(User user);
+
+
+    @Delete("Delete from user  "
+    		+ "where userId=#{userId}")
+    void delete(String userId);
 
 }

@@ -8,7 +8,7 @@
   	<link rel="stylesheet" type="text/css" href="/account.css" />
   <style>
   	p { margin: -19px 60px; }
-    
+    td{font-weight:bold;}
   </style>
 </head>
 <body>
@@ -30,8 +30,9 @@
           <td><input type="password" name="password" value="${ user.password }" /></td>
         </tr>
       </table>
-      <a href="index" class="btn">로그인</a>
-      <p><a href="find" class="btn">비밀번호 찾기</a><p>
+      
+      <button type="submit" class="btn">로그인</button>
+      <button type="button" onclick="location.href='find'">비밀번호 찾기</button>
       
     </form>    
  </div>
