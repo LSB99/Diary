@@ -85,9 +85,6 @@ public class DiaryController {
     }
 
 
-
-
-
 //버킷리스트 목록 구현
     @RequestMapping("bukitlist")
     public String bukitlist(Model model) {
