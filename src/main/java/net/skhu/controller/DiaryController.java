@@ -12,7 +12,7 @@ import net.skhu.dto.Bukit;
 import net.skhu.dto.Diary;
 import net.skhu.dto.Memos;
 import net.skhu.dto.User;
-import net.skhu.mepper.UserMapper;
+import net.skhu.mapper.UserMapper;
 
 @Controller
 @RequestMapping("/diary")

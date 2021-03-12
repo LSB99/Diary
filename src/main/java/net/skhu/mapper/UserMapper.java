@@ -1,4 +1,4 @@
-package net.skhu.mepper;
+package net.skhu.mapper;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
