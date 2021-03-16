@@ -7,7 +7,6 @@
 	 <link rel="stylesheet" type="text/css" href="/background.css" />
   	<link rel="stylesheet" type="text/css" href="/account.css" />
   <style>
-  	p { margin: -19px 60px; }
     td{font-weight:bold;}
   </style>
 </head>

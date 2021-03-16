@@ -24,7 +24,7 @@
       <table>
       
        <tr>
-          <td>아이디: </td>
+          <td>userId: </td>
           <td><input type="text" name="userId" value="${ plan.userId }" /></td>
         </tr>
       

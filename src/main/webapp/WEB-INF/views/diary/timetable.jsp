@@ -10,6 +10,8 @@
 h1{
 	margin: 100px auto; text-align: center; font-size: 50pt;
 }
+table { mar }
+
 table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
@@ -17,6 +19,8 @@ table, th, td {
 	width: 50%;
 	height: 40%;
 	background:lightblue;
+	margin 30px 100px;
+	font-size: 20px;
 }
 
 th, td {
@@ -27,12 +31,17 @@ th {
 	text-align: center;
 }
 
-input { width:200px; height:50px;}
+input { width:200px; height:50px; font-size: 15px; }
+.btn { width: auto; margin: 10px 5px; padding: 0.4em 1.5em; border: 5px solid lightblue;
+       border-radius: 5em; background: linear-gradient(#fff, #ddd);
+       text-decoration: none; color: black; font-size: 11pt;
+       display: inline-block;  float: right; }
 </style>
 </head>
 <body>
 
-	<h1>나의 시간표</h1>
+	<h1>Time Table</h1>
+	<a href="timetable" class="btn">저장</a>
 
 	<table>
 
@@ -128,8 +137,6 @@ input { width:200px; height:50px;}
 			<td><input type="text" /></td>
 			<td><input type="text" /></td>
 		</tr>
-		
-
 	</table>
 
 </body>

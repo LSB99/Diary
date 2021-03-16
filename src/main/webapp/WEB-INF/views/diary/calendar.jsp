@@ -18,6 +18,9 @@ td {
 	border: 2px solid black;
 	border-radius: 13px;
 }
+td:nth-child(1) { border: 2px solid red; }
+td:nth-child(7) { border: 2px solid blue; }
+th { width: 100px; height: 50px; text-align: center; font-size: 30px; }
 
 .sunday {
 	color: red;
@@ -62,19 +65,19 @@ input{width:80px; height:30px;}
 				
 				if (td == 0) {
 					
-					d_of_w += "<td class=sunday>" + array[td] + "</td>";
+					d_of_w += "<th class=sunday>" + array[td] + "</th>";
 					
 				} 
 				
 				else if (td == 6) {
 					
-					d_of_w += "<td class=saturday>" + array[td] + "</td>";
+					d_of_w += "<th class=saturday>" + array[td] + "</th>";
 					
 				} 
 				
 				else {
 					
-					d_of_w += "<td >" + array[td] + "</td>";
+					d_of_w += "<th >" + array[td] + "</th>";
 				}
 			}
 			

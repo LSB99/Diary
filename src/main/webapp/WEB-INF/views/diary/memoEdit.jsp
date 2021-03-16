@@ -23,11 +23,7 @@
       <table>
       <tr>
       		<td>userId: </td>
-      		<td><input type = "text" value="${ memos.userId }" readonly disabled /></td>
-      	</tr>
-      	<tr>
-      		<td>순번: </td>
-      		<td><input type = "text" value="${ memos.id }" readonly disabled /></td>
+      		<td><input type = "text" name="userId" value="${ memos.userId }" /></td>
       	</tr>
       	<tr>
       		<td>내용: </td>

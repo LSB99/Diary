@@ -24,11 +24,7 @@
       <table>
       	<tr>
       		<td>userId: </td>
-      		<td><input type = "text" value="${ diary.userId }" readonly disabled /></td>
-      	</tr>
-      	<tr>
-      		<td>순번: </td>
-      		<td><input type = "text" readonly disabled value="${ diary.id }" /></td>
+      		<td><input type = "text" name="userId" value="${ diary.userId }" /></td>
       	</tr>
       	<tr>
       		<td>제목: </td>
