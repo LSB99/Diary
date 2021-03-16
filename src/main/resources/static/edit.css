@@ -1,9 +1,9 @@
  div.container { width: 800px; margin: 60px auto; }
     form { box-shadow: 0 0 10px skyblue, 10px 10px 10px gray;
       overflow: auto; font-size: 20pt; }      
-    div.title { font-size: 25pt; padding: 25px; background-color: lightblue; }
+    div.title { font-size: 25pt; padding: 25px; background-color: lightblue; font-weight:bold;}
     table { margin: 50px; }
-    td { min-width: 100; padding: 10px; }
+    td { min-width: 100; padding: 10px; font-weight:bold;}
     td:nth-child(1) { text-align: right; }
     input { width: 300px; padding: .8em .5em; font-size: 12pt; text-align: center; }
    .btn { width: auto; margin: 10px 5px; padding: 0.4em 1.5em; border: 5px solid lightblue;

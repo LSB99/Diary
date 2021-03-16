@@ -35,10 +35,10 @@ table.list th { padding: 100px; border: 10px solid gray;  background-color: #eee
    <table class="index">
   	<thead>
   		<tr> 
-  			<th><a href="create" class="btn">달력</a></th>
-  			<th><a href="create" class="btn">하루일정</a></th>
-  			<th><a href="create" class="btn">일주일 계획</a></th>
-  			<th><a href="create" class="btn">시간표</a></th>
+  			<th><a href="calendar" class="btn">달력</a></th>
+  			<th><a href="oneday" class="btn">하루일정</a></th>
+  			<th><a href="week" class="btn">일주일 계획</a></th>
+  			<th><a href="timetable" class="btn">시간표</a></th>
   			<th><a href="bukitEdit" class="btn">버킷리스트</a></th>
   			<th><a href="diaryEdit" class="btn">일기장</a></th>
   			<th><a href="memoEdit" class="btn">메모장</a></th>

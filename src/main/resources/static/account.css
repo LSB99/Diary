@@ -1,8 +1,11 @@
-h1 { margin: 100px auto; text-align: center; font-size: 50pt; }
-    form { width: 400px; height: 300px; margin: 100px auto;
+h1 { margin: 100px auto; text-align: center; font-size: 50pt;}
+    form { width: 500px; height: 400px; margin: 100px auto;
       box-shadow: 0 0 8px black, 5px 5px 4px gray; overflow: auto; }
-    div.title { font-size: 25pt; padding: 15px; background-color: #eee; }
+      
+    input {width:200px; height:30px;}
+    div.title { font-size: 25pt; padding: 15px; background-color: violet; font-weight:bold; }
     table { margin: 30px; font-size: 15pt; }
-    td { min-width: 100; padding: 10px; }
+    td { min-width: 100; padding: 10px; font-weight:bold; }
     td:nth-child(1) { text-align: right; }
     .btn { margin: 30px 30px 20px 20px; }
+   

@@ -14,7 +14,7 @@
 
 <script src="${R}delete.js"></script>
 <link rel="stylesheet" href="${R}background.css" />
-<link rel="stylesheet" href="${R}account.css" />
+<link rel="stylesheet" href="${R}account2.css" />
   <style>
   	 form { width: 500px; height: 400px; }
     a.btn { float: right; }

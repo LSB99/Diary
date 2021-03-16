@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import net.skhu.dto.Bukit;
 import net.skhu.dto.Diary;
 import net.skhu.dto.Memos;
+import net.skhu.dto.Plan;
 import net.skhu.dto.User;
 import net.skhu.mapper.UserMapper;
 
@@ -115,8 +116,42 @@ public class DiaryController {
 //홈(메뉴)화면 구현
     @RequestMapping("index")
     public String index(Model model) {
-    	  model.addAttribute("message", "오늘의 할 일을 내일로 미루지 말자");
+
         return "diary/index";
+    }
+
+
+  //달력 구현
+    @RequestMapping("calendar")
+    public String calendar(Model model) {
+
+        return "diary/calendar";
+    }
+
+  //하루일정
+    @RequestMapping("oneday")
+    public String oneday(Model model) {
+    	  model.addAttribute("plan", new Plan());
+        return "diary/oneday";
+    }
+
+
+  //일주일계획
+    @RequestMapping("week")
+    public String week(Model model) {
+
+    	model.addAttribute("plan", new Plan());
+
+        return "diary/week";
+    }
+
+  //시간표
+    @RequestMapping("timetable")
+    public String timetable(Model model) {
+
+    	model.addAttribute("user", new User());
+
+        return "diary/timetable";
     }
 
 
@@ -212,8 +247,6 @@ public class DiaryController {
 
         return "redirect:diarySpace";
     }
-
-
 
 
 

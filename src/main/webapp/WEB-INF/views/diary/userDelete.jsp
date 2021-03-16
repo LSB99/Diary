@@ -7,8 +7,8 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	 <link rel="stylesheet" type="text/css" href="/background.css" />
-  	<link rel="stylesheet" type="text/css" href="/account.css" />
+	 <link rel="stylesheet" type="text/css" href="${R}background.css" />
+  <link rel="stylesheet" type="text/css" href="${R}edit.css" />
   <style>
   	p { margin: -19px 60px; }
     td{font-weight:bold;}
@@ -16,11 +16,9 @@
 </head>
 <body>
 
-<h1>회원정보를 입력하세요</h1>
-
   <div class="container">
     <form method="post">
-      <div class="title">회원정보 입력</div>
+      <div class="title">회원정보를 입력하세요</div>
       <table>
       
        <tr>
