@@ -3,11 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Login</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	 <link rel="stylesheet" type="text/css" href="/background.css" />
   	<link rel="stylesheet" type="text/css" href="/account.css" />
   <style>
-    td{font-weight:bold;}
+  form { width: 450px; height: 400px;}
+    td{font-weight:bold; }
+    
+    
   </style>
 </head>
 <body>
@@ -18,15 +22,15 @@
       <table>
        <tr>
           <td>이름: </td>
-          <td><input type="text" name="name" value="${ user.name }" /></td>
+          <td><input type="text" name="name" value="${ user.name }" autofocus required/></td>
         </tr>
         <tr>
           <td>아이디: </td>
-          <td><input type="text" name="userId" value="${ user.userId }" /></td>
+          <td><input type="text" name="userId" value="${ user.userId }" required/></td>
         </tr>
         <tr>
           <td>비밀번호: </td>
-          <td><input type="password" name="password" value="${ user.password }" /></td>
+          <td><input type="password" name="password" value="${ user.password }" required/></td>
         </tr>
       </table>
       

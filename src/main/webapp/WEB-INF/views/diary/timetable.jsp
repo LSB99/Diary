@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Time Table</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="/background.css" />
 <style>
 h1{
 	margin: 100px auto; text-align: center; font-size: 50pt;
 }
-table { mar }
 
 table, th, td {
 	border: 1px solid black;

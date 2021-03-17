@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Memo List</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" type="text/css" href="/list.css" />
    <link rel="stylesheet" type="text/css" href="/background.css" />

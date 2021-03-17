@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Main Home</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" type="text/css" href="/background.css" />
   
   <style>
-  h1 { margin: 5% auto; text-align: center; font-size: 50pt; }
+  h1 { margin: 5% auto; text-align: center; font-size: 60pt; color: purple; }
   h3 { margin: 15% auto; text-align: center; font-size: 30pt; }
   div.container { height:100%; width: 1200px; margin: 1% auto; font-size: 20pt; text-align: center;}
 
@@ -25,12 +26,12 @@ a.btn { width: 80%; margin: 1% auto; padding: 1em 3em; border: 8px solid pink;
 table.list { border-collapse: collapse; width: 200%; }
 table.list th { padding: 100px; border: 10px solid gray;  background-color: #eee; }
 
-  
+#circle { border-radius: 50%; }
   
   </style>
 </head>
 <body>
-<h1>my diary</h1>
+<h1>My Diary</h1>
 <div class="container">
    <table class="index">
   	<thead>
@@ -46,7 +47,9 @@ table.list th { padding: 100px; border: 10px solid gray;  background-color: #eee
   		<tr><th><a href="userDelete" class="btn">회원탈퇴</a></th></tr>
     </thead>
   </table>
-  <h3>${ message }</h3>
+  <img id="circle" src="https://images.unsplash.com/photo-1481819613568-3701cbc70156?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+  alt="" width="25%" >
+  <h3></h3>
 </div>
 </body>
 </html>
