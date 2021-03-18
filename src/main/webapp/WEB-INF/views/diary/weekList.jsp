@@ -3,13 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DiaryList</title>
+<title>Week List</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" type="text/css" href="/list.css" />
    <link rel="stylesheet" type="text/css" href="/background.css" />
+
   <style>
-  	
-  	
+  	table.list1, table.list2 {  background-color: lightyellow; height: 100px; width: 100%; font-size: 20pt; }
+table.list1 td, table.list2 td { height: 300px; padding: auto; border: 2px solid pink; font-size: 17pt; text-align: center; }
+table.list1 th, table.list2 th { padding: auto; border: 5px solid pink;  background-color: lightpink; }
     td:nth-child(1) { text-align: center; }
   </style>
   
@@ -34,30 +36,45 @@
   	</nav>
   	</header>
   	<main class="contents">
-  <table class="list">
+  <table class="list1">
     <thead>
       <tr>
-        <th>순번</th>
-        <th>날짜</th>
-        <th>제목</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+      </tr>
+    <tbody>
+       <tr>
+    	<td><a href="weekEdit">월요일 계획</a></td>
+    	<td><a href="weekEdit">화요일 계획</a></td>
+    	<td><a href="weekEdit">수요일 계획</a></td>
+    	<td><a href="weekEdit">목요일 계획</a></td>
+       </tr>
+    </tbody>
+  </table>
+  
+  <table class="list2">
+    <thead>
+      <tr>
+      	<th>Friday</th>
+      	<th>Saturday</th>
+      	<th>Sunday</th>
       </tr>
     </thead>
     <tbody>
-    <tr>
-    <td>1</td>
-    <td>${ date }</td>
-    <td><a href="diaryEdit" class="btn">일기 제목</a></td>
-    </tr>
-    <tr>
-       	<td colspan="3" style="font-size: 12pt;" >오늘 하루도 수고했어요!</td>
-      </tr>
+       <tr>
+    	<td><a href="weekEdit">금요일 계획</a></td>
+    	<td><a href="weekEdit">토요일 계획</a></td>
+    	<td><a href="weekEdit">일요일 계획</a></td>
+       </tr>
     </tbody>
   </table>
   <p><a href="index" class="btn">처음으로 가기</a></p>
 </main>
  <footer>
     		소프캡스톤<br>임수빈, 김보미
-    </footer>
+ </footer>
 </div>
 </body>
 </html>

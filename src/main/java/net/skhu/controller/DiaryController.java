@@ -13,6 +13,7 @@ import net.skhu.dto.Diary;
 import net.skhu.dto.Memos;
 import net.skhu.dto.Plan;
 import net.skhu.dto.User;
+import net.skhu.dto.WeekPlan;
 import net.skhu.mapper.UserMapper;
 
 @Controller
@@ -136,14 +137,50 @@ public class DiaryController {
     }
 
 
-  //일주일계획
-    @RequestMapping("week")
-    public String week(Model model) {
-
-    	model.addAttribute("plan", new Plan());
-
-        return "diary/week";
+  //일주일계획 목록
+    @RequestMapping("weekList")
+    public String weekList(Model model) {
+        model.addAttribute("message", "버킷리스트의 목록들 출력");
+        return "diary/weekList";
     }
+
+  //일주일계획 생성
+    @GetMapping("weekCreate")
+    public String weekCreate(Model model) {
+    	model.addAttribute("weekPlan", new WeekPlan());
+    	return "diary/weekEdit";
+    }
+
+
+    @PostMapping("weekCreate")
+    public String weekCreate(Model model, WeekPlan weekPlan) {
+       //저장구현
+    	model.addAttribute("message", "저장했습니다.");
+        return "redirect:weekList";
+    }
+
+  //일주일계획 수정
+    @GetMapping("weekEdit")
+    public String weekEdit(Model model) {
+
+    	return "diary/weekEdit";
+    }
+
+
+    @PostMapping("weekEdit")
+    public String weekEdit(Model model, WeekPlan weekplan) {
+       //저장구현
+    	model.addAttribute("message", "저장했습니다.");
+        return "redirect:weekList";
+    }
+
+  //일주일계획 삭제
+    @RequestMapping("weekDelete")
+    public String weekDelete(Model model) {
+
+        return "redirect:weekList";
+    }
+
 
   //시간표
     @RequestMapping("timetable")

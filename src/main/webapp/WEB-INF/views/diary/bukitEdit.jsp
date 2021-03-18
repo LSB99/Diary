@@ -16,22 +16,6 @@
   <style>
   input { width: 500px; }
   
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  a{ text-decoration: none; }
-  ul { list-style:none; }
-  #container { margin: 0px auto; width:100%; height: 100px; background-color: lightpink; }
-  #logo { float: left; width:250px; height: 100px; line-height: 100px; padding-left:50px; }
-    header { font-size: 40px; width: 1550px; height: 100%; background-color:#045; }
-    nav { font-size: 20px; float: right; width: 1400px; height:100px; padding-top: 30px; margin: -100px auto; }
-    #topMenu { height: 60px; }
-    #topMenu > li{ float:left; position: relative; }
-    #topMenu > li> a { display: block; font-size: 1.1em; color:gray; font-weight: 600;
-    padding: 20px 60px; }
-    #topMenu>li>a:hover { color: #1fa8f8; text-shadow: 0 -2px #222; } 
-    .contents { width:800px; margin: 100px auto; }
-    footer { width: 100%; height: 10%; border-top:1px solid lightyellow; text-align: center;}
-    
-    
   </style>
 </head>
 <body>
@@ -44,7 +28,7 @@
   	<ul id="topMenu">
   		<li><a href="calendar">달력</a></li>
   		<li><a href="oneday">하루일정</a></li>
-  		<li><a href="week">일주일 계획</a></li>
+  		<li><a href="weekEdit">일주일 계획</a></li>
   		<li><a href="timetable">시간표</a></li>
   		<li><a href="bukitEdit">버킷리스트</a></li>
   		<li><a href="diaryEdit">일기</a></li>
@@ -59,11 +43,11 @@
       <table>
       <tr>
       		<td>userId: </td>
-      		<td><input type = "text" name="userId" value="${ bukit.userId }" /></td>
+      		<td><input type = "text" name="userId" value="${ bukit.userId }"  autofocus required /></td>
       	</tr>
         <tr>
           <td>내용: </td>
-          <td><input type="text" name="bukitlist" value="${ bukit.bukitlist }" /></td>
+          <td><input type="text" name="bukitlist" value="${ bukit.bukitlist }" placeholder="꼭 이루고 싶은 목표를 적어보세요!" required/></td>
         </tr>
        
       </table>
@@ -76,9 +60,7 @@
     </main>
     
     <footer>
-    	
     		소프캡스톤<br>임수빈, 김보미
-    
     </footer>
  </div>
 </body>

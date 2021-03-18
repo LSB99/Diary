@@ -1,12 +1,26 @@
-div.container { width: 1000px; margin: 60px auto; font-size: 20pt; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+  a{ text-decoration: none; }
+  ul { list-style:none; }
+  #container { margin: 0px auto; width:100%; height: 100px; background-color: lightpink; }
+  #logo { font-style: italic; float: left; width:250px; height: 100px; line-height: 100px; padding-left:50px; }
+    header { font-size: 40px; width: 1550px; height: 100%; background-color:#045; }
+    nav { font-size: 20px; float: right; width: 1400px; height:100px; padding-top: 30px; margin: -100px auto; }
+    #topMenu { height: 60px; }
+    #topMenu > li{ float:left; position: relative; }
+    #topMenu > li> a { display: block; font-size: 1.1em; color:gray; font-weight: 600;
+    padding: 20px 60px; }
+    #topMenu>li>a:hover { color: #1fa8f8; text-shadow: 0 -2px #222; } 
+    .contents { width:900px; margin: 100px auto; }
+    footer { width: 100%; height: 10%; border-top:1px solid lightyellow; text-align: center;}
+
+
 div.title { width: 500px; margin: auto; font-size: 30pt; }
 
-table.list { border-collapse: collapse; height: 100px; width: 100%; font-size: 20pt; }
+table.list { background-color: lightyellow; border-collapse: collapse; height: 100px; width: 100%; font-size: 20pt; }
 table.list td { padding: auto; border: 2px solid pink; font-size: 17pt; text-align: center; }
 table.list th { padding: auto; border: 5px solid pink;  background-color: lightpink; }
 
-form { box-shadow: 0 0 10px gray, 10px 10px 10px gray;
-      overflow: auto; font-size: 20pt; }      
+      
     div.title { font-size: 25pt; padding: 25px; background-color: lightpink; }
     table { margin: auto; }
     td { min-width: 200; padding: 10px; }

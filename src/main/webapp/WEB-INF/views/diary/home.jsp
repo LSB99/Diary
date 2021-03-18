@@ -6,11 +6,22 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>My Diary</title>
   <link rel="stylesheet" type="text/css" href="/common.css" />
-   <link rel="stylesheet" type="text/css" href="/background.css" />
+  
   <style>
-    a.btn{top:50%; left:50%; height:30%; width: 40%; font-size:15pt; 
-          margin: 100px 0 20px 260px; }
-    h1 { font-size: 400%; }
+  body {
+	background-image:
+		url('https://images.unsplash.com/photo-1516694898594-6bee63c70a04?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=676&q=80');
+	
+	
+	background-repeat: no-repeat;
+	background-color: lightblue;
+	background-position: 50% 0%;
+}
+ 
+    a.btn{   top:50%; left:50%; height:30%; width: 40%; font-size:15pt; 
+          margin: 200px -20px -8px 270px; }
+      
+    h1 { font-size: 400%; margin: -60px auto;}
   </style>
 </head>
 <body>

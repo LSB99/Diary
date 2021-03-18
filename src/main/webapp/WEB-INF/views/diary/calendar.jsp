@@ -9,6 +9,21 @@
 <link rel="stylesheet" type="text/css" href="/background.css" />
 
 <style type="text/css">
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+  a{ text-decoration: none; }
+  ul { list-style:none; }
+  #container { margin: 0px auto; width:100%; height: 100px; background-color: lightpink; }
+  #logo { font-style: italic; float: left; width:250px; height: 100px; line-height: 100px; padding-left:50px; }
+    header { font-size: 40px; width: 1550px; height: 100%; background-color:#045; }
+    nav { font-size: 20px; float: right; width: 1400px; height:100px; padding-top: 30px; margin: -100px auto; }
+    #topMenu { height: 60px; }
+    #topMenu > li{ float:left; position: relative; }
+    #topMenu > li> a { display: block; font-size: 1.1em; color:gray; font-weight: 600;
+    padding: 20px 60px; }
+    #topMenu>li>a:hover { color: #1fa8f8; text-shadow: 0 -2px #222; } 
+    .contents { width:800px; margin: 50px auto; }
+    footer { width: 100%; height: 10%; border-top:1px solid lightyellow; text-align: center;}
+
 td {
 	width: 100px;
 	height: 100px;
@@ -32,7 +47,7 @@ th { width: 100px; height: 50px; text-align: center; font-size: 30px; }
 }
 
 select{width:80px; height:30px;}
-input{width:80px; height:30px;}
+input{width:80px; height:30px; border-radius: 15px;}
 </style>
 <script>
 
@@ -40,7 +55,7 @@ input{width:80px; height:30px;}
 		
 		b.onclick = function() {
 			
-			var array = [ "일", "월", "화", "수", "목", "금", "토" ];
+			var array = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
 			
 			var last_day = [ "31", "28", "31", "30", "31", "30", "31", "31",
 				
@@ -134,6 +149,25 @@ input{width:80px; height:30px;}
 </script>
 </head>
 <body>
+<div id="container">
+  <header>
+  	<div id="logo">
+  	<a href="index"><h1>My Diary</h1></a>
+  	</div>
+  	<nav>
+  	<ul id="topMenu">
+  		<li><a href="calendar">달력</a></li>
+  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="weekEdit">일주일 계획</a></li>
+  		<li><a href="timetable">시간표</a></li>
+  		<li><a href="bukitEdit">버킷리스트</a></li>
+  		<li><a href="diaryEdit">일기</a></li>
+  		<li><a href="memoEdit">메모장</a></li>
+  		
+  	</ul>
+  	</nav>
+  	</header>
+  	<main class="contents">
 	<select id="y">
 		<script>
 			for (var year = 2021; year < 2100; year++) {
@@ -152,5 +186,11 @@ input{width:80px; height:30px;}
 	<input type="button" id="b" value="달력보기">
 	<div id="week"></div>
 	<div id="con" class=bgimg></div>
+	</main>
+	
+	 <footer>
+    		소프캡스톤<br>임수빈, 김보미
+    </footer>
+	</div>
 </body>
 </html>

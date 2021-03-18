@@ -9,14 +9,31 @@
    <link rel="stylesheet" type="text/css" href="/background.css" />
 
   <style>
-  	a.btn { float: center; margin: -20px 0 5px 0; }
-  	p { float: right; margin: 100px 0 5px 0; }
+  
     td:nth-child(1) { text-align: center; }
   </style>
   
 </head>
 <body>
-<div class="container">
+<div id="container">
+  <header>
+  	<div id="logo">
+  	<a href="index"><h1>My Diary</h1></a>
+  	</div>
+  	<nav>
+  	<ul id="topMenu">
+  		<li><a href="calendar">달력</a></li>
+  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="weekEdit">일주일 계획</a></li>
+  		<li><a href="timetable">시간표</a></li>
+  		<li><a href="bukitEdit">버킷리스트</a></li>
+  		<li><a href="diaryEdit">일기</a></li>
+  		<li><a href="memoEdit">메모장</a></li>
+  		
+  	</ul>
+  	</nav>
+  	</header>
+  	<main class="contents">
   <table class="list">
     <thead>
       <tr>
@@ -28,9 +45,14 @@
     <tr>
     <td>1</td>
     <td><a href="memoEdit" class="btn">메모 내용</a></td>
+    </tr>
     </tbody>
   </table>
   <p><a href="index" class="btn">처음으로 가기</a></p>
+</main>
+ <footer>
+    		소프캡스톤<br>임수빈, 김보미
+    </footer>
 </div>
 </body>
 </html>

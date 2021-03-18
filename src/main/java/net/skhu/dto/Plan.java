@@ -7,7 +7,9 @@ import lombok.Data;
 @Data
 public class Plan {
 
-	int userId;
+	int id;
+
+	String userId;
 
 	Date today;
 
@@ -16,7 +18,5 @@ public class Plan {
 	Date start;
 
 	Date end;
-
-	String weekplan;
 
 }

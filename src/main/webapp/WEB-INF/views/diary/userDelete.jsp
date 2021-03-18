@@ -17,14 +17,32 @@
 </head>
 <body>
 
-  <div class="container">
+  <div id="container">
+  <header>
+  	<div id="logo">
+  	<a href="index"><h1>My Diary</h1></a>
+  	</div>
+  	<nav>
+  	<ul id="topMenu">
+  		<li><a href="calendar">달력</a></li>
+  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="weekEdit">일주일 계획</a></li>
+  		<li><a href="timetable">시간표</a></li>
+  		<li><a href="bukitEdit">버킷리스트</a></li>
+  		<li><a href="diaryEdit">일기</a></li>
+  		<li><a href="memoEdit">메모장</a></li>
+  		
+  	</ul>
+  	</nav>
+  	</header>
+  	<main class="contents">
     <form method="post">
       <div class="title">회원정보를 입력하세요</div>
       <table>
       
        <tr>
           <td>이름: </td>
-          <td><input type="text" name="name" value="${ user.name }" required/></td>
+          <td><input type="text" name="name" value="${ user.name }"  autofocus required/></td>
         </tr>
         <tr>
           <td>아이디: </td>
@@ -38,7 +56,11 @@
 	
 	  <button type="submit" class="btn">탈퇴하기</button>
 	  
-    </form>    
+    </form>  
+    </main>  
+     <footer>
+    		소프캡스톤<br>임수빈, 김보미
+    </footer>
  </div>
 </body>
 </html>
