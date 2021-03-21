@@ -15,7 +15,7 @@
   </style>
 </head>
 <body>
-<h1>~My Diary~</h1>
+<h1>~My Diary~~~</h1>
   <div class="container">
     <form method="post">
       <div class="title">Login</div>
