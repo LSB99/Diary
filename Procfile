@@ -1,0 +1,1 @@
+web: java -jar target/Diary-0.0.1-SNAPSHOT.jar
