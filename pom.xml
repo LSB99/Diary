@@ -15,7 +15,7 @@
 	<name>Diary</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -84,6 +84,22 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+ <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>exec-maven-plugin</artifactId>
+      <version>3.0.0</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>java</goal>
+          </goals>
+        </execution>
+      </executions>
+      <configuration>
+        <mainClass>net.skhu.DiaryApplication</mainClass>
+      </configuration>
+    </plugin>
 		</plugins>
 	</build>
 
