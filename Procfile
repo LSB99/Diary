@@ -1,1 +1,1 @@
-web: java -jar target/Diary-0.0.1-SNAPSHOT.jar
+web: java -Dspring.server.port=8080 -Dspring.profiles.active=production $JAVA_OPTS -jar  target/Diary-0.0.1-SNAPSHOT.jar 
