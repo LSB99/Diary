@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="/background.css" />
   
   <style>
-  h1 { margin: -150px auto; text-align: center; font-size: 60pt; color: purple; }
+  h1 { font-style: italic; margin: -150px auto; text-align: center; font-size: 60pt; color: purple; }
   
   div.container { height:100%; width: 1200px; margin: 12% auto; font-size: 20pt; text-align: center;}
 
