@@ -7,29 +7,33 @@
 <title>Calendar</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="/background.css" />
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 
 <style type="text/css">
- * { margin: 0; padding: 0; box-sizing: border-box; }
+ * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Gamja Flower', cursive;}
   a{ text-decoration: none; }
   ul { list-style:none; }
   #container { margin: 0px auto; width:100%; height: 100px; background-color: lightpink; }
   #logo { font-style: italic; float: left; width:250px; height: 100px; line-height: 100px; padding-left:50px; }
-    header { font-size: 40px; width: 1550px; height: 100%; background-color:#045; }
-    nav { font-size: 20px; float: right; width: 1400px; height:100px; padding-top: 30px; margin: -100px auto; }
+    header { font-size: 43px; width: 100%; height: 100%; background-color:#045; }
+    h1{font-family: 'Della Respira', serif; text-shadow: 5px 5px 3px purple; }
+    nav { font-size: 23px; float: right; width: 1400px; height:100px; padding-top: 30px; margin: -100px auto; }
     #topMenu { height: 60px; }
     #topMenu > li{ float:left; position: relative; }
     #topMenu > li> a { display: block; font-size: 1.1em; color:gray; font-weight: 600;
     padding: 20px 60px; }
     #topMenu>li>a:hover { color: #1fa8f8; text-shadow: 0 -2px #222; } 
-    .contents { width:800px; margin: 50px auto; }
+    .contents { width:700px; margin: 100px auto; }
     footer { width: 100%; height: 10%; border-top:1px solid lightyellow; text-align: center;}
 
 td {
 	width: 100px;
 	height: 100px;
 	text-align: center;
-	font-size: 20px;
-	font-family: 돋움;
+	font-size: 23px;
 	font-weight:bold;
 	border: 2px solid black;
 	border-radius: 13px;
@@ -46,8 +50,8 @@ th { width: 100px; height: 50px; text-align: center; font-size: 30px; }
 	color: blue;
 }
 
-select{width:80px; height:30px;}
-input{width:80px; height:30px; border-radius: 15px;}
+select{width:80px; height:30px; font-size: 15pt;}
+input{width:100px; height:30px; border-radius: 15px; font-size: 15pt;}
 </style>
 <script>
 

@@ -8,9 +8,16 @@
 <head>
 <title>User Delete</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	 <link rel="stylesheet" type="text/css" href="${R}background.css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="${R}background.css" />
   <link rel="stylesheet" type="text/css" href="${R}edit.css" />
+  
   <style>
+  
+  form { width: 600px; margin: 40px auto; }
   	p { margin: -19px 60px; }
     td{font-weight:bold;}
   </style>
@@ -36,7 +43,7 @@
   	</nav>
   	</header>
   	<main class="contents">
-    <form method="post">
+    <form method="post" autocomplete="off">
       <div class="title">회원정보를 입력하세요</div>
       <table>
       

@@ -14,11 +14,12 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src="${R}delete.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${R}background.css" />
 <link rel="stylesheet" href="${R}account.css" />
   <style>
-  h1 { font-style: italic; }
-  	 form { width: 500px; height: 450px; }
+  	 form { width: 500px; height: 500px; }
   	 table { width: 400px; }
     .btn { float: right; margin: -20px 200px 0px 0px;}
     input { width: 250px; }
@@ -28,7 +29,7 @@
 <body>
 <h1>~My Diary~</h1>
   <div class="container">
-    <form method="post">
+    <form method="post" autocomplete="off">
       <div class="title">회원가입</div>
       <table>
       <tr>
@@ -45,7 +46,7 @@
         </tr>
         <tr>
           <td>비밀번호: </td>
-          <td><input type="password" placeholder="대소문자, 숫자, 특수문자 포함 8자리 이상" name="password" value="${ user.password }"  required/></td>
+          <td><input type="password" placeholder="대소문자, 숫자 포함 10자리 이상" name="password" value="${ user.password }"  required/></td>
         </tr>
       </table>
       <button type="submit" class="btn">회원가입</button>

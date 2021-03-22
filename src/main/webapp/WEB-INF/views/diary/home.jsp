@@ -6,6 +6,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>My Diary</title>
   <link rel="stylesheet" type="text/css" href="/common.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   
   <style>
   body {
@@ -15,13 +19,13 @@
 	
 	background-repeat: no-repeat;
 	background-color: lightblue;
-	background-position: 50% 0%;
+	background-position: 50% 0;
 }
- 
-    a.btn{   top:50%; left:50%; height:30%; width: 40%; font-size:15pt; 
-          margin: 200px -20px -8px 270px; }
+
+    a.btn{ top:50%; left:50%; height:40%; width: 40%; font-size:15pt; 
+          margin: 100% 0 0 270px; }
       
-    h1 { font-size: 400%; margin: -60px auto;}
+    h1 { font-size: 400%; margin: -10% auto; font-family: 'Pangolin', cursive; text-shadow:5px 5px 3px lightpink; }
   </style>
 </head>
 <body>
