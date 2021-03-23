@@ -13,16 +13,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 
 <style type="text/css">
- * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Gamja Flower', cursive;}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Gamja Flower', cursive;}
   a{ text-decoration: none; }
   ul { list-style:none; }
   #container { margin: 0px auto; width:100%; height: 100px; background-color: lightpink; }
   #logo { font-style: italic; float: left; width:250px; height: 100px; line-height: 100px; padding-left:50px; }
     header { font-size: 43px; width: 100%; height: 100%; background-color:#045; }
     h1{font-family: 'Della Respira', serif; text-shadow: 5px 5px 3px purple; }
-    nav { font-size: 23px; float: right; width: 1400px; height:100px; padding-top: 30px; margin: -100px auto; }
+    nav { font-size: 23px; float: right; width: 100%; height:100px; padding-top: 30px; margin: -100px auto; }
     #topMenu { height: 60px; }
-    #topMenu > li{ float:left; position: relative; }
+    #topMenu > li{ float:right; position: relative; }
     #topMenu > li> a { display: block; font-size: 1.1em; color:gray; font-weight: 600;
     padding: 20px 60px; }
     #topMenu>li>a:hover { color: #1fa8f8; text-shadow: 0 -2px #222; } 
@@ -160,13 +160,13 @@ input{width:100px; height:30px; border-radius: 15px; font-size: 15pt;}
   	</div>
   	<nav>
   	<ul id="topMenu">
-  		<li><a href="calendar">달력</a></li>
-  		<li><a href="oneday">하루일정</a></li>
-  		<li><a href="weekEdit">일주일 계획</a></li>
-  		<li><a href="timetable">시간표</a></li>
-  		<li><a href="bukitEdit">버킷리스트</a></li>
-  		<li><a href="diaryEdit">일기</a></li>
   		<li><a href="memoEdit">메모장</a></li>
+  		<li><a href="diaryEdit">일기</a></li>
+  		<li><a href="bukitEdit">버킷리스트</a></li>
+  		<li><a href="timetable">시간표</a></li>
+  		<li><a href="weekEdit">일주일 계획</a></li>
+  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="calendar">달력</a></li>
   		
   	</ul>
   	</nav>
