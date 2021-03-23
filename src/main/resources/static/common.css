@@ -1,0 +1,22 @@
+ * { margin: 0; padding: 0; font-family: 'Gamja Flower', cursive;}
+h1 { color: purple; }
+div.container { width: 1100px; margin: 200px auto; font-size: 23pt; text-align: center;}
+
+.btn { padding: 1em 1em; 
+       border-radius: 5em; background: linear-gradient(#fff, #ddd);
+       text-decoration: none; color: black; font-size: 13pt;
+       display: inline-block; }
+.btn:active {
+      -ms-transform: translateY(2px);
+      -webkit-transform: translateY(2px);
+      transform: translateY(2px);
+      background: #ccc; }
+
+table.list { border-collapse: collapse; width: 200%; }
+table.list td { padding: 50px; border: 10px solid gray; }
+table.list th { padding: 50px; border: 10px solid gray;  background-color: #eee; }
+
+table.index th { text-align:center; }
+input { padding: 4px; }
+select { padding: 4px; }
+
