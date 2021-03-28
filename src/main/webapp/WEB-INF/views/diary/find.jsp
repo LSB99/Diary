@@ -14,6 +14,8 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src="${R}delete.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/background.css" />
 <link rel="stylesheet" type="text/css" href="/account.css" />
   <style>
@@ -38,7 +40,7 @@
           <td><input type="text" name="userId" value="${ user.userId }" required/></td>
         </tr>
       </table>
-      <a href="login" class="btn">비밀번호 찾기</a>
+		<button type="submit" class="btn">비밀번호 찾기</button>
       
     </form>    
  </div>

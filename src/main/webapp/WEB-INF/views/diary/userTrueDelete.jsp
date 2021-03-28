@@ -10,18 +10,23 @@
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="${R}common.js"></script>
-  	
+  	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 	 <link rel="stylesheet" type="text/css" href="/background.css" />
   	<link rel="stylesheet" type="text/css" href="/account.css" />
   <style>
+  h1 { font-size: 60pt; }
   	p { margin: -19px 60px; }
     td{font-weight:bold;}
+    .btn{ font-size: 13pt; }
   </style>
 </head>
 <body>
 <h1>정말 탈퇴하겠습니까?</h1>
   <div class="container">
-    <form method="post">
+    <form method="post" autocomplete="off">
       <div class="title">최종 탈퇴</div>
       <table>
        <tr>

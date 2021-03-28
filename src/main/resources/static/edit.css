@@ -1,28 +1,29 @@
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+ * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Gamja Flower', cursive;}
   a{ text-decoration: none; }
   ul { list-style:none; }
   #container { margin: 0px auto; width:100%; height: 100px; background-color: lightpink; }
   #logo { font-style: italic; float: left; width:250px; height: 100px; line-height: 100px; padding-left:50px; }
-    header { font-size: 40px; width: 1550px; height: 100%; background-color:#045; }
-    nav { font-size: 20px; float: right; width: 1400px; height:100px; padding-top: 30px; margin: -100px auto; }
+    header { font-size: 43px; width: 100%; height: 100%; background-color:#045; }
+    h1{font-family: 'Della Respira', serif; text-shadow: 5px 5px 3px purple; }
+    nav { font-size: 23px; float: right; width: 100%; height:100px; padding-top: 30px; margin: -100px auto; }
     #topMenu { height: 60px; }
-    #topMenu > li{ float:left; position: relative; }
+    #topMenu > li{ float:right; position: relative; }
     #topMenu > li> a { display: block; font-size: 1.1em; color:gray; font-weight: 600;
     padding: 20px 60px; }
     #topMenu>li>a:hover { color: #1fa8f8; text-shadow: 0 -2px #222; } 
-    .contents { width:800px; margin: 100px auto; }
+    .contents { width:700px; margin: 100px auto; }
     footer { width: 100%; height: 10%; border-top:1px solid lightyellow; text-align: center;}
  
 
     form { background-color: white; box-shadow: 0 0 10px skyblue, 10px 10px 10px gray;
-      overflow: auto; font-size: 20pt; border-radius: 15px; }      
-    div.title { font-style: italic; font-size: 25pt; padding: 25px; background-color: lightblue; font-weight:bold;}
+      overflow: auto; font-size: 25pt; border-radius: 15px; }      
+    div.title { font-style: italic; font-size: 28pt; text-shadow: 5px 5px 3px white; padding: 25px; background-color: lightblue; font-weight:bold;}
     table { margin: 50px; }
     td { min-width: 100; padding: 10px; font-weight:bold;}
     td:nth-child(1) { text-align: right; }
-    input { width: 300px; padding: .8em .5em; font-size: 12pt; text-align: center; }
+    input { width: 300px; padding: .8em .5em; font-size: 15pt; text-align: center; }
    .btn { width: auto; margin: 10px 5px; padding: 0.4em 1.5em; border: 5px solid lightblue;
        border-radius: 5em; background: linear-gradient(#fff, #ddd);
-       text-decoration: none; color: black; font-size: 11pt;
+       text-decoration: none; color: black; font-size: 13pt;
        display: inline-block;  float: right;}
-   textarea { width: 500px; height: 300px; padding: .8em .5em; font-size: 11pt; }
+   textarea { width: 500px; height: 300px; padding: .8em .5em; font-size: 16pt; }

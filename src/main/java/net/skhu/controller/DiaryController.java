@@ -1,5 +1,7 @@
 package net.skhu.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,20 +10,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import net.skhu.dto.Bukit;
-import net.skhu.dto.Diary;
-import net.skhu.dto.Memos;
-import net.skhu.dto.Plan;
-import net.skhu.dto.User;
-import net.skhu.dto.WeekPlan;
-import net.skhu.mapper.UserMapper;
+import net.skhu.entity.Bukit;
+import net.skhu.entity.Diary;
+import net.skhu.entity.Memo;
+import net.skhu.entity.Plan;
+import net.skhu.entity.User;
+import net.skhu.entity.Week;
+import net.skhu.repository.BukitRepository;
+import net.skhu.repository.DiaryRepository;
+import net.skhu.repository.MemoRepository;
+import net.skhu.repository.PlanRepository;
+import net.skhu.repository.UserRepository;
+import net.skhu.repository.WeekRepository;
 
 @Controller
 @RequestMapping("/diary")
 public class DiaryController {
 
-	@Autowired UserMapper userMapper;
-
+	@Autowired UserRepository userRepository;
+	@Autowired BukitRepository bukitRepository;
+	@Autowired WeekRepository weekRepository;
+	@Autowired DiaryRepository diaryRepository;
+	@Autowired PlanRepository planRepository;
+	@Autowired MemoRepository memoRepository;
 
 //표지 구현
 	@RequestMapping("home")
@@ -44,7 +55,7 @@ public class DiaryController {
 	@PostMapping("login")
 	 public String login(Model model, String userId) {
 
-		userMapper.findByuserId(userId);
+		userRepository.findById(userId);
 
 	    return "redirect:index";
 	}
@@ -61,10 +72,10 @@ public class DiaryController {
 
 	@PostMapping("find")
 	 public String find(Model model, String userId) {
+		User user=userRepository.findById(userId).get();
+		model.addAttribute("user", user);
 
-		userMapper.findByuserId(userId);
-
-	    return "redirect:login";
+	    return "diary/password";
 	}
 
 
@@ -80,7 +91,7 @@ public class DiaryController {
 	@PostMapping("join")
 	 public String join(Model model, User user) {
 
-		userMapper.insert(user);
+		userRepository.save(user);
 
 	    return "redirect:login";
 	}
@@ -107,7 +118,7 @@ public class DiaryController {
 	@RequestMapping("userTrueDelete")
     public String userDelete(Model model, @RequestParam("userId")String userId) {
 
-		userMapper.delete(userId);
+		userRepository.deleteById(userId);
 
         return "redirect:home";
     }
@@ -140,44 +151,46 @@ public class DiaryController {
   //일주일계획 목록
     @RequestMapping("weekList")
     public String weekList(Model model) {
-        model.addAttribute("message", "버킷리스트의 목록들 출력");
+    	 List<Week> weeks=weekRepository.findAll();
+     	model.addAttribute("weeks", weeks);
         return "diary/weekList";
     }
 
   //일주일계획 생성
     @GetMapping("weekCreate")
     public String weekCreate(Model model) {
-    	model.addAttribute("weekPlan", new WeekPlan());
+    	Week week=new Week();
+    	model.addAttribute("week", week);
     	return "diary/weekEdit";
     }
 
 
     @PostMapping("weekCreate")
-    public String weekCreate(Model model, WeekPlan weekPlan) {
-       //저장구현
-    	model.addAttribute("message", "저장했습니다.");
+    public String weekCreate(Model model, Week week) {
+    	weekRepository.save(week);
         return "redirect:weekList";
     }
 
   //일주일계획 수정
     @GetMapping("weekEdit")
-    public String weekEdit(Model model) {
-
+    public String weekEdit(Model model, @RequestParam("id") int id) {
+    	Week week=weekRepository.findById(id).get();
+    	model.addAttribute("week", week);
     	return "diary/weekEdit";
     }
 
 
     @PostMapping("weekEdit")
-    public String weekEdit(Model model, WeekPlan weekplan) {
-       //저장구현
-    	model.addAttribute("message", "저장했습니다.");
+    public String weekEdit(Model model, Week week) {
+    	weekRepository.save(week);
+     	model.addAttribute("message", "저장했습니다.");
         return "redirect:weekList";
     }
 
   //일주일계획 삭제
     @RequestMapping("weekDelete")
-    public String weekDelete(Model model) {
-
+    public String weekDelete(Model model, @RequestParam("id") int id) {
+    	weekRepository.deleteById(id);
         return "redirect:weekList";
     }
 
@@ -195,7 +208,8 @@ public class DiaryController {
 //버킷리스트 목록 구현
     @RequestMapping("bukitlist")
     public String bukitlist(Model model) {
-        model.addAttribute("message", "버킷리스트의 목록들 출력");
+        List<Bukit> bukits=bukitRepository.findAll();
+    	model.addAttribute("bukits", bukits);
         return "diary/bukitlist";
     }
 
@@ -203,38 +217,39 @@ public class DiaryController {
 //버킷리스트 생성 구현
     @GetMapping("bukitCreate")
     public String bukitCreate(Model model) {
-    	model.addAttribute("bukit", new Bukit());
+    	Bukit bukit=new Bukit();
+    	model.addAttribute("bukit", bukit);
     	return "diary/bukitEdit";
     }
 
 
     @PostMapping("bukitCreate")
     public String bukitCreate(Model model, Bukit bukit) {
-       //저장구현
-    	model.addAttribute("message", "저장했습니다.");
+    	bukitRepository.save(bukit);
         return "redirect:bukitlist";
     }
 
 
 //버킷리스트 수정 구현
     @GetMapping("bukitEdit")
-    public String bukitEdit(Model model) {
-
+    public String bukitEdit(Model model, @RequestParam("id") int id) {
+    	Bukit bukit=bukitRepository.findById(id).get();
+    	model.addAttribute("bukit", bukit);
     	return "diary/bukitEdit";
     }
 
 
     @PostMapping("bukitEdit")
     public String bukitEdit(Model model, Bukit bukit) {
-       //저장구현
+       bukitRepository.save(bukit);
     	model.addAttribute("message", "저장했습니다.");
         return "redirect:bukitlist";
     }
 
 //버킷리스트 삭제구현
     @RequestMapping("bukitDelete")
-    public String bukitDelete(Model model) {
-
+    public String bukitDelete(Model model, @RequestParam("id") int id) {
+    	bukitRepository.deleteById(id);
         return "redirect:bukitlist";
     }
 
@@ -243,8 +258,8 @@ public class DiaryController {
 //일기 목록 구현
     @RequestMapping("diarySpace")
     public String diarySpace(Model model) {
-    	model.addAttribute("date", "2021-03-10");
-        model.addAttribute("message", "일기의 목록들 출력");
+    	List<Diary> diarys=diaryRepository.findAll();
+    	model.addAttribute("diarys", diarys);
         return "diary/diarySpace";
     }
 
@@ -252,36 +267,38 @@ public class DiaryController {
 //일기 생성 구현
     @GetMapping("diaryCreate")
     public String diaryCreate(Model model) {
-    	model.addAttribute("diary", new Diary());
+    	Diary diary=new Diary();
+    	model.addAttribute("diary", diary);
     	return "diary/diaryEdit";
     }
 
     @PostMapping("diaryCreate")
     public String diaryCreate(Model model, Diary diary) {
 
-    	model.addAttribute("message", "저장했습니다.");
+    	diaryRepository.save(diary);
         return "redirect:diarySpace";
     }
 
 
 //일기 수정 구현
     @GetMapping("diaryEdit")
-    public String diaryEdit(Model model) {
-
+    public String diaryEdit(Model model,  @RequestParam("id") int id) {
+    	Diary diary=diaryRepository.findById(id).get();
+    	model.addAttribute("diary", diary);
     	return "diary/diaryEdit";
     }
 
     @PostMapping("diaryEdit")
     public String diaryEdit(Model model, Diary diary) {
-       //저장구현
-    	model.addAttribute("message", "저장했습니다.");
+    	 diaryRepository.save(diary);
+     	model.addAttribute("message", "저장했습니다.");
         return "redirect:diarySpace";
     }
 
   //일기 삭제구현
     @RequestMapping("diaryDelete")
-    public String diaryDelete(Model model) {
-
+    public String diaryDelete(Model model,  @RequestParam("id") int id) {
+    	diaryRepository.deleteById(id);
         return "redirect:diarySpace";
     }
 
@@ -291,7 +308,8 @@ public class DiaryController {
 //메모 목록 구현
     @RequestMapping("memopad")
     public String memopad(Model model) {
-        model.addAttribute("message", "메모 목록");
+    	List<Memo> memos=memoRepository.findAll();
+    	model.addAttribute("memos", memos);
         return "diary/memopad";
     }
 
@@ -299,37 +317,38 @@ public class DiaryController {
 //메모 생성 구현
     @GetMapping("memoCreate")
     public String memoCreate(Model model) {
-    	model.addAttribute("memos", new Memos());
+    	Memo memo=new Memo();
+    	model.addAttribute("memo", memo);
     	return "diary/memoEdit";
     }
 
     @PostMapping("memoCreate")
-    public String memoCreate(Model model, Memos memos) {
-       //저장구현
-    	model.addAttribute("message", "저장했습니다.");
+    public String memoCreate(Model model, Memo memo) {
+    	memoRepository.save(memo);
         return "redirect:memopad";
     }
 
 
 //메모 수정 구현
     @GetMapping("memoEdit")
-    public String memoEdit(Model model) {
-    	model.addAttribute("memos", new Memos());
+    public String memoEdit(Model model, @RequestParam("id") int id) {
+    	Memo memo=memoRepository.findById(id).get();
+    	model.addAttribute("memo", memo);
     	return "diary/memoEdit";
     }
 
 
     @PostMapping("memoEdit")
-    public String memoEdit(Model model, Memos memos) {
-       //저장구현
-    	model.addAttribute("message", "저장했습니다.");
+    public String memoEdit(Model model, Memo memo) {
+    	memoRepository.save(memo);
+      	model.addAttribute("message", "저장했습니다.");
         return "redirect:memopad";
     }
 
 //메모 삭제구현
     @RequestMapping("memoDelete")
-    public String memoDelete(Model model) {
-
+    public String memoDelete(Model model, @RequestParam("id") int id) {
+    	memoRepository.deleteById(id);
         return "redirect:memopad";
     }
 }
