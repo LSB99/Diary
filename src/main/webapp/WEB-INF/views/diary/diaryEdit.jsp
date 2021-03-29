@@ -30,48 +30,75 @@
   	</div>
   	<nav>
   	<ul id="topMenu">
-  		<li><a href="memoEdit">메모장</a></li>
-  		<li><a href="diaryEdit">일기</a></li>
-  		<li><a href="bukitEdit">버킷리스트</a></li>
+  		<li><a href="memoCreate">메모장</a></li>
+  		<li><a href="diaryCreate">일기</a></li>
+  		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
-  		<li><a href="weekEdit">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="weekCreate">일주일 계획</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
-  		
   	</ul>
   	</nav>
   	</header>
   	<main class="contents">
+  	
     <form method="post">
+        
       <div class="title">일기 쓰기</div>
+      
       <table>
       	<tr>
       		<td>userId: </td>
       		<td><input type = "text" name="userId" value="${ diary.userId }"  autofocus required /></td>
       	</tr>
+      	
       	<tr>
       		<td>제목: </td>
       		<td><input type = "text" name="title" value="${ diary.title }" required/></td>
       	</tr>
+      	
       	<tr>
           <td>날짜: </td>
           <td><input type="date" name="writeDate" value="${ diary.writeDate }" /></td>
         </tr>
+        
         <tr>
+        
           <td>내용: </td>
-          <td><textarea name="diarylist" placeholder="오늘은 어떤 날이었나요?"  value="${ diary.diarylist }" /></textarea></td>
+          
+          	<td>
+          		<textarea name="diarylist" placeholder="오늘은 무슨 일이 있었는지 적어보세요!" required> 
+          	
+          		<c:out value="${ diary.diarylist }" /> </textarea> 
+          	
+         	</td>
+          
         </tr>
+        
       </table>
-      <a href="diarySpace" class="btn">저장</a>
+      
+      
+      <button type="submit" class="btn">저장</button>
+      
       <a href="diarySpace" class="btn">일기 목록보기</a>
-       <c:if test="${ bukit.id>0 }"></c:if>
-      <a href="diaryDelete" class="btn" data-confirm-delete>삭제</a>
+      
+      
+       <c:if test="${ diary.id > 0 }">
+       
+      	<a href="diaryDelete?id=${diary.id}" class="btn" data-confirm-delete>삭제</a>
+      
+      </c:if>
       
       <c:if test="${ not empty message }">
+      
         <div class="message">
+        
           ${ message }
+          
         </div>
-         </c:if>
+        
+      </c:if>
+      
     </form>
     </main>  
      <footer>

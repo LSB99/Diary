@@ -27,12 +27,12 @@
   	</div>
   	<nav>
   	<ul id="topMenu">
-  		<li><a href="memoEdit">메모장</a></li>
-  		<li><a href="diaryEdit">일기</a></li>
-  		<li><a href="bukitEdit">버킷리스트</a></li>
+  		<li><a href="memoCreate">메모장</a></li>
+  		<li><a href="diaryCreate">일기</a></li>
+  		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
-  		<li><a href="weekEdit">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="weekCreate">일주일 계획</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
   		
   	</ul>
@@ -42,15 +42,15 @@
   <table class="list">
     <thead>
       <tr>
-        <th>순번</th>
         <th>메모 목록</th>
       </tr>
     </thead>
     <tbody>
-    <tr>
-    <td>1</td>
-    <td><a href="memoEdit" class="btn">메모 내용</a></td>
-    </tr>
+   <c:forEach var="memo" items="${ memos }" >
+      <tr>
+    	<td><a href="memoEdit?id=${ memo.id }">${ memo.memolist }</a></td> 
+      </tr>
+      </c:forEach>
     </tbody>
   </table>
   <p><a href="index" class="btn">처음으로 가기</a></p>

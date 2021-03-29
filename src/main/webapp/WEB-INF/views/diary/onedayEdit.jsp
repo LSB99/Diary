@@ -30,14 +30,13 @@
   	</div>
   	<nav>
   	<ul id="topMenu">
-  		<li><a href="memoEdit">메모장</a></li>
-  		<li><a href="diaryEdit">일기</a></li>
-  		<li><a href="bukitEdit">버킷리스트</a></li>
+  		<li><a href="memoCreate">메모장</a></li>
+  		<li><a href="diaryCreate">일기</a></li>
+  		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
-  		<li><a href="weekEdit">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
-  		<li><a href="calendar">달력</a></li>
-  		
+  		<li><a href="weekCreate">일주일 계획</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
+  		<li><a href="calendar">달력</a></li>	
   	</ul>
   	</nav>
   	</header>
@@ -52,16 +51,34 @@
         </tr>
       
         <tr>
-          <td>오늘날짜: </td>
+          <td>오늘 <br/>날짜: </td>
           <td><input type="date" name="today" value="${ plan.today }" /></td>
         </tr>
         
-        <tr><td>하루 일정: </td>
-        <td><textarea rows="5" cols="30"  placeholder="오늘의 일정이 어떻게 되는지 적어주세요!"  name="plan">${ plan.todayplan }</textarea></td>
+        <tr>
+        
+        	<td>하루<br/> 일정: </td>
+        
+       		<td>
+        
+        		<textarea rows="5" cols="30"  placeholder="오늘의 일정이 어떻게 되는지 적어주세요!"  name="todayplan"> 
+        
+        		<c:out value="${ plan.todayplan }" /> </textarea>
+        
+        	</td>
+        
         </tr>
         
       </table>
       <button type="submit" class="btn">저장</button>
+      
+      <a href="onedayList" class="btn">하루일정 목록보기</a>
+      
+       <c:if test="${ plan.id>0 }">
+       
+      	<a href="onedayDelete?id=${plan.id}" class="btn" data-confirm-delete>삭제</a>
+      
+       </c:if>
      	      
     </form>  
     </main>  
@@ -71,5 +88,3 @@
  </div>
 </body>
 </html>
-
-

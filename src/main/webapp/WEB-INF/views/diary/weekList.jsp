@@ -14,7 +14,7 @@
 
   <style>
   	table.list1, table.list2 {  background-color: lightyellow; height: 100px; width: 100%; font-size: 20pt; }
-table.list1 td, table.list2 td { height: 300px; padding: auto; border: 2px solid pink; font-size: 17pt; text-align: center; }
+table.list1 td, table.list2 td { height: 50px; padding: auto; border: 2px solid pink; font-size: 17pt; text-align: center; }
 table.list1 th, table.list2 th { padding: auto; border: 5px solid pink;  background-color: lightpink; }
     td:nth-child(1) { text-align: center; }
   </style>
@@ -28,14 +28,13 @@ table.list1 th, table.list2 th { padding: auto; border: 5px solid pink;  backgro
   	</div>
   	<nav>
   	<ul id="topMenu">
-  		<li><a href="memoEdit">메모장</a></li>
-  		<li><a href="diaryEdit">일기</a></li>
-  		<li><a href="bukitEdit">버킷리스트</a></li>
+  		<li><a href="memoCreate">메모장</a></li>
+  		<li><a href="diaryCreate">일기</a></li>
+  		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
-  		<li><a href="weekEdit">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
-  		<li><a href="calendar">달력</a></li>
-  		
+  		<li><a href="weekCreate">일주일 계획</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
+  		<li><a href="calendar">달력</a></li>		
   	</ul>
   	</nav>
   	</header>
@@ -49,12 +48,14 @@ table.list1 th, table.list2 th { padding: auto; border: 5px solid pink;  backgro
         <th>Thursday</th>
       </tr>
     <tbody>
+    <c:forEach var="week" items="${ weeks }" >
        <tr>
-    	<td><a href="weekEdit">월요일 계획</a></td>
-    	<td><a href="weekEdit">화요일 계획</a></td>
-    	<td><a href="weekEdit">수요일 계획</a></td>
-    	<td><a href="weekEdit">목요일 계획</a></td>
+       <td><a href="weekEdit?id=${ week.id }">${ week.mon }</a></td> 
+       <td><a href="weekEdit?id=${ week.id }">${ week.tue }</a></td> 
+    	<td><a href="weekEdit?id=${ week.id }">${ week.wed }</a></td>
+    	<td><a href="weekEdit?id=${ week.id }">${ week.thu }</a></td>  
        </tr>
+       </c:forEach>
     </tbody>
   </table>
   
@@ -67,11 +68,13 @@ table.list1 th, table.list2 th { padding: auto; border: 5px solid pink;  backgro
       </tr>
     </thead>
     <tbody>
+    <c:forEach var="week" items="${ weeks }" >
        <tr>
-    	<td><a href="weekEdit">금요일 계획</a></td>
-    	<td><a href="weekEdit">토요일 계획</a></td>
-    	<td><a href="weekEdit">일요일 계획</a></td>
+    	<td><a href="weekEdit?id=${ week.id }">${ week.fri }</a></td> 
+    	<td><a href="weekEdit?id=${ week.id }">${ week.sat }</a></td> 
+    	<td><a href="weekEdit?id=${ week.id }">${ week.sun }</a></td> 
        </tr>
+       </c:forEach>
     </tbody>
   </table>
   <p><a href="index" class="btn">처음으로 가기</a></p>

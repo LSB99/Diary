@@ -27,12 +27,12 @@
   	</div>
   	<nav>
   	<ul id="topMenu">
-  		<li><a href="memoEdit">메모장</a></li>
-  		<li><a href="diaryEdit">일기</a></li>
-  		<li><a href="bukitEdit">버킷리스트</a></li>
+  		<li><a href="memoCreate">메모장</a></li>
+  		<li><a href="diaryCreate">일기</a></li>
+  		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
-  		<li><a href="weekEdit">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="weekCreate">일주일 계획</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
   		
   	</ul>
@@ -42,15 +42,17 @@
   <table class="list">
     <thead>
       <tr>
-        <th>순번</th>
+     
         <th>버킷리스트</th>
       </tr>
     </thead>
     <tbody>
-    <tr>
-    <td>1</td>
-    <td><a href="bukitEdit" class="btn">버킷리스트 내용</a></td>
-    
+    <c:forEach var="bukit" items="${ bukits }" >
+      <tr>
+      
+    	<td><a href="bukitEdit?id=${ bukit.id }">${ bukit.bukitlist }</a></td> 
+      </tr>
+      </c:forEach>
     <tr>
        	<td colspan="2" style="font-size: 12pt;" >버킷리스트를 모두 이룰 수 있을 때까지..</td>
       </tr>

@@ -40,7 +40,7 @@
           <td><input type="text" name="userId" value="${ user.userId }" required/></td>
         </tr>
       </table>
-      <a href="login" class="btn">비밀번호 찾기</a>
+		<button type="submit" class="btn">비밀번호 찾기</button>
       
     </form>    
  </div>

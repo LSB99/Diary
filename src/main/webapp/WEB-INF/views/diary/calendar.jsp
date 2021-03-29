@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 
 <style type="text/css">
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Gamja Flower', cursive;}
+ * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Gamja Flower', cursive;}
   a{ text-decoration: none; }
   ul { list-style:none; }
   #container { margin: 0px auto; width:100%; height: 100px; background-color: lightpink; }
@@ -128,15 +128,15 @@ input{width:100px; height:30px; border-radius: 15px; font-size: 15pt;}
 				}
 				
 				if (count % 7 == 1) {
-					calendar += "<td class=sunday>" + numb + "</td>";
+					calendar += "<td class=sunday>" + numb +  "<input type='text' />"  + "</td>";
 				} 
 
 				else if (count % 7 == 0) {
-					calendar += "<td class=saturday>" + numb + "</td>";
-				} 
-
+					calendar += "<td class=saturday>" + numb +  "<input type='text' />"  + "</td>";
+				}
+				
 				else {
-					calendar += "<td>" + numb + "</td>";
+					calendar += "<td>" + numb +  "<input type='text' />"  + "</td>";
 				}
 				
 				count++;
@@ -160,12 +160,12 @@ input{width:100px; height:30px; border-radius: 15px; font-size: 15pt;}
   	</div>
   	<nav>
   	<ul id="topMenu">
-  		<li><a href="memoEdit">메모장</a></li>
-  		<li><a href="diaryEdit">일기</a></li>
-  		<li><a href="bukitEdit">버킷리스트</a></li>
+  		<li><a href="memoCreate">메모장</a></li>
+  		<li><a href="diaryCreate">일기</a></li>
+  		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
-  		<li><a href="weekEdit">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="weekCreate">일주일 계획</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
   		
   	</ul>

@@ -47,12 +47,12 @@ alt="" width="15%">
   	<thead>
   		<tr> 
   			<th><a href="calendar" class="btn">달력</a></th>
-  			<th><a href="oneday" class="btn">하루일정</a></th>
-  			<th><a href="weekEdit" class="btn">일주일 계획</a></th>
+  			<th><a href="onedayCreate" class="btn">하루일정</a></th>
+  			<th><a href="weekCreate" class="btn">일주일 계획</a></th>
   			<th><a href="timetable" class="btn">시간표</a></th>
-  			<th><a href="bukitEdit" class="btn">버킷리스트</a></th>
-  			<th><a href="diaryEdit" class="btn">일기장</a></th>
-  			<th><a href="memoEdit" class="btn">메모장</a></th>
+  			<th><a href="bukitCreate" class="btn">버킷리스트</a></th>
+  			<th><a href="diaryCreate" class="btn">일기장</a></th>
+  			<th><a href="memoCreate" class="btn">메모장</a></th>
   		</tr>
   		<tr><th><a href="userDelete" class="btn">회원탈퇴</a></th></tr>
     </thead>

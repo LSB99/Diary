@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,12 +27,12 @@
   	</div>
   	<nav>
   	<ul id="topMenu">
-  		<li><a href="memoEdit">메모장</a></li>
-  		<li><a href="diaryEdit">일기</a></li>
-  		<li><a href="bukitEdit">버킷리스트</a></li>
+  		<li><a href="memoCreate">메모장</a></li>
+  		<li><a href="diaryCreate">일기</a></li>
+  		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
-  		<li><a href="weekEdit">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="weekCreate">일주일 계획</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
   		
   	</ul>
@@ -41,17 +42,21 @@
   <table class="list">
     <thead>
       <tr>
-        <th>순번</th>
         <th>날짜</th>
         <th>제목</th>
       </tr>
     </thead>
     <tbody>
-    <tr>
-    <td>1</td>
-    <td>${ date }</td>
-    <td><a href="diaryEdit" class="btn">일기 제목</a></td>
-    </tr>
+    <c:forEach var="diary" items="${ diarys }" >
+    
+      <tr>
+      
+    	<td><fmt:formatDate value="${ diary.writeDate }" pattern="yyyy-MM-dd" /></td> 
+    	
+    	<td><a href="diaryEdit?id=${ diary.id }">${ diary.title }</a></td> 
+    	
+      </tr>
+      </c:forEach>
     <tr>
        	<td colspan="3" style="font-size: 12pt;" >오늘 하루도 수고했어요!</td>
       </tr>
