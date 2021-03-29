@@ -1,5 +1,7 @@
 package net.skhu.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,16 +18,17 @@ public interface WeekRepository extends JpaRepository<Week, Integer>  {
 	@Query(value = "insert into week(userId) VALUES (:userId)", nativeQuery = true)
 	@Transactional
 	void joinWeek(@Param("userId") String userId);
-	
-	
+
+
 	@Modifying
 	@Query(value = "delete from week where userId=:userId", nativeQuery = true)
 	@Transactional
 	void deleteWeek(@Param("userId") String userId);
-	
-	
-	
-	
-	Week findByUserId(String userId);
+
+
+
+
+	Week findOneByUserId(String userId);
+	List<Week> findByUserId(String userId);
 }
 

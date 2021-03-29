@@ -200,23 +200,23 @@ public class DiaryController {
 
         return "redirect:onedayList";
     }
-    
+
 
     // 하루일정 목록
     @RequestMapping("onedayList")
     public String onedaylist(Model model) {
-    	
-    	
+
+
     	List<Plan> plans = planRepository.findByUserId(currentuserId);
 
     	model.addAttribute("plans", plans);
 
         return "diary/onedayList";
-    	
+
     }
-    
-    
-    
+
+
+
     //하루일정 수정
     @GetMapping("onedayEdit")
     public String onedayEdit(Model model, @RequestParam("id") int id) {
@@ -231,32 +231,32 @@ public class DiaryController {
 
     @PostMapping("onedayEdit")
     public String onedayEdit(Model model, Plan plan) {
-    	
+
     	planRepository.save(plan);
-    	
+
      	model.addAttribute("message", "저장했습니다.");
-     	
+
         return "redirect:onedayList";
     }
 
-    
-    
+
+
   //하루일정 삭제구현
     @RequestMapping("onedayDelete")
     public String onedayDelete(Model model, @RequestParam("id") int id) {
-    	
+
     	planRepository.deleteById(id);
-    	
+
         return "redirect:onedayList";
     }
-    
-    
-    
+
+
+
   //일주일계획 목록
     @RequestMapping("weekList")
     public String weekList(Model model) {
 
-    	List<Week> weeks=weekRepository.findAll();
+    	List<Week> weeks = weekRepository.findByUserId(currentuserId);
 
      	model.addAttribute("weeks", weeks);
 
@@ -270,7 +270,7 @@ public class DiaryController {
     @GetMapping("weekCreate")
     public String weekCreate(Model model) {
 
-    	model.addAttribute("week", weekRepository.findByUserId(currentuserId));
+    	model.addAttribute("week", new Week());
 
     	return "diary/weekEdit";
     }
@@ -279,7 +279,7 @@ public class DiaryController {
     @PostMapping("weekCreate")
     public String weekCreate(Model model, Week week) {
 
-    	weekMapper.update(week);
+    	weekRepository.save(week);
 
         return "redirect:weekList";
     }
@@ -326,7 +326,7 @@ public class DiaryController {
     @PostMapping("timetable")
     public String timetable(Model model, TimeTable timetable) {
 
-    	timetableMapper.update(timetable);
+    	timetableRepository.save(timetable);
 
         return "diary/timetable";
     }
@@ -513,9 +513,9 @@ public class DiaryController {
 //메모 삭제구현
     @RequestMapping("memoDelete")
     public String memoDelete(Model model, @RequestParam("id") int id) {
-    	
+
     	memoRepository.deleteById(id);
-    	
+
         return "redirect:memopad";
     }
 }
