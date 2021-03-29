@@ -32,7 +32,7 @@
   		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
   		<li><a href="weekCreate">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
   		
   	</ul>
@@ -42,14 +42,12 @@
   <table class="list">
     <thead>
       <tr>
-        <th>순번</th>
         <th>메모 목록</th>
       </tr>
     </thead>
     <tbody>
    <c:forEach var="memo" items="${ memos }" >
       <tr>
-    	<td>${ memo.id }</td>
     	<td><a href="memoEdit?id=${ memo.id }">${ memo.memolist }</a></td> 
       </tr>
       </c:forEach>

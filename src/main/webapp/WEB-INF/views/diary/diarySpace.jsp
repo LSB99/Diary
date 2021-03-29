@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +32,7 @@
   		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
   		<li><a href="weekCreate">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
   		
   	</ul>
@@ -41,7 +42,6 @@
   <table class="list">
     <thead>
       <tr>
-        <th>순번</th>
         <th>날짜</th>
         <th>제목</th>
       </tr>
@@ -51,9 +51,7 @@
     
       <tr>
       
-    	<td>${ diary.id }</td>
-    	
-    	<td>${ diary.writeDate }</td>
+    	<td><fmt:formatDate value="${ diary.writeDate }" pattern="yyyy-MM-dd" /></td> 
     	
     	<td><a href="diaryEdit?id=${ diary.id }">${ diary.title }</a></td> 
     	

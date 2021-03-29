@@ -68,7 +68,7 @@ input { width:180px; height:50px; font-size: 13pt; }
   		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
   		<li><a href="weekCreate">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
   	</ul>
   	</nav>

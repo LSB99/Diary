@@ -34,7 +34,7 @@
   		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
   		<li><a href="weekCreate">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
   		
   	</ul>
@@ -53,11 +53,17 @@
       		<td><textarea name="memolist" placeholder="잊기 전에 메모하세요!" required><c:out value="${ memo.memolist }" /></textarea></td>
       	</tr>
       </table>
+      
       <button type="submit" class="btn">저장</button>
+      
       <a href="memopad" class="btn">메모 목록보기</a>
+      
        <c:if test="${ memo.id>0 }">
-      <a href="memoDelete?id=${memo.id}" class="btn" data-confirm-delete>삭제</a>
+       
+      	<a href="memoDelete?id=${memo.id}" class="btn" data-confirm-delete>삭제</a>
+      
        </c:if>
+       
     </form>    
     </main>
      <footer>

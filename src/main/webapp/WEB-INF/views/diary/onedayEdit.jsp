@@ -35,7 +35,7 @@
   		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
   		<li><a href="weekCreate">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>	
   	</ul>
   	</nav>
@@ -51,13 +51,13 @@
         </tr>
       
         <tr>
-          <td>오늘날짜: </td>
+          <td>오늘 <br/>날짜: </td>
           <td><input type="date" name="today" value="${ plan.today }" /></td>
         </tr>
         
         <tr>
         
-        	<td>하루 일정: </td>
+        	<td>하루<br/> 일정: </td>
         
        		<td>
         
@@ -71,6 +71,14 @@
         
       </table>
       <button type="submit" class="btn">저장</button>
+      
+      <a href="onedayList" class="btn">하루일정 목록보기</a>
+      
+       <c:if test="${ plan.id>0 }">
+       
+      	<a href="onedayDelete?id=${plan.id}" class="btn" data-confirm-delete>삭제</a>
+      
+       </c:if>
      	      
     </form>  
     </main>  

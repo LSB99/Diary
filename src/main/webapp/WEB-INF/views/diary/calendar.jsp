@@ -128,15 +128,15 @@ input{width:100px; height:30px; border-radius: 15px; font-size: 15pt;}
 				}
 				
 				if (count % 7 == 1) {
-					calendar += "<td class=sunday>" + numb + "</td>";
+					calendar += "<td class=sunday>" + numb +  "<input type='text' />"  + "</td>";
 				} 
 
 				else if (count % 7 == 0) {
-					calendar += "<td class=saturday>" + numb + "</td>";
-				} 
-
+					calendar += "<td class=saturday>" + numb +  "<input type='text' />"  + "</td>";
+				}
+				
 				else {
-					calendar += "<td>" + numb + "</td>";
+					calendar += "<td>" + numb +  "<input type='text' />"  + "</td>";
 				}
 				
 				count++;
@@ -165,7 +165,7 @@ input{width:100px; height:30px; border-radius: 15px; font-size: 15pt;}
   		<li><a href="bukitCreate">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
   		<li><a href="weekCreate">일주일 계획</a></li>
-  		<li><a href="oneday">하루일정</a></li>
+  		<li><a href="onedayCreate">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
   		
   	</ul>

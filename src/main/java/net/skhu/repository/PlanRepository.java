@@ -1,5 +1,7 @@
 package net.skhu.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,6 +26,6 @@ public interface PlanRepository extends JpaRepository<Plan, Integer>  {
 	void deletePlan(@Param("userId") String userId);
 	
 	
-	Plan findByUserId(String userId);
+	List<Plan> findByUserId(String userId);
 	
 }

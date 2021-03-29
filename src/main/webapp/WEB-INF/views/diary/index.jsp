@@ -47,7 +47,7 @@ alt="" width="15%">
   	<thead>
   		<tr> 
   			<th><a href="calendar" class="btn">달력</a></th>
-  			<th><a href="oneday" class="btn">하루일정</a></th>
+  			<th><a href="onedayCreate" class="btn">하루일정</a></th>
   			<th><a href="weekCreate" class="btn">일주일 계획</a></th>
   			<th><a href="timetable" class="btn">시간표</a></th>
   			<th><a href="bukitCreate" class="btn">버킷리스트</a></th>
