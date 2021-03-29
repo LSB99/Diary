@@ -48,7 +48,7 @@
       
        <tr>
           <td>userId: </td>
-          <td><input type="text" name="userId" value="${ plan.userId }"  autofocus required /></td>
+          <td><input type="text" name="userId" value="${ week.userId }"  autofocus required /></td>
         </tr>
         
         <tr><td>월요일: </td>

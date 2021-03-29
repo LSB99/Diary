@@ -10,9 +10,11 @@ import lombok.Data;
 @Data
 @Entity
 public class Week {
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	 int id;
+	int id;
 
 
 	String userId;

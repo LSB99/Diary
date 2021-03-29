@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -14,18 +16,16 @@ import lombok.Data;
 public class Plan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	 int id;
+	int id;
 
 	String userId;
 
+	
+	String todayplan;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	Date today;
 
-	String todayplan;
-
-	Date start;
-
-	Date end;
-
-
-	}
-
+	
+	
+}

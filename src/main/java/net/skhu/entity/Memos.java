@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Memo {
+public class Memos {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

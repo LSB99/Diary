@@ -44,24 +44,41 @@
   	</nav>
   	</header>
   	<main class="contents">
-    <form method="post" modelAtrribute="bukit">
+  	
+  	
+    <form method="post" modelAttribute="bukit">
+    
+    
       <div class="title">버킷리스트 작성</div>
+      
       <table>
-      <tr>
+      
+        <tr>
       		<td>userId: </td>
       		<td><input type = "text" name="userId" value="${ bukit.userId }"  autofocus required /></td>
       	</tr>
+      	
+      	
         <tr>
+        
           <td>내용: </td>
+          
           <td><input type="text" name="bukitlist" value="${ bukit.bukitlist }" placeholder="꼭 이루고 싶은 목표를 적어보세요!" required/></td>
+          
         </tr>
        
       </table>
+      
       <button type="submit" class="btn">저장</button>
+      
       <a href="bukitlist" class="btn">버킷리스트 목록보기</a>
+      
       <c:if test="${ bukit.id>0 }">
-      <a href="bukitDelete?id=${bukit.id}" class="btn" data-confirm-delete>삭제</a>
+      
+      	<a href="bukitDelete?id=${bukit.id}" class="btn" data-confirm-delete>삭제</a>
+      	
       </c:if>
+      
     </form>    
     
     </main>

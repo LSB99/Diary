@@ -55,8 +55,18 @@
           <td><input type="date" name="today" value="${ plan.today }" /></td>
         </tr>
         
-        <tr><td>하루 일정: </td>
-        <td><textarea rows="5" cols="30"  placeholder="오늘의 일정이 어떻게 되는지 적어주세요!"  name="plan">${ plan.todayplan }</textarea></td>
+        <tr>
+        
+        	<td>하루 일정: </td>
+        
+       		<td>
+        
+        		<textarea rows="5" cols="30"  placeholder="오늘의 일정이 어떻게 되는지 적어주세요!"  name="todayplan"> 
+        
+        		<c:out value="${ plan.todayplan }" /> </textarea>
+        
+        	</td>
+        
         </tr>
         
       </table>

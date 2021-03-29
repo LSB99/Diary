@@ -75,9 +75,12 @@ input { width:180px; height:50px; font-size: 13pt; }
   	</header>
   	<main class="contents">
 
-	<h1 style="font-style: italic; text-shadow: 5px 5px 3px white; margin: 10px 500px; text-align: right; font-size: 50pt;"
-	>Time Table</h1>
-	<a href="timetable" class="btn">저장</a>
+ <form method="post">
+ 
+	<h1 style="font-style: italic; text-shadow: 5px 5px 3px white; margin: 10px 500px; 
+	text-align: right; font-size: 50pt;"> Time Table </h1>
+	
+	<button type="submit" class="btn">저장</button>
 
 	<table>
 
@@ -91,89 +94,91 @@ input { width:180px; height:50px; font-size: 13pt; }
 			<th>금</th>
 			<th>토</th>
 		</tr>
-
+ 
 		<tr>
-			<th><input type="time" /></th>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
+			<th><input type="text" name="time" placeholder="몇시 몇분을 입력하세요." value="${ timetable.time }" /></th>
+			<td><input type="text" name="sun"  value="${ timetable.sun }" /></td>
+			<td><input type="text" name="mon"  value="${ timetable.mon }" /></td>
+			<td><input type="text" name="tue"  value="${ timetable.tue }" /></td>
+			<td><input type="text" name="wed"  value="${ timetable.wed }"  /></td>
+			<td><input type="text" name="thu"  value="${ timetable.thu }" /></td>
+			<td><input type="text" name="fri"  value="${ timetable.fri }" /></td>
+			<td><input type="text" name="sat"  value="${ timetable.sat }" /></td>
 		</tr>
 
 		<tr>
-			<th><input type="time" /></th>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
+			<th><input type="text" name="time" placeholder="몇시 몇분을 입력하세요." value="${ timetable.time }" /></th>
+			<td><input type="text" name="sun"  value="${ timetable.sun }" /></td>
+			<td><input type="text" name="mon"  value="${ timetable.mon }" /></td>
+			<td><input type="text" name="tue"  value="${ timetable.tue }" /></td>
+			<td><input type="text" name="wed"  value="${ timetable.wed }"  /></td>
+			<td><input type="text" name="thu"  value="${ timetable.thu }" /></td>
+			<td><input type="text" name="fri"  value="${ timetable.fri }" /></td>
+			<td><input type="text" name="sat"  value="${ timetable.sat }" /></td>
 		</tr>
 		<tr>
-			<th><input type="time" /></th>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
+			<th><input type="text" name="time" placeholder="몇시 몇분을 입력하세요." value="${ timetable.time }" /></th>
+			<td><input type="text" name="sun"  value="${ timetable.sun }" /></td>
+			<td><input type="text" name="mon"  value="${ timetable.mon }" /></td>
+			<td><input type="text" name="tue"  value="${ timetable.tue }" /></td>
+			<td><input type="text" name="wed"  value="${ timetable.wed }"  /></td>
+			<td><input type="text" name="thu"  value="${ timetable.thu }" /></td>
+			<td><input type="text" name="fri"  value="${ timetable.fri }" /></td>
+			<td><input type="text" name="sat"  value="${ timetable.sat }" /></td>
 		</tr>
 		<tr>
-			<th><input type="time" /></th>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
+			<th><input type="text" name="time" placeholder="몇시 몇분을 입력하세요." value="${ timetable.time }" /></th>
+			<td><input type="text" name="sun"  value="${ timetable.sun }" /></td>
+			<td><input type="text" name="mon"  value="${ timetable.mon }" /></td>
+			<td><input type="text" name="tue"  value="${ timetable.tue }" /></td>
+			<td><input type="text" name="wed"  value="${ timetable.wed }"  /></td>
+			<td><input type="text" name="thu"  value="${ timetable.thu }" /></td>
+			<td><input type="text" name="fri"  value="${ timetable.fri }" /></td>
+			<td><input type="text" name="sat"  value="${ timetable.sat }" /></td>
 		</tr>
 		<tr>
-			<th><input type="time" /></th>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
+			<th><input type="text" name="time" placeholder="몇시 몇분을 입력하세요." value="${ timetable.time }" /></th>
+			<td><input type="text" name="sun"  value="${ timetable.sun }" /></td>
+			<td><input type="text" name="mon"  value="${ timetable.mon }" /></td>
+			<td><input type="text" name="tue"  value="${ timetable.tue }" /></td>
+			<td><input type="text" name="wed"  value="${ timetable.wed }"  /></td>
+			<td><input type="text" name="thu"  value="${ timetable.thu }" /></td>
+			<td><input type="text" name="fri"  value="${ timetable.fri }" /></td>
+			<td><input type="text" name="sat"  value="${ timetable.sat }" /></td>
 		</tr>
 		<tr>
-			<th><input type="time" /></th>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
+			<th><input type="text" name="time" placeholder="몇시 몇분을 입력하세요." value="${ timetable.time }" /></th>
+			<td><input type="text" name="sun"  value="${ timetable.sun }" /></td>
+			<td><input type="text" name="mon"  value="${ timetable.mon }" /></td>
+			<td><input type="text" name="tue"  value="${ timetable.tue }" /></td>
+			<td><input type="text" name="wed"  value="${ timetable.wed }"  /></td>
+			<td><input type="text" name="thu"  value="${ timetable.thu }" /></td>
+			<td><input type="text" name="fri"  value="${ timetable.fri }" /></td>
+			<td><input type="text" name="sat"  value="${ timetable.sat }" /></td>
 		</tr>
 		<tr>
-			<th><input type="time" /></th>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
+			<th><input type="text" name="time" placeholder="몇시 몇분을 입력하세요." value="${ timetable.time }" /></th>
+			<td><input type="text" name="sun"  value="${ timetable.sun }" /></td>
+			<td><input type="text" name="mon"  value="${ timetable.mon }" /></td>
+			<td><input type="text" name="tue"  value="${ timetable.tue }" /></td>
+			<td><input type="text" name="wed"  value="${ timetable.wed }"  /></td>
+			<td><input type="text" name="thu"  value="${ timetable.thu }" /></td>
+			<td><input type="text" name="fri"  value="${ timetable.fri }" /></td>
+			<td><input type="text" name="sat"  value="${ timetable.sat }" /></td>
 		</tr>
 		<tr>
-			<th><input type="time" /></th>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
+			<th><input type="text" name="time" placeholder="몇시 몇분을 입력하세요." value="${ timetable.time }" /></th>
+			<td><input type="text" name="sun"  value="${ timetable.sun }" /></td>
+			<td><input type="text" name="mon"  value="${ timetable.mon }" /></td>
+			<td><input type="text" name="tue"  value="${ timetable.tue }" /></td>
+			<td><input type="text" name="wed"  value="${ timetable.wed }"  /></td>
+			<td><input type="text" name="thu"  value="${ timetable.thu }" /></td>
+			<td><input type="text" name="fri"  value="${ timetable.fri }" /></td>
+			<td><input type="text" name="sat"  value="${ timetable.sat }" /></td>
 		</tr>
 	</table>
+	
+	</form>
 	</main>
 	 <footer>
     		소프캡스톤<br>임수빈, 김보미

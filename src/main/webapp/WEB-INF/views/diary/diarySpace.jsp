@@ -48,10 +48,15 @@
     </thead>
     <tbody>
     <c:forEach var="diary" items="${ diarys }" >
+    
       <tr>
+      
     	<td>${ diary.id }</td>
+    	
     	<td>${ diary.writeDate }</td>
+    	
     	<td><a href="diaryEdit?id=${ diary.id }">${ diary.title }</a></td> 
+    	
       </tr>
       </c:forEach>
     <tr>
