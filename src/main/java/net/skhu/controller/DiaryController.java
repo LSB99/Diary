@@ -237,6 +237,8 @@ public class DiaryController {
 
     @PostMapping("onedayEdit")
     public String onedayEdit(Model model, Plan plan) {
+    	
+    	plan.setUserId(UserId.currentuserId);
 
     	planRepository.save(plan);
 
@@ -308,6 +310,8 @@ public class DiaryController {
 
     @PostMapping("weekEdit")
     public String weekEdit(Model model, Week week) {
+    	
+    	week.setUserId(UserId.currentuserId);
     	
     	weekRepository.save(week);
     	
@@ -392,8 +396,10 @@ public class DiaryController {
 
     @PostMapping("bukitEdit")
     public String bukitEdit(Model model, Bukit bukit) {
+    	
+        bukit.setUserId(UserId.currentuserId);
 
-       bukitRepository.save(bukit);
+        bukitRepository.save(bukit);
 
     	model.addAttribute("message", "저장했습니다.");
 
@@ -457,6 +463,8 @@ public class DiaryController {
 
     @PostMapping("diaryEdit")
     public String diaryEdit(Model model, Diary diary) {
+    	
+    	diary.setUserId(UserId.currentuserId);
 
     	diaryRepository.save(diary);
 
@@ -521,6 +529,8 @@ public class DiaryController {
 
     @PostMapping("memoEdit")
     public String memoEdit(Model model, Memos memo) {
+    	
+    	memo.setUserId(UserId.currentuserId);
 
     	memoRepository.save(memo);
 
