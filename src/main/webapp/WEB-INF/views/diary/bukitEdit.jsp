@@ -46,7 +46,7 @@
   	<main class="contents">
   	
   	
-    <form method="post" modelAttribute="bukit">
+    <form method="post">
     
     
       <div class="title">버킷리스트 작성</div>

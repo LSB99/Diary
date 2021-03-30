@@ -454,7 +454,7 @@ public class DiaryController {
     @GetMapping("diaryEdit")
     public String diaryEdit(Model model,  @RequestParam("id") int id) {
 
-    	Diary diary=diaryRepository.findById(id).get();
+    	Diary diary = diaryRepository.findById(id).get();
 
     	model.addAttribute("diary", diary);
 
@@ -476,8 +476,11 @@ public class DiaryController {
   //일기 삭제구현
     @RequestMapping("diaryDelete")
     public String diaryDelete(Model model,  @RequestParam("id") int id) {
+    	
     	diaryRepository.deleteById(id);
+    	
         return "redirect:diarySpace";
+        
     }
 
 

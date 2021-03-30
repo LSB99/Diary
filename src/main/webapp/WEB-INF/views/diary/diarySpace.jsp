@@ -53,7 +53,7 @@
       
     	<td><fmt:formatDate value="${ diary.writeDate }" pattern="yyyy-MM-dd" /></td> 
     	
-    	<td><a href="diaryEdit?id=${ diary.id }">${ diary.title }</a></td> 
+    	<td> <a href="diaryEdit?id=${ diary.id }">  ${ diary.title } </a> </td> 
     	
       </tr>
       </c:forEach>

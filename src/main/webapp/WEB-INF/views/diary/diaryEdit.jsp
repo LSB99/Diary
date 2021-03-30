@@ -28,7 +28,7 @@
 
 	input{width:500px; font-size:30px;}
 	td:nth-child(1){font-size:28px;}
-	textarea{font-size:25px;}
+	textarea{font-size:25px;  display:block;}
 </style>
 
 </head>
@@ -60,7 +60,7 @@
 
 					<tr>
 						<td>제목:</td>
-						<td><input type="text" name="title" value="${ diary.title }" required /></td>
+						<td><input type="text" name="title" value="${ diary.title }" required/></td>
 					</tr>
 
 					<tr>
@@ -72,8 +72,9 @@
 
 						<td>내용:</td>
 
-						<td><textarea name="diarylist"  placeholder="오늘은 무슨 일이 있었는지 적어보세요!" required> 
-                            <c:out value="${ diary.diarylist }" /> </textarea></td>
+						<td> 
+						   <textarea name="diarylist"  placeholder="오늘은 무슨 일이 있었는지 적어보세요!" required><c:out value="${ diary.diarylist }" /></textarea> 
+                        </td>
 
 					</tr>
 
