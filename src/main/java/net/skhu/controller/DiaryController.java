@@ -16,6 +16,7 @@ import net.skhu.entity.Memos;
 import net.skhu.entity.Plan;
 import net.skhu.entity.TimeTable;
 import net.skhu.entity.User;
+import net.skhu.entity.UserId;
 import net.skhu.entity.Week;
 import net.skhu.mapper.BukitMapper;
 import net.skhu.mapper.DiaryMapper;
@@ -55,8 +56,8 @@ public class DiaryController {
 	@Autowired WeekRepository weekRepository;
 	@Autowired WeekMapper weekMapper;
 
-	static String currentuserId;
-
+	
+	
 //표지 구현
 	@RequestMapping("home")
 	public String home(Model model) {
@@ -78,8 +79,8 @@ public class DiaryController {
 	@PostMapping("login")
 	 public String login(Model model, String userId) {
 
-		currentuserId = userId;
-
+		UserId.currentuserId = userId;
+		
 	    return "redirect:index";
 	}
 
@@ -94,7 +95,7 @@ public class DiaryController {
     }
 
 	@PostMapping("find")
-	 public String find(Model model, String userId) {
+	 public String find( Model model , String userId ) {
 
 		User user = userRepository.findById(userId).get();
 
@@ -115,8 +116,12 @@ public class DiaryController {
 
 	@PostMapping("join")
 	 public String join(Model model, User user) {
-
+		
 		userRepository.save(user);
+		
+		weekRepository.joinWeek(user.getUserId());
+		
+		timetableRepository.joinTimeTable(user.getUserId());
 
 	    return "redirect:login";
 	}
@@ -196,6 +201,8 @@ public class DiaryController {
     @PostMapping("onedayCreate")
     public String onedayCreate(Model model , Plan plan) {
 
+    	plan.setUserId(UserId.currentuserId);
+    	
     	planRepository.save(plan);
 
         return "redirect:onedayList";
@@ -206,8 +213,7 @@ public class DiaryController {
     @RequestMapping("onedayList")
     public String onedaylist(Model model) {
 
-
-    	List<Plan> plans = planRepository.findByUserId(currentuserId);
+    	List<Plan> plans = planRepository.findByUserId( UserId.currentuserId );
 
     	model.addAttribute("plans", plans);
 
@@ -256,7 +262,7 @@ public class DiaryController {
     @RequestMapping("weekList")
     public String weekList(Model model) {
 
-    	List<Week> weeks = weekRepository.findByUserId(currentuserId);
+    	List<Week> weeks = weekRepository.findByUserId( UserId.currentuserId );
 
      	model.addAttribute("weeks", weeks);
 
@@ -270,7 +276,7 @@ public class DiaryController {
     @GetMapping("weekCreate")
     public String weekCreate(Model model) {
 
-    	model.addAttribute("week", new Week());
+    	model.addAttribute("week", weekRepository.findOneByUserId( UserId.currentuserId ));
 
     	return "diary/weekEdit";
     }
@@ -278,8 +284,10 @@ public class DiaryController {
 
     @PostMapping("weekCreate")
     public String weekCreate(Model model, Week week) {
-
-    	weekRepository.save(week);
+    	
+    	week.setUserId(UserId.currentuserId);
+    	
+    	weekMapper.update(week);
 
         return "redirect:weekList";
     }
@@ -300,15 +308,20 @@ public class DiaryController {
 
     @PostMapping("weekEdit")
     public String weekEdit(Model model, Week week) {
+    	
     	weekRepository.save(week);
+    	
      	model.addAttribute("message", "저장했습니다.");
+     	
         return "redirect:weekList";
     }
 
   //일주일계획 삭제
     @RequestMapping("weekDelete")
     public String weekDelete(Model model, @RequestParam("id") int id) {
+    	
     	weekRepository.deleteById(id);
+    	
         return "redirect:weekList";
     }
 
@@ -317,18 +330,18 @@ public class DiaryController {
     @GetMapping("timetable")
     public String timetable(Model model) {
 
-    	model.addAttribute("timetable", timetableRepository.findByUserId(currentuserId));
+    	model.addAttribute( "timetable" ,  timetableMapper.findByUserId( UserId.currentuserId ) );
 
         return "diary/timetable";
     }
 
 
     @PostMapping("timetable")
-    public String timetable(Model model, TimeTable timetable) {
-
-    	timetableRepository.save(timetable);
-
-        return "diary/timetable";
+    public String timetable( Model model ,  TimeTable timetable ) {
+    	
+    	timetableMapper.update(timetable);
+    	
+        return "redirect:timetable";
     }
 
 
@@ -336,7 +349,7 @@ public class DiaryController {
     @RequestMapping("bukitlist")
     public String bukitlist(Model model) {
 
-        List<Bukit> bukits = bukitRepository.findByUserId(currentuserId);
+        List<Bukit> bukits = bukitRepository.findByUserId( UserId.currentuserId );
 
     	model.addAttribute("bukits", bukits);
 
@@ -356,6 +369,8 @@ public class DiaryController {
 
     @PostMapping("bukitCreate")
     public String bukitCreate(Model model, Bukit bukit) {
+    	
+    	bukit.setUserId(UserId.currentuserId);
 
     	bukitRepository.save(bukit);
 
@@ -409,6 +424,8 @@ public class DiaryController {
     @PostMapping("diaryCreate")
     public String diaryCreate(Model model, Diary diary) {
 
+    	diary.setUserId(UserId.currentuserId);
+    	
     	diaryMapper.insert(diary);
 
         return "redirect:diarySpace";
@@ -419,7 +436,7 @@ public class DiaryController {
     @RequestMapping("diarySpace")
     public String diarySpace(Model model) {
 
-    	List<Diary> diary = diaryRepository.findByUserId(currentuserId);
+    	List<Diary> diary = diaryRepository.findByUserId( UserId.currentuserId );
 
     	model.addAttribute("diarys", diary);
 
@@ -462,7 +479,7 @@ public class DiaryController {
     @RequestMapping("memopad")
     public String memopad(Model model) {
 
-    	List<Memos> memos = memoRepository.findByUserId(currentuserId);
+    	List<Memos> memos = memoRepository.findByUserId( UserId.currentuserId );
 
     	model.addAttribute("memos", memos);
 
@@ -482,6 +499,8 @@ public class DiaryController {
     @PostMapping("memoCreate")
     public String memoCreate(Model model, Memos memo) {
 
+    	memo.setUserId(UserId.currentuserId);
+    	
     	memoRepository.save(memo);
 
         return "redirect:memopad";

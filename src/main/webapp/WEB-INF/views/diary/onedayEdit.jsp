@@ -18,7 +18,11 @@
   <link rel="stylesheet" type="text/css" href="${R}background.css" />
   <link rel="stylesheet" type="text/css" href="${R}edit.css" />
   <style>
-    input { width: 500px; }
+    input { width: 500px; font-size:28px;}
+    
+    td{font-size:29px;}
+    
+    textarea { font-size:30px;}
     
   </style>
 </head>
@@ -42,28 +46,28 @@
   	</header>
   	<main class="contents">
     <form method="post">
+    
+    
       <div class="title">하루일정</div>
+      
       <table>
       
-       <tr>
-          <td>userId: </td>
-          <td><input type="text" name="userId" value="${ plan.userId }"  autofocus required/></td>
-        </tr>
-      
         <tr>
-          <td>오늘 <br/>날짜: </td>
+          <td>오늘날짜: </td>
           <td><input type="date" name="today" value="${ plan.today }" /></td>
         </tr>
         
         <tr>
         
-        	<td>하루<br/> 일정: </td>
+        	<td>하루일정: </td>
         
        		<td>
         
-        		<textarea rows="5" cols="30"  placeholder="오늘의 일정이 어떻게 되는지 적어주세요!"  name="todayplan"> 
+        		<textarea rows="5" cols="30" placeholder="오늘의 일정이 어떻게 되는지 적어주세요!" required name="todayplan"> 
         
-        		<c:out value="${ plan.todayplan }" /> </textarea>
+        			<c:out value="${ plan.todayplan }" /> 
+        			
+        		</textarea>
         
         	</td>
         

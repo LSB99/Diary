@@ -20,7 +20,7 @@
   
  
   <style>
-  input { width: 500px; }
+  input { width: 450px; font-size:27px; }
  
   </style>
 </head>
@@ -53,12 +53,6 @@
       
       <table>
       
-        <tr>
-      		<td>userId: </td>
-      		<td><input type = "text" name="userId" value="${ bukit.userId }"  autofocus required /></td>
-      	</tr>
-      	
-      	
         <tr>
         
           <td>내용: </td>

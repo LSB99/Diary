@@ -10,15 +10,14 @@ import net.skhu.entity.Bukit;
 @Mapper
 public interface BukitMapper {
 
-	
-	@Insert("INSERT INTO bukit (userId, bukitlist) "
-			+ "VALUES (#{userId}, #{bukitlist}) ")
-	@Options(useGeneratedKeys=true, keyProperty="id")
+	@Insert("INSERT INTO bukit (userId, bukitlist) " + "VALUES (#{userId}, #{bukitlist}) ")
+	@Options(useGeneratedKeys = true, keyProperty = "id")
 	void insert(Bukit bukit);
 
 	
-	 @Update("UPDATE bukit "
-	    		+ "SET bukitlist = #{bukitlist}  "
-	    		+ "WHERE userId = #{userId}")
-	    void update(Bukit bukit);
+	
+	@Update("UPDATE bukit " 
+	         + "SET bukitlist = #{bukitlist}  " 
+			 + "WHERE userId = #{userId}")
+	void update(Bukit bukit);
 }

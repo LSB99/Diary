@@ -19,7 +19,8 @@
   <link rel="stylesheet" type="text/css" href="${R}edit.css" />
   <style>
     input { width: 500px; }
-    textarea { height: 100px; }
+    textarea { width:450px; height: 100px; font-size:27px;}
+    
   </style>
 </head>
 <body>
@@ -45,12 +46,6 @@
     <form method="post">
       <div class="title">일주일 계획</div>
       <table>
-      
-       <tr>
-          <td>userId: </td>
-          <td><input type="text" name="userId" value="${ week.userId }"  autofocus required /></td>
-        </tr>
-        
         <tr><td>월요일: </td>
         <td><textarea name="mon" placeholder="월요일에 할 일을 적어주세요!" ><c:out value="${ week.mon }" /></textarea></td>
         </tr>
@@ -79,11 +74,17 @@
         <td><textarea name="sun" placeholder="일요일에 할 일을 적어주세요!" ><c:out value="${ week.sun }" /></textarea></td>
         </tr>
       </table>
+      
       <button type="submit" class="btn">저장</button>
+      
       <a href="weekList" class="btn">일주일 계획 보기</a>
+      
        <c:if test="${ week.id>0 }">
-      <a href="weekDelete?id=${week.id}" class="btn" data-confirm-delete>삭제</a>
+       
+      		<a href="weekDelete?id=${week.id}" class="btn" data-confirm-delete>삭제</a>
+      
        </c:if>
+       
     </form> 
     </main>   
      <footer>

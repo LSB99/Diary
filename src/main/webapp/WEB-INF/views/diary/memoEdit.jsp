@@ -18,7 +18,9 @@
   <link rel="stylesheet" type="text/css" href="${R}background.css" />
   <link rel="stylesheet" type="text/css" href="${R}edit.css" />
   <style>
-    
+    input{width:500px;}
+	td:nth-child(1){font-size:28px;}
+	textarea{font-size:30px;}
   </style>
 </head>
 <body>
@@ -44,13 +46,17 @@
     <form method="post">
       <div class="title">메모 쓰기</div>
       <table>
-      <tr>
-      		<td>userId: </td>
-      		<td><input type = "text" name="userId" value="${ memo.userId }"  autofocus required/></td>
-      	</tr>
+      
       	<tr>
       		<td>내용: </td>
-      		<td><textarea name="memolist" placeholder="잊기 전에 메모하세요!" required><c:out value="${ memo.memolist }" /></textarea></td>
+      		
+      		<td>
+      		    <textarea name="memolist" placeholder="잊기 전에 메모하세요!" required>
+      		    
+      		      <c:out value="${ memo.memolist }" />
+      		      
+      		     </textarea>
+      		</td>
       	</tr>
       </table>
       
