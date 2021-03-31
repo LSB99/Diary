@@ -47,14 +47,24 @@ alt="" width="15%">
   	<thead>
   		<tr> 
   			<th><a href="calendar" class="btn">달력</a></th>
-  			<th><a href="onedayCreate" class="btn">하루일정</a></th>
-  			<th><a href="weekCreate" class="btn">일주일 계획</a></th>
+  			
+  			<th><a href="onedayList" class="btn">하루일정</a></th>
+  			
+  			<th><a href="weekList" class="btn">일주일 계획</a></th>
+  			
   			<th><a href="timetable" class="btn">시간표</a></th>
-  			<th><a href="bukitCreate" class="btn">버킷리스트</a></th>
-  			<th><a href="diaryCreate" class="btn">일기장</a></th>
-  			<th><a href="memoCreate" class="btn">메모장</a></th>
+  			
+  			<th><a href="bukitlist" class="btn">버킷리스트</a></th>
+  			
+  			<th><a href="diarySpace" class="btn">일기장</a></th>
+  			
+  			<th><a href="memopad" class="btn">메모장</a></th>
+  			
   		</tr>
-  		<tr><th><a href="userDelete" class="btn">회원탈퇴</a></th></tr>
+  		<tr>
+  		<th><a href="logout" class="btn">로그아웃</a></th>
+  		<th><a href="userDelete" class="btn">회원탈퇴</a></th>
+  		</tr>
     </thead>
   </table>
   <h3>기록으로 하여금 기억하기</h3>

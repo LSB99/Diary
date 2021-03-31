@@ -25,10 +25,19 @@
 <link rel="stylesheet" type="text/css" href="${R}edit.css" />
 
 <style>
+input {
+	width: 500px;
+	font-size: 30px;
+}
 
-	input{width:500px; font-size:30px;}
-	td:nth-child(1){font-size:28px;}
-	textarea{font-size:25px;  display:block;}
+td:nth-child(1) {
+	font-size: 28px;
+}
+
+textarea {
+	font-size: 25px;
+	display: block;
+}
 </style>
 
 </head>
@@ -40,12 +49,12 @@
 			</div>
 			<nav>
 				<ul id="topMenu">
-					<li><a href="memoCreate">메모장</a></li>
-					<li><a href="diaryCreate">일기</a></li>
-					<li><a href="bukitCreate">버킷리스트</a></li>
+					<li><a href="memopad">메모장</a></li>
+					<li><a href="diarySpace">일기</a></li>
+					<li><a href="bukitlist">버킷리스트</a></li>
 					<li><a href="timetable">시간표</a></li>
-					<li><a href="weekCreate">일주일 계획</a></li>
-					<li><a href="onedayCreate">하루일정</a></li>
+					<li><a href="weekList">일주일 계획</a></li>
+					<li><a href="onedayList">하루일정</a></li>
 					<li><a href="calendar">달력</a></li>
 				</ul>
 			</nav>
@@ -60,21 +69,23 @@
 
 					<tr>
 						<td>제목:</td>
-						<td><input type="text" name="title" value="${ diary.title }" required/></td>
+						<td><input type="text" name="title" value="${ diary.title }"
+							required /></td>
 					</tr>
 
 					<tr>
 						<td>날짜:</td>
-						<td><input type="date" name="writeDate" value="${ diary.writeDate }" /></td>
+						<td><input type="date" name="writeDate"
+							value="${ diary.writeDate }" /></td>
 					</tr>
 
 					<tr>
 
 						<td>내용:</td>
 
-						<td> 
-						   <textarea name="diarylist"  placeholder="오늘은 무슨 일이 있었는지 적어보세요!" required><c:out value="${ diary.diarylist }" /></textarea> 
-                        </td>
+						<td><textarea name="diarylist"
+								placeholder="오늘은 무슨 일이 있었는지 적어보세요!" required><c:out
+									value="${ diary.diarylist }" /></textarea></td>
 
 					</tr>
 
@@ -88,7 +99,8 @@
 
 				<c:if test="${ diary.id > 0 }">
 
-					<a href="diaryDelete?id=${diary.id}" class="btn" data-confirm-delete>삭제</a>
+					<a href="diaryDelete?id=${diary.id}" class="btn"
+						data-confirm-delete>삭제</a>
 
 				</c:if>
 

@@ -18,6 +18,9 @@ public class Week {
 
 
 	String userId;
+	
+	
+	String myweek;
 
 	String mon;
 

@@ -15,7 +15,7 @@
   <style>
   	a.btn { float: center; margin: -20px 0 5px 0; }
     td:nth-child(1) { text-align: center; }
-    
+    p{font-size:23px;}
   </style>
   
 </head>
@@ -27,12 +27,12 @@
   	</div>
   	<nav>
   	<ul id="topMenu">
-  		<li><a href="memoCreate">메모장</a></li>
-  		<li><a href="diaryCreate">일기</a></li>
-  		<li><a href="bukitCreate">버킷리스트</a></li>
+  		<li><a href="memopad">메모장</a></li>
+  		<li><a href="diarySpace">일기</a></li>
+  		<li><a href="bukitlist">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
-  		<li><a href="weekCreate">일주일 계획</a></li>
-  		<li><a href="onedayCreate">하루일정</a></li>
+  		<li><a href="weekList">일주일 계획</a></li>
+  		<li><a href="onedayList">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
   		
   	</ul>
@@ -58,6 +58,7 @@
       </tr>
       
   </table>
+  <p><a href="bukitCreate" class="btn">버킷리스트 작성하기</a></p>
   <p><a href="index" class="btn">처음으로 가기</a></p>
 </main>
 

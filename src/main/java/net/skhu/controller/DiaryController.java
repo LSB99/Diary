@@ -90,8 +90,31 @@ public class DiaryController {
 
 	    return "redirect:index";
 	}
+	
+	
+	
+	
+// 로그아웃 구현
+		@GetMapping("logout")
+	    public String logout(Model model) {
+
+	    	model.addAttribute( userRepository.findByUserId(UserId.currentuserId) );
+
+	    	return "diary/logout";
+	    }
+
+		@PostMapping("logout")
+		 public String logout(Model model, User user) {
+			
+			UserId.currentuserId = "";
+
+			return "redirect:login";
+		}
+	
 
 
+		
+		
 //비밀번호 찾기 구현
 	@GetMapping("find")
     public String find(Model model) {
@@ -127,9 +150,11 @@ public class DiaryController {
 		if(userService.hasErrors(userRegistration, bindingResult)) {
 			return "diary/join";
 		}
+		
 		userService.save(userRegistration);
 		return "redirect:login";
 	}
+	
 
 
 //회원탈퇴 구현
@@ -257,17 +282,28 @@ public class DiaryController {
         return "redirect:onedayList";
     }
 
-
-
-  //일주일계획 목록
-    @RequestMapping("weekList")
+    
+  //일주일 주별 리스트
+    @GetMapping("weekList")
     public String weekList(Model model) {
-
+    	
     	List<Week> weeks = weekRepository.findByUserId( UserId.currentuserId );
 
-     	model.addAttribute("weeks", weeks);
+    	model.addAttribute("weeks", weeks);
 
-        return "diary/weekList";
+    	return "diary/weekList";
+    }
+
+    
+  //일주일계획 해당 주의 목록
+    @GetMapping("weekListDetail")
+    public String weekListDetail( Model model , @RequestParam("id") int id ) {
+
+    	Week week = weekRepository.findById(id).get();
+
+     	model.addAttribute("week", week);
+
+        return "diary/weekListDetail";
     }
 
 
@@ -277,7 +313,7 @@ public class DiaryController {
     @GetMapping("weekCreate")
     public String weekCreate(Model model) {
 
-    	model.addAttribute("week", weekRepository.findOneByUserId( UserId.currentuserId ));
+    	model.addAttribute("week", new Week());
 
     	return "diary/weekEdit";
     }
@@ -286,9 +322,9 @@ public class DiaryController {
     @PostMapping("weekCreate")
     public String weekCreate(Model model, Week week) {
 
-    	week.setUserId(UserId.currentuserId);
+    	week.setUserId( UserId.currentuserId );
 
-    	weekMapper.update(week);
+    	weekRepository.save(week);
 
         return "redirect:weekList";
     }
@@ -299,7 +335,7 @@ public class DiaryController {
     @GetMapping("weekEdit")
     public String weekEdit(Model model, @RequestParam("id") int id) {
 
-    	Week week=weekRepository.findById(id).get();
+    	Week week = weekRepository.findById(id).get();
 
     	model.addAttribute("week", week);
 

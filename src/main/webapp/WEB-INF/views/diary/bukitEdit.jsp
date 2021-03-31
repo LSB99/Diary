@@ -32,12 +32,12 @@
   	</div>
   	<nav>
   	<ul id="topMenu">
-  		<li><a href="memoCreate">메모장</a></li>
-  		<li><a href="diaryCreate">일기</a></li>
-  		<li><a href="bukitCreate">버킷리스트</a></li>
+  		<li><a href="memopad">메모장</a></li>
+  		<li><a href="diarySpace">일기</a></li>
+  		<li><a href="bukitlist">버킷리스트</a></li>
   		<li><a href="timetable">시간표</a></li>
-  		<li><a href="weekCreate">일주일 계획</a></li>
-  		<li><a href="onedayCreate">하루일정</a></li>
+  		<li><a href="weekList">일주일 계획</a></li>
+  		<li><a href="onedayList">하루일정</a></li>
   		<li><a href="calendar">달력</a></li>
   		
   	</ul>
