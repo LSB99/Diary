@@ -19,39 +19,43 @@
 <link rel="stylesheet" href="${R}background.css" />
 <link rel="stylesheet" href="${R}account.css" />
   <style>
-  	 form { width: 500px; height: 500px; }
+  	 form { width: 500px; height: 700px; }
   	 table { width: 400px; }
-    .btn { float: right; margin: -20px 200px 0px 0px;}
-    input { width: 250px; }
-   
+    .btn { float: right; margin: 50px 200px 0px 0px;}
+    input { width: 200px; margin: 20px auto; padding: 0.2em 0.2em; }
+   .error { color: red; display: block; text-align: center;}
+   label { padding: 1em 1em; width: 150px; height: 20px; margin: auto 10px; font-size: 20pt; float: left;}
   </style>
 </head>
 <body>
 <h1>~My Diary~</h1>
   <div class="container">
-    <form method="post" autocomplete="off">
+    <form:form method="post" autocomplete="off" modelAttribute="userRegistration">
       <div class="title">회원가입</div>
-      <table>
-      <tr>
-          <td>순번: </td>
-          <td><input type="text" name="id" readonly disabled value="${ user.id }"/></td>
-        </tr>
-      	<tr>
-          <td>이름: </td>
-          <td><input type="text" name="name" value="${ user.name }" autofocus required/></td>
-        </tr>
-        <tr>
-          <td>아이디: </td>
-          <td><input type="text" name="userId" value="${ user.userId }" required/></td>
-        </tr>
-        <tr>
-          <td>비밀번호: </td>
-          <td><input type="password" placeholder="대소문자, 숫자 포함 10자리 이상" name="password" value="${ user.password }"  required/></td>
-        </tr>
-      </table>
+      <div>
+      <label>이름:</label>
+      <form:input path="name" />
+      <form:errors path="name" class="error" />
+    </div>
+      <div>
+      <label>아이디:</label>
+      <form:input path="userId" />
+      <form:errors path="userId" class="error" />
+    </div>
+    <div>
+      <label>비밀번호:</label>
+      <form:password path="password1" />
+      <form:errors path="password1" class="error" />
+    </div>
+    <div>
+      <label>비밀번호 확인:</label>
+      <form:password path="password2" />
+      <form:errors path="password2" class="error" />
+    </div>
+
       <button type="submit" class="btn">회원가입</button>
       
-    </form>    
+    </form:form>    
  </div>
 </body>
 </html>

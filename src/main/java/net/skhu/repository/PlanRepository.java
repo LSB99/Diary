@@ -18,14 +18,13 @@ public interface PlanRepository extends JpaRepository<Plan, Integer>  {
 	@Query(value = "insert into plan(userId) VALUES (:userId)", nativeQuery = true)
 	@Transactional
 	void joinPlan(@Param("userId") String userId);
-	
-	
+
+
 	@Modifying
 	@Query(value = "delete from plan where userId=:userId", nativeQuery = true)
 	@Transactional
 	void deletePlan(@Param("userId") String userId);
-	
-	
-	List<Plan> findByUserId(String userId);
-	
+
+
+	List<Plan> findByUserId(String currentuserId);
 }

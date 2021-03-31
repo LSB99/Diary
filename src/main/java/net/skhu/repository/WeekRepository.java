@@ -29,8 +29,8 @@ public interface WeekRepository extends JpaRepository<Week, Integer>  {
 
 
 	Week findOneByUserId(String userId);
-	
+
 	List<Week> findByUserId(String userId);
-	
+
 }
 

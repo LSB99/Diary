@@ -2,9 +2,12 @@ package net.skhu.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,7 @@ import net.skhu.mapper.MemosMapper;
 import net.skhu.mapper.PlanMapper;
 import net.skhu.mapper.TimeTableMapper;
 import net.skhu.mapper.WeekMapper;
+import net.skhu.model.UserRegistration;
 import net.skhu.repository.BukitRepository;
 import net.skhu.repository.DiaryRepository;
 import net.skhu.repository.MemoRepository;
@@ -31,6 +35,7 @@ import net.skhu.repository.PlanRepository;
 import net.skhu.repository.TimeTableRepository;
 import net.skhu.repository.UserRepository;
 import net.skhu.repository.WeekRepository;
+import net.skhu.service.UserService;
 
 @Controller
 @RequestMapping("/diary")
@@ -56,8 +61,10 @@ public class DiaryController {
 	@Autowired WeekRepository weekRepository;
 	@Autowired WeekMapper weekMapper;
 
-	
-	
+	@Autowired UserService userService;
+
+
+
 //표지 구현
 	@RequestMapping("home")
 	public String home(Model model) {
@@ -80,7 +87,7 @@ public class DiaryController {
 	 public String login(Model model, String userId) {
 
 		UserId.currentuserId = userId;
-		
+
 	    return "redirect:index";
 	}
 
@@ -109,21 +116,19 @@ public class DiaryController {
 	@GetMapping("join")
     public String join(Model model) {
 
-    	model.addAttribute("user", new User());
+    	model.addAttribute(new UserRegistration());
 
     	return "diary/join";
     }
 
 	@PostMapping("join")
-	 public String join(Model model, User user) {
-		
-		userRepository.save(user);
-		
-		weekRepository.joinWeek(user.getUserId());
-		
-		timetableRepository.joinTimeTable(user.getUserId());
+	 public String join(@Valid UserRegistration userRegistration, BindingResult bindingResult) {
 
-	    return "redirect:login";
+		if(userService.hasErrors(userRegistration, bindingResult)) {
+			return "diary/join";
+		}
+		userService.save(userRegistration);
+		return "redirect:login";
 	}
 
 
@@ -147,21 +152,15 @@ public class DiaryController {
 
 //회원 최종탈퇴
 	@RequestMapping("userTrueDelete")
-    public String userDelete(Model model, @RequestParam("userId")String userId) {
-
-		userRepository.deleteById(userId);
+    public String userDelete(Model model, @RequestParam("userId") String userId) {
 
 		bukitRepository.deleteBukit(userId);
-
 		diaryRepository.deleteDiary(userId);
-
 		memoRepository.deleteMemos(userId);
-
 		planRepository.deletePlan(userId);
-
 		timetableRepository.deleteTimeTable(userId);
-
 		weekRepository.deleteWeek(userId);
+		userService.deleteByUserId(userId);
 
         return "redirect:home";
     }
@@ -202,7 +201,7 @@ public class DiaryController {
     public String onedayCreate(Model model , Plan plan) {
 
     	plan.setUserId(UserId.currentuserId);
-    	
+
     	planRepository.save(plan);
 
         return "redirect:onedayList";
@@ -237,7 +236,7 @@ public class DiaryController {
 
     @PostMapping("onedayEdit")
     public String onedayEdit(Model model, Plan plan) {
-    	
+
     	plan.setUserId(UserId.currentuserId);
 
     	planRepository.save(plan);
@@ -286,9 +285,9 @@ public class DiaryController {
 
     @PostMapping("weekCreate")
     public String weekCreate(Model model, Week week) {
-    	
+
     	week.setUserId(UserId.currentuserId);
-    	
+
     	weekMapper.update(week);
 
         return "redirect:weekList";
@@ -310,22 +309,22 @@ public class DiaryController {
 
     @PostMapping("weekEdit")
     public String weekEdit(Model model, Week week) {
-    	
+
     	week.setUserId(UserId.currentuserId);
-    	
+
     	weekRepository.save(week);
-    	
+
      	model.addAttribute("message", "저장했습니다.");
-     	
+
         return "redirect:weekList";
     }
 
   //일주일계획 삭제
     @RequestMapping("weekDelete")
     public String weekDelete(Model model, @RequestParam("id") int id) {
-    	
+
     	weekRepository.deleteById(id);
-    	
+
         return "redirect:weekList";
     }
 
@@ -342,9 +341,9 @@ public class DiaryController {
 
     @PostMapping("timetable")
     public String timetable( Model model ,  TimeTable timetable ) {
-    	
+
     	timetableMapper.update(timetable);
-    	
+
         return "redirect:timetable";
     }
 
@@ -373,7 +372,7 @@ public class DiaryController {
 
     @PostMapping("bukitCreate")
     public String bukitCreate(Model model, Bukit bukit) {
-    	
+
     	bukit.setUserId(UserId.currentuserId);
 
     	bukitRepository.save(bukit);
@@ -396,7 +395,7 @@ public class DiaryController {
 
     @PostMapping("bukitEdit")
     public String bukitEdit(Model model, Bukit bukit) {
-    	
+
         bukit.setUserId(UserId.currentuserId);
 
         bukitRepository.save(bukit);
@@ -431,7 +430,7 @@ public class DiaryController {
     public String diaryCreate(Model model, Diary diary) {
 
     	diary.setUserId(UserId.currentuserId);
-    	
+
     	diaryMapper.insert(diary);
 
         return "redirect:diarySpace";
@@ -463,7 +462,7 @@ public class DiaryController {
 
     @PostMapping("diaryEdit")
     public String diaryEdit(Model model, Diary diary) {
-    	
+
     	diary.setUserId(UserId.currentuserId);
 
     	diaryRepository.save(diary);
@@ -476,11 +475,11 @@ public class DiaryController {
   //일기 삭제구현
     @RequestMapping("diaryDelete")
     public String diaryDelete(Model model,  @RequestParam("id") int id) {
-    	
+
     	diaryRepository.deleteById(id);
-    	
+
         return "redirect:diarySpace";
-        
+
     }
 
 
@@ -511,7 +510,7 @@ public class DiaryController {
     public String memoCreate(Model model, Memos memo) {
 
     	memo.setUserId(UserId.currentuserId);
-    	
+
     	memoRepository.save(memo);
 
         return "redirect:memopad";
@@ -532,7 +531,7 @@ public class DiaryController {
 
     @PostMapping("memoEdit")
     public String memoEdit(Model model, Memos memo) {
-    	
+
     	memo.setUserId(UserId.currentuserId);
 
     	memoRepository.save(memo);
