@@ -66,8 +66,7 @@ textarea {
 					<tr>
 						<td>내용:</td>
 
-						<td><textarea name="memolist" placeholder="잊기 전에 메모하세요!"
-								required><c:out value="${ memo.memolist }" /></textarea></td>
+						<td><textarea name="memolist" placeholder="잊기 전에 메모하세요!" required><c:out value="${ memo.memolist }" /></textarea></td>
 					</tr>
 				</table>
 

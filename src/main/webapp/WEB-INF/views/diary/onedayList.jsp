@@ -73,8 +73,7 @@ p {
 
 						<tr>
 
-							<td><fmt:formatDate value="${plan.today}"
-									pattern="yyyy-MM-dd" /></td>
+							<td><fmt:formatDate value="${plan.today}" pattern="yyyy-MM-dd" /></td>
 
 							<td><a href="onedayEdit?id=${ plan.id }">${ plan.todayplan }</a></td>
 

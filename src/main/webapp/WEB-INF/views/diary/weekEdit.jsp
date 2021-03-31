@@ -65,50 +65,42 @@ textarea {
 					<tr>
 						<td>몇월 <br /> 몇주:
 						</td>
-						<td><textarea name="myweek" placeholder="몇월 몇주를 적어주세요!"><c:out
-									value="${ week.myweek }" /></textarea></td>
+						<td><textarea name="myweek" placeholder="몇월 몇주를 적어주세요!"><c:out value="${ week.myweek }" /></textarea></td>
 					</tr>
 
 					<tr>
 						<td>월요일:</td>
-						<td><textarea name="mon" placeholder="월요일에 할 일을 적어주세요!"><c:out
-									value="${ week.mon }" /></textarea></td>
+						<td><textarea name="mon" placeholder="월요일에 할 일을 적어주세요!"><c:out value="${ week.mon }" /></textarea></td>
 					</tr>
 
 					<tr>
 						<td>화요일:</td>
-						<td><textarea name="tue" placeholder="화요일에 할 일을 적어주세요!"><c:out
-									value="${ week.tue }" /></textarea></td>
+						<td><textarea name="tue" placeholder="화요일에 할 일을 적어주세요!"><c:out value="${ week.tue }" /></textarea></td>
 					</tr>
 
 					<tr>
 						<td>수요일:</td>
-						<td><textarea name="wed" placeholder="수요일에 할 일을 적어주세요!"><c:out
-									value="${ week.wed }" /></textarea></td>
+						<td><textarea name="wed" placeholder="수요일에 할 일을 적어주세요!"><c:out value="${ week.wed }" /></textarea></td>
 					</tr>
 
 					<tr>
 						<td>목요일:</td>
-						<td><textarea name="thu" placeholder="목요일에 할 일을 적어주세요!"><c:out
-									value="${ week.thu }" /></textarea></td>
+						<td><textarea name="thu" placeholder="목요일에 할 일을 적어주세요!"><c:out value="${ week.thu }" /></textarea></td>
 					</tr>
 
 					<tr>
 						<td>금요일:</td>
-						<td><textarea name="fri" placeholder="금요일에 할 일을 적어주세요!"><c:out
-									value="${ week.fri }" /></textarea></td>
+						<td><textarea name="fri" placeholder="금요일에 할 일을 적어주세요!"><c:out value="${ week.fri }" /></textarea></td>
 					</tr>
 
 					<tr>
 						<td>토요일:</td>
-						<td><textarea name="sat" placeholder="토요일에 할 일을 적어주세요!"><c:out
-									value="${ week.sat }" /></textarea></td>
+						<td><textarea name="sat" placeholder="토요일에 할 일을 적어주세요!"><c:out value="${ week.sat }" /></textarea></td>
 					</tr>
 
 					<tr>
 						<td>일요일:</td>
-						<td><textarea name="sun" placeholder="일요일에 할 일을 적어주세요!"><c:out
-									value="${ week.sun }" /></textarea></td>
+						<td><textarea name="sun" placeholder="일요일에 할 일을 적어주세요!"><c:out value="${ week.sun }" /></textarea></td>
 					</tr>
 				</table>
 

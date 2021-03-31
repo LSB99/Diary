@@ -60,8 +60,7 @@ td:nth-child(1) {
 
 						<tr>
 
-							<td><fmt:formatDate value="${ diary.writeDate }"
-									pattern="yyyy-MM-dd" /></td>
+							<td><fmt:formatDate value="${ diary.writeDate }" pattern="yyyy-MM-dd" /></td>
 
 							<td><a href="diaryEdit?id=${ diary.id }"> ${ diary.title }
 							</a></td>

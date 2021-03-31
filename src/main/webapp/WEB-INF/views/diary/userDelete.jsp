@@ -62,18 +62,15 @@ td {
 
 					<tr>
 						<td>이름:</td>
-						<td><input type="text" name="name" value="${ user.name }"
-							autofocus required /></td>
+						<td><input type="text" name="name" value="${ user.name }" autofocus required /></td>
 					</tr>
 					<tr>
 						<td>아이디:</td>
-						<td><input type="text" name="userId" value="${ user.userId }"
-							required /></td>
+						<td><input type="text" name="userId" value="${ user.userId }" required /></td>
 					</tr>
 					<tr>
 						<td>비밀번호:</td>
-						<td><input type="password" name="password"
-							value="${ user.password }" required /></td>
+						<td><input type="password" name="password" value="${ user.password }" required /></td>
 					</tr>
 				</table>
 

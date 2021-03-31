@@ -70,23 +70,19 @@ textarea {
 
 					<tr>
 						<td>제목:</td>
-						<td><input type="text" name="title" value="${ diary.title }"
-							required /></td>
+						<td><input type="text" name="title" value="${ diary.title }" required /></td>
 					</tr>
 
 					<tr>
 						<td>날짜:</td>
-						<td><input type="date" name="writeDate"
-							value="${ diary.writeDate }" /></td>
+						<td><input type="date" name="writeDate" value="${ diary.writeDate }" /></td>
 					</tr>
 
 					<tr>
 
 						<td>내용:</td>
 
-						<td><textarea name="diarylist"
-								placeholder="오늘은 무슨 일이 있었는지 적어보세요!" required><c:out
-									value="${ diary.diarylist }" /></textarea></td>
+						<td><textarea name="diarylist" placeholder="오늘은 무슨 일이 있었는지 적어보세요!" required><c:out value="${ diary.diarylist }" /></textarea></td>
 
 					</tr>
 
@@ -100,8 +96,7 @@ textarea {
 
 				<c:if test="${ diary.id > 0 }">
 
-					<a href="diaryDelete?id=${diary.id}" class="btn"
-						data-confirm-delete>삭제</a>
+					<a href="diaryDelete?id=${diary.id}" class="btn" data-confirm-delete>삭제</a>
 
 				</c:if>
 
