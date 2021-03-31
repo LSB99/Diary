@@ -20,7 +20,7 @@
   
  
   <style>
-  input { width: 450px; font-size:27px; }
+  input { width: 550px; font-size:20pt; }
  
   </style>
 </head>

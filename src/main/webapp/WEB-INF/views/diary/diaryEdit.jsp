@@ -26,7 +26,7 @@
 
 <style>
 input {
-	width: 500px;
+	width: 600px;
 	font-size: 30px;
 }
 
@@ -35,8 +35,9 @@ td:nth-child(1) {
 }
 
 textarea {
-	font-size: 25px;
+	font-size: 20px;
 	display: block;
+	width: 600px;
 }
 </style>
 

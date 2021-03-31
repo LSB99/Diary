@@ -34,7 +34,7 @@ td {
 }
 
 textarea {
-	font-size: 30px;
+	font-size: 20pt;
 }
 </style>
 </head>

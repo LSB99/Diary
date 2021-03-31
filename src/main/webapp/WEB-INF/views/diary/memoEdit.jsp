@@ -25,7 +25,7 @@
 <link rel="stylesheet" type="text/css" href="${R}edit.css" />
 <style>
 input {
-	width: 500px;
+	width: 600px;
 }
 
 td:nth-child(1) {
@@ -34,6 +34,8 @@ td:nth-child(1) {
 
 textarea {
 	font-size: 30px;
+	width: 550px;
+	font-size: 20pt;
 }
 </style>
 </head>

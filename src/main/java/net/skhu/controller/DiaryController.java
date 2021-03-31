@@ -90,10 +90,10 @@ public class DiaryController {
 
 	    return "redirect:index";
 	}
-	
-	
-	
-	
+
+
+
+
 // 로그아웃 구현
 		@GetMapping("logout")
 	    public String logout(Model model) {
@@ -105,16 +105,16 @@ public class DiaryController {
 
 		@PostMapping("logout")
 		 public String logout(Model model, User user) {
-			
+
 			UserId.currentuserId = "";
 
 			return "redirect:login";
 		}
-	
 
 
-		
-		
+
+
+
 //비밀번호 찾기 구현
 	@GetMapping("find")
     public String find(Model model) {
@@ -150,11 +150,14 @@ public class DiaryController {
 		if(userService.hasErrors(userRegistration, bindingResult)) {
 			return "diary/join";
 		}
-		
+
 		userService.save(userRegistration);
+
+		timetableRepository.joinTimeTable(userRegistration.getUserId());
+
 		return "redirect:login";
 	}
-	
+
 
 
 //회원탈퇴 구현
@@ -282,11 +285,11 @@ public class DiaryController {
         return "redirect:onedayList";
     }
 
-    
+
   //일주일 주별 리스트
     @GetMapping("weekList")
     public String weekList(Model model) {
-    	
+
     	List<Week> weeks = weekRepository.findByUserId( UserId.currentuserId );
 
     	model.addAttribute("weeks", weeks);
@@ -294,7 +297,7 @@ public class DiaryController {
     	return "diary/weekList";
     }
 
-    
+
   //일주일계획 해당 주의 목록
     @GetMapping("weekListDetail")
     public String weekListDetail( Model model , @RequestParam("id") int id ) {

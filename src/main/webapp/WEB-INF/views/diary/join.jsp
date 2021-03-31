@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="${R}background.css" />
 <link rel="stylesheet" href="${R}account.css" />
   <style>
-  	 form { width: 500px; height: 700px; }
+  	 form { width: 500px; height: 660px; }
   	 table { width: 400px; }
     .btn { float: right; margin: 50px 200px 0px 0px;}
     input { width: 200px; margin: 20px auto; padding: 0.2em 0.2em; }

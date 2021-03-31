@@ -29,9 +29,9 @@ input {
 }
 
 textarea {
-	width: 450px;
+	width: 550px;
 	height: 100px;
-	font-size: 27px;
+	font-size: 20pt;
 }
 </style>
 </head>
