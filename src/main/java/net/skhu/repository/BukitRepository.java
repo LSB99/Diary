@@ -13,11 +13,6 @@ import net.skhu.entity.Bukit;
 
 public interface BukitRepository extends JpaRepository<Bukit, Integer>  {
 
-
-
-
-
-
 	@Modifying
 	@Query(value = "delete from bukit where userId=:userId", nativeQuery = true)
 	@Transactional
@@ -27,5 +22,7 @@ public interface BukitRepository extends JpaRepository<Bukit, Integer>  {
 	Bukit findOneByUserId(String userId);
 
 	List<Bukit> findByUserId(String userId);
+
+
 }
 

@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>DiaryList</title>
+<title>Week List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link
@@ -17,13 +16,35 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/list.css" />
 <link rel="stylesheet" type="text/css" href="/background.css" />
+
 <style>
-p {
-	font-size: 23px;
+table.list1, table.list2 {
+	background-color: lightyellow;
+	height: 100px;
+	width: 100%;
+	font-size: 20pt;
+}
+
+table.list1 td, table.list2 td {
+	height: 50px;
+	padding: auto;
+	border: 2px solid pink;
+	font-size: 17pt;
+	text-align: center;
+}
+
+table.list1 th, table.list2 th {
+	padding: auto;
+	border: 5px solid pink;
+	background-color: lightpink;
 }
 
 td:nth-child(1) {
 	text-align: center;
+}
+
+p {
+	font-size: 23px;
 }
 </style>
 
@@ -43,44 +64,53 @@ td:nth-child(1) {
 					<li><a href="weekList">일주일 계획</a></li>
 					<li><a href="onedayList">하루일정</a></li>
 					<li><a href="calendar">달력</a></li>
-
 				</ul>
 			</nav>
 		</header>
 		<main class="contents">
-			<table class="list">
+			<table class="list1">
+				<thead>
+
+					<tr>
+						<th>Monday</th>
+						<th>Tuesday</th>
+						<th>Wednesday</th>
+						<th>Thursday</th>
+					</tr>
+				<tbody>
+					<tr>
+						<td><a href="weekEdit?id=${ week.id }">${ week.mon }</a></td>
+						<td><a href="weekEdit?id=${ week.id }">${ week.tue }</a></td>
+						<td><a href="weekEdit?id=${ week.id }">${ week.wed }</a></td>
+						<td><a href="weekEdit?id=${ week.id }">${ week.thu }</a></td>
+					</tr>
+				</tbody>
+
+			</table>
+
+			<table class="list2">
 				<thead>
 					<tr>
-						<th>날짜</th>
-						<th>제목</th>
+						<th>Friday</th>
+						<th>Saturday</th>
+						<th>Sunday</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="diary" items="${ diarys }">
 
-						<tr>
-
-							<td><fmt:formatDate value="${ diary.writeDate }" pattern="yyyy-MM-dd" /></td>
-
-							<td><a href="diaryEdit?id=${ diary.id }"> ${ diary.title }
-							</a></td>
-
-						</tr>
-					</c:forEach>
 					<tr>
-						<td colspan="3" style="font-size: 12pt;">오늘 하루도 수고했어요!</td>
+						<td><a href="weekEdit?id=${ week.id }">${ week.fri }</a></td>
+						<td><a href="weekEdit?id=${ week.id }">${ week.sat }</a></td>
+						<td><a href="weekEdit?id=${ week.id }">${ week.sun }</a></td>
 					</tr>
 				</tbody>
-			
+
 			</table>
-			
+
 			<p>
-				<a href="diaryCreate" class="btn">일기 작성하기</a>
+				<a href="weekList" class="btn">앞으로 가기</a>
 			</p>
-			
-			<p>
-				<a href="index" class="btn">처음으로 가기</a>
-			</p>
+
 		</main>
 		<footer>
 			소프캡스톤<br>임수빈, 김보미

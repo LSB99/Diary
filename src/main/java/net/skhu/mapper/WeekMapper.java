@@ -15,9 +15,9 @@ public interface WeekMapper {
 
 
     @Update("UPDATE week "
-    		+ "SET mon = #{mon}, tue = #{tue} , wed = #{wed} , "
-    		+ "  thu = #{thu} ,  fri = #{fri} ,  sat = #{wed} ,  sun = #{sun} "
-    		+ "WHERE userId = #{userId}")
+    		+ "SET myweek = #{myweek}, mon = #{mon}, tue = #{tue} , wed = #{wed} , "
+    		+ "  thu = #{thu} ,  fri = #{fri} ,  sat = #{sat} ,  sun = #{sun}  "
+    		+ " WHERE userId = #{userId}")
     void update(Week week);
 
 

@@ -11,7 +11,7 @@
     #topMenu > li> a { display: block; font-size: 1.1em; color:gray; font-weight: 600;
     padding: 20px 60px; }
     #topMenu>li>a:hover { color: #1fa8f8; text-shadow: 0 -2px #222; } 
-    .contents { width:700px; margin: 100px auto; }
+    .contents { width:800px; margin: 100px auto; }
     footer { width: 100%; height: 10%; border-top:1px solid lightyellow; text-align: center;}
  
 
@@ -26,4 +26,4 @@
        border-radius: 5em; background: linear-gradient(#fff, #ddd);
        text-decoration: none; color: black; font-size: 13pt;
        display: inline-block;  float: right;}
-   textarea { width: 500px; height: 300px; padding: .8em .5em; font-size: 16pt; }
+   textarea { width: 500px; height: 300px; padding: .8em .5em; font-size: 10pt; }

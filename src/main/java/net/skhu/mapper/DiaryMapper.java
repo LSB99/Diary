@@ -12,13 +12,13 @@ public interface DiaryMapper {
 
 	@Insert("INSERT INTO diary (userId, title, diarylist, writeDate) "
 			+ "VALUES (#{userId}, #{title}, #{diarylist}, #{writeDate}) ")
-	@Options(useGeneratedKeys=true, keyProperty="id")
+	@Options(useGeneratedKeys = true, keyProperty = "id")
 	void insert(Diary diary);
 
-
-	 @Update("UPDATE diary "
-	    		+ "SET title = #{title}, diarylist = #{diarylist} ,  writeDate = #{writeDate}  "
-	    		+ "WHERE userId = #{userId}")
-	    void update(Diary diary);
+	
+	
+	@Update("UPDATE diary " + "SET title = #{title}, diarylist = #{diarylist} ,  writeDate = #{writeDate}  "
+			+ "WHERE userId = #{userId}")
+	void update(Diary diary);
 
 }
