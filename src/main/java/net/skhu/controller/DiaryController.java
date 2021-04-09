@@ -203,14 +203,6 @@ public class DiaryController {
     }
 
 
-  //달력 구현
-    @RequestMapping("calendar")
-    public String calendar(Model model) {
-
-        return "diary/calendar";
-    }
-
-
 
     //하루일정
     @GetMapping("onedayCreate")

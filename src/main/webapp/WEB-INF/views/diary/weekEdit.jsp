@@ -49,8 +49,6 @@ textarea {
 					<li><a href="timetable">시간표</a></li>
 					<li><a href="weekList">일주일 계획</a></li>
 					<li><a href="onedayList">하루일정</a></li>
-					<li><a href="calendar">달력</a></li>
-
 				</ul>
 			</nav>
 		</header>
@@ -119,6 +117,9 @@ textarea {
 			</form>
 
 		</main>
+		 <aside id="right-sidebar">
+  		
+  	</aside>
 		<footer>
 			소프캡스톤<br>임수빈, 김보미
 		</footer>

@@ -20,12 +20,12 @@ public class Plan {
 
 	String userId;
 
-	
-	String todayplan;
-	
+
+	String body;
+
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	Date today;
 
-	
-	
+
+
 }

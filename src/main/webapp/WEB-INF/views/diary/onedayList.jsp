@@ -7,14 +7,6 @@
 <head>
 <title>BukitList</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap"
-	rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
-	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/list.css" />
 <link rel="stylesheet" type="text/css" href="/background.css" />
 
@@ -48,7 +40,6 @@ p {
 					<li><a href="timetable">시간표</a></li>
 					<li><a href="weekList">일주일 계획</a></li>
 					<li><a href="onedayList">하루일정</a></li>
-					<li><a href="calendar">달력</a></li>
 
 				</ul>
 			</nav>
@@ -75,7 +66,7 @@ p {
 
 							<td><fmt:formatDate value="${plan.today}" pattern="yyyy-MM-dd" /></td>
 
-							<td><a href="onedayEdit?id=${ plan.id }">${ plan.todayplan }</a></td>
+							<td><a href="onedayEdit?id=${ plan.id }">${ plan.body }</a></td>
 
 						</tr>
 

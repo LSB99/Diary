@@ -16,12 +16,12 @@ public class Bukit {
 	int id;
 
 	String userId;
-	
-	String bukitlist;
+
+	String body;
 
 	/*
 	 * @ManyToOne
-	 * 
+	 *
 	 * @JoinColumn(name="userId") User user;
 	 */
 }

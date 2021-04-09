@@ -43,7 +43,6 @@ td:nth-child(1) {
 					<li><a href="timetable">시간표</a></li>
 					<li><a href="weekList">일주일 계획</a></li>
 					<li><a href="onedayList">하루일정</a></li>
-					<li><a href="calendar">달력</a></li>
 
 				</ul>
 			</nav>
@@ -58,7 +57,7 @@ td:nth-child(1) {
 				<tbody>
 					<c:forEach var="memo" items="${ memos }">
 						<tr>
-							<td><a href="memoEdit?id=${ memo.id }">${ memo.memolist }</a></td>
+							<td><a href="memoEdit?id=${ memo.id }">${ memo.body }</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

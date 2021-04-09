@@ -11,10 +11,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="${R}delete.js"></script>
-   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="${R}background.css" />
   <link rel="stylesheet" type="text/css" href="${R}edit.css" />
   
@@ -38,11 +34,11 @@
   		<li><a href="timetable">시간표</a></li>
   		<li><a href="weekList">일주일 계획</a></li>
   		<li><a href="onedayList">하루일정</a></li>
-  		<li><a href="calendar">달력</a></li>
   		
   	</ul>
   	</nav>
   	</header>
+  
   	<main class="contents">
   	
   	
@@ -57,7 +53,7 @@
         
           <td>내용: </td>
           
-          <td><input type="text" name="bukitlist" value="${ bukit.bukitlist }" placeholder="꼭 이루고 싶은 목표를 적어보세요!" required/></td>
+          <td><input type="text" name="body" value="${ bukit.body }" placeholder="꼭 이루고 싶은 목표를 적어보세요!" required/></td>
           
         </tr>
        
@@ -76,6 +72,7 @@
     </form>    
     
     </main>
+
     
     <footer>
     		소프캡스톤<br>임수빈, 김보미

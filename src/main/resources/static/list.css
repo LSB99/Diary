@@ -1,28 +1,29 @@
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Gamja Flower', cursive;}
+* { margin: 0; padding: 0; box-sizing: border-box; }
   a{ text-decoration: none; }
   ul { list-style:none; }
   #container { margin: 0px auto; width:100%; height: 100px; background-color: lightpink; }
-  #logo { font-style: italic; float: left; width:250px; height: 100px; line-height: 100px; padding-left:50px; }
-    header { font-size: 43px; width: 100%; height: 100%; background-color:#045; }
-    h1{font-family: 'Della Respira', serif; text-shadow: 5px 5px 3px purple; }
-    nav { font-size: 23px; float: right; width: 100%; height:100px; padding-top: 30px; margin: -100px auto; }
+  #logo { float: left; width:250px; height: 100px; line-height: 100px; padding-left:50px; }
+     header { font-size: 43px; width: 100%; height: 120%; background-color:rgba(166,150,200,1);  background:linear-gradient(45deg, #e9bba9, #854e4b);}
+    h1{ text-shadow: 5px 5px 3px #7200da; color:#9068be; font-size: 70pt;}
+    nav { font-size: 18pt; float: right; width: 100%; height:100px; padding-top: 30px; margin: -100px auto; }
     #topMenu { height: 60px; }
     #topMenu > li{ float:right; position: relative; }
-    #topMenu > li> a { display: block; font-size: 1.1em; color:gray; font-weight: 600;
-    padding: 20px 60px; }
-    #topMenu>li>a:hover { color: #1fa8f8; text-shadow: 0 -2px #222; } 
+    #topMenu > li> a { display: block; font-size: 1.1em; color:white; font-weight: 600;
+    padding: 50px 60px; }
+    #topMenu>li>a:hover { color: #B9A7C2; text-shadow: 0 -2px #222; } 
     .contents { width:900px; margin: 100px auto; }
-    footer { width: 100%; height: 10%; border-top:1px solid lightyellow; text-align: center;}
+     #right-sidebar{ margin: -560px auto; width:23%; height:560px;  background: black; background-image:url('https://images.unsplash.com/photo-1528604891270-c2d9c3d1fc0b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'); float: right;}
+    footer { width: 100%; height: 10%; border-top:1px solid white; text-align: center;}
 
 
-div.title { width: 500px; margin: auto; font-size: 33pt; }
 
-table.list { background-color: lightyellow; border-collapse: collapse; height: 100px; width: 100%; font-size: 20pt; }
-table.list td { padding: auto; border: 2px solid pink; font-size: 22pt; text-align: center; }
-table.list th { padding: auto; border: 5px solid pink;  background-color: lightpink; }
+
+table.list { background-color: white; border-collapse: collapse; height: 100px; width: 100%; font-size: 20pt; }
+table.list td { padding: auto; border: 2px solid #f6ded4; font-size: 20pt; text-align: center; }
+table.list th { padding: auto; border: 5px solid #f6ded4;  color: white; background-color: #e9bba9; }
 
       
-    div.title { font-size: 30pt; padding: 25px; background-color: lightpink; }
+    
     table { margin: auto; }
     td { min-width: 200; padding: 10px; }
     td:nth-child(1) { text-align: right; }

@@ -21,10 +21,10 @@
   <style>
   	 form { width: 500px; height: 660px; }
   	 table { width: 400px; }
-    .btn { float: right; margin: 50px 200px 0px 0px;}
+    .btn { float: right; margin: 20px 200px 0px 0px;}
     input { width: 200px; margin: 20px auto; padding: 0.2em 0.2em; }
    .error { color: red; display: block; text-align: center;}
-   label { padding: 1em 1em; width: 150px; height: 20px; margin: auto 10px; font-size: 20pt; float: left;}
+   label { padding: 1em 1em; width: 150px; height: 20px; margin: auto 10px; font-size: 14pt; float: left;}
   </style>
 </head>
 <body>

@@ -52,7 +52,6 @@ textarea {
 					<li><a href="timetable">시간표</a></li>
 					<li><a href="weekList">일주일 계획</a></li>
 					<li><a href="onedayList">하루일정</a></li>
-					<li><a href="calendar">달력</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -73,7 +72,7 @@ textarea {
 
 						<td>하루일정:</td>
 
-						<td><textarea rows="5" cols="30" placeholder="오늘의 일정이 어떻게 되는지 적어주세요!" required name="todayplan"><c:out value="${ plan.todayplan }" /></textarea></td>
+						<td><textarea rows="5" cols="30" placeholder="오늘의 일정이 어떻게 되는지 적어주세요!" required name="body"><c:out value="${ plan.body }" /></textarea></td>
 
 					</tr>
 

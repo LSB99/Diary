@@ -11,14 +11,14 @@ import net.skhu.entity.Plan;
 @Mapper
 public interface PlanMapper {
 
-	@Insert("INSERT INTO plan (userId, todayplan, today) "
-			+ "VALUES (#{userId}, #{todayplan}, #{today}) ")
+	@Insert("INSERT INTO plan (userId, body, today) "
+			+ "VALUES (#{userId}, #{body}, #{today}) ")
 	@Options(useGeneratedKeys=true, keyProperty="id")
 	void insert(Plan plan);
 
 
 	 @Update("UPDATE plan  "
-	          + "SET today = #{today}, todayplan = #{todayplan}  "
+	          + "SET today = #{today}, body = #{body}  "
 	    	  + "WHERE userId = #{userId}")
 	 void update(Plan plan);
 }

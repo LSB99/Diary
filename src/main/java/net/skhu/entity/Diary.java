@@ -21,7 +21,7 @@ public class Diary {
 
 	String userId;
 	String title;
-	String diarylist;
+	String body;
 
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	Date writeDate;

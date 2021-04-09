@@ -53,7 +53,6 @@ textarea {
 					<li><a href="timetable">시간표</a></li>
 					<li><a href="weekList">일주일 계획</a></li>
 					<li><a href="onedayList">하루일정</a></li>
-					<li><a href="calendar">달력</a></li>
 
 				</ul>
 			</nav>
@@ -66,7 +65,7 @@ textarea {
 					<tr>
 						<td>내용:</td>
 
-						<td><textarea name="memolist" placeholder="잊기 전에 메모하세요!" required><c:out value="${ memo.memolist }" /></textarea></td>
+						<td><textarea name="body" placeholder="잊기 전에 메모하세요!" required><c:out value="${ memo.body }" /></textarea></td>
 					</tr>
 				</table>
 
@@ -82,6 +81,7 @@ textarea {
 
 			</form>
 		</main>
+		 
 		<footer>
 			소프캡스톤<br>임수빈, 김보미
 		</footer>

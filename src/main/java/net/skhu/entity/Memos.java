@@ -16,7 +16,7 @@ public class Memos {
 	int id;
 
 	String userId;
-	String memolist;
+	String body;
 
 
 }

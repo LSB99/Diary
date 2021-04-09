@@ -6,18 +6,15 @@
 <title>Main Home</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" type="text/css" href="/background.css" />
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+
   
   <style>
-  * {font-family: 'Gamja Flower', cursive;}
-  h1 { margin: -10% auto; text-align: center; font-size: 65pt; color: purple; font-family: 'Pangolin', cursive; text-shadow:5px 5px 3px lightpink;}
+  
+  h1 { margin: -10% auto; text-align: center; font-size: 65pt; text-shadow: 5px 5px 3px #7200da; color:#9068be; }
   
   div.container { height:100%; width: 1200px; margin: 12% auto; font-size: 23pt; text-align: center;}
 
-a.btn { width: 80%; margin: 1% auto; padding: 1em 3em; border: 8px solid pink;
+a.btn { width: 80%; margin: 1% auto; padding: 1em 3em; border: 8px solid #e9bba9;
        border-radius: 5em; background: linear-gradient(#fff, #ddd);
        text-decoration: none; color: black; font-size: 13pt;
        display: inline-block; float: center; }
@@ -46,7 +43,6 @@ alt="" width="15%">
    <table class="index">
   	<thead>
   		<tr> 
-  			<th><a href="calendar" class="btn">달력</a></th>
   			
   			<th><a href="onedayList" class="btn">하루일정</a></th>
   			

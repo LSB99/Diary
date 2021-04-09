@@ -22,7 +22,7 @@
   	 form { width: 500px; height: 350px; }
     table { width: 400px;}
     input { width: 250px; }
-    .btn {margin: -20px 190px 0px 0px;}
+    .btn {margin: -20px 170px 0px 0px;}
   </style>
 </head>
 <body>

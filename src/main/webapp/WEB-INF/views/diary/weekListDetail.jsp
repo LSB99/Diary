@@ -19,7 +19,7 @@
 
 <style>
 table.list1, table.list2 {
-	background-color: lightyellow;
+	background-color: white;
 	height: 100px;
 	width: 100%;
 	font-size: 20pt;
@@ -28,15 +28,15 @@ table.list1, table.list2 {
 table.list1 td, table.list2 td {
 	height: 50px;
 	padding: auto;
-	border: 2px solid pink;
+	border: 2px solid #f6ded4;
 	font-size: 17pt;
 	text-align: center;
 }
 
 table.list1 th, table.list2 th {
 	padding: auto;
-	border: 5px solid pink;
-	background-color: lightpink;
+	border: 5px solid #f6ded4;
+	background-color: #e9bba9;
 }
 
 td:nth-child(1) {
@@ -63,7 +63,6 @@ p {
 					<li><a href="timetable">시간표</a></li>
 					<li><a href="weekList">일주일 계획</a></li>
 					<li><a href="onedayList">하루일정</a></li>
-					<li><a href="calendar">달력</a></li>
 				</ul>
 			</nav>
 		</header>

@@ -27,15 +27,15 @@
 <style>
 input {
 	width: 600px;
-	font-size: 30px;
+	font-size: 20pt;
 }
 
 td:nth-child(1) {
-	font-size: 28px;
+	font-size: 17pt;
 }
 
 textarea {
-	font-size: 20px;
+	font-size: 15pt;
 	display: block;
 	width: 600px;
 }
@@ -56,7 +56,7 @@ textarea {
 					<li><a href="timetable">시간표</a></li>
 					<li><a href="weekList">일주일 계획</a></li>
 					<li><a href="onedayList">하루일정</a></li>
-					<li><a href="calendar">달력</a></li>
+					
 				</ul>
 			</nav>
 		</header>
@@ -82,7 +82,7 @@ textarea {
 
 						<td>내용:</td>
 
-						<td><textarea name="diarylist" placeholder="오늘은 무슨 일이 있었는지 적어보세요!" required><c:out value="${ diary.diarylist }" /></textarea></td>
+						<td><textarea name="body" placeholder="오늘은 무슨 일이 있었는지 적어보세요!" required><c:out value="${ diary.body }" /></textarea></td>
 
 					</tr>
 
@@ -108,6 +108,7 @@ textarea {
 
 			</form>
 		</main>
+		 
 		<footer>
 			소프캡스톤<br>임수빈, 김보미
 		</footer>
