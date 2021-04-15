@@ -27,6 +27,7 @@ import net.skhu.mapper.MemosMapper;
 import net.skhu.mapper.PlanMapper;
 import net.skhu.mapper.TimeTableMapper;
 import net.skhu.mapper.WeekMapper;
+import net.skhu.model.Pagination;
 import net.skhu.model.UserRegistration;
 import net.skhu.repository.BukitRepository;
 import net.skhu.repository.DiaryRepository;
@@ -204,9 +205,9 @@ public class DiaryController {
 
 
 
-    //하루일정
+    //하루일정 생성
     @GetMapping("onedayCreate")
-    public String onedayCreate(Model model) {
+    public String onedayCreate(Model model, Pagination pagination) {
 
     	model.addAttribute("plan", new Plan());
 
@@ -214,25 +215,25 @@ public class DiaryController {
     }
 
 
-
-
-  //하루일정
     @PostMapping("onedayCreate")
-    public String onedayCreate(Model model , Plan plan) {
+    public String onedayCreate(Model model , Plan plan, Pagination pagination) {
 
     	plan.setUserId(UserId.currentuserId);
 
     	planRepository.save(plan);
 
-        return "redirect:onedayList";
+    	int lastPage=(int)Math.ceil((double)bukitRepository.count()/pagination.getSz());
+    	pagination.setPg(lastPage);
+
+        return "redirect:onedayList?" + pagination.getQueryString();
     }
 
 
     // 하루일정 목록
     @RequestMapping("onedayList")
-    public String onedaylist(Model model) {
+    public String onedaylist(Model model, Pagination pagination) {
 
-    	List<Plan> plans = planRepository.findByUserId( UserId.currentuserId );
+    	List<Plan> plans = planRepository.findByUserId( UserId.currentuserId, pagination );
 
     	model.addAttribute("plans", plans);
 
@@ -244,7 +245,7 @@ public class DiaryController {
 
     //하루일정 수정
     @GetMapping("onedayEdit")
-    public String onedayEdit(Model model, @RequestParam("id") int id) {
+    public String onedayEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
 
     	Plan plan = planRepository.findById(id).get();
 
@@ -254,8 +255,8 @@ public class DiaryController {
     }
 
 
-    @PostMapping("onedayEdit")
-    public String onedayEdit(Model model, Plan plan) {
+    @PostMapping(value="onedayEdit", params="cmd=save")
+    public String onedayEdit(Model model, Plan plan, Pagination pagination) {
 
     	plan.setUserId(UserId.currentuserId);
 
@@ -263,26 +264,26 @@ public class DiaryController {
 
      	model.addAttribute("message", "저장했습니다.");
 
-        return "redirect:onedayList";
+     	return "redirect:onedayList?" + pagination.getQueryString();
     }
 
 
 
   //하루일정 삭제구현
-    @RequestMapping("onedayDelete")
-    public String onedayDelete(Model model, @RequestParam("id") int id) {
+    @PostMapping(value="onedayEdit", params="cmd=delete")
+    public String onedayDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
 
     	planRepository.deleteById(id);
 
-        return "redirect:onedayList";
+    	return "redirect:onedayList?" + pagination.getQueryString();
     }
 
 
   //일주일 주별 리스트
     @GetMapping("weekList")
-    public String weekList(Model model) {
+    public String weekList(Model model, Pagination pagination) {
 
-    	List<Week> weeks = weekRepository.findByUserId( UserId.currentuserId );
+    	List<Week> weeks = weekRepository.findByUserId( UserId.currentuserId, pagination );
 
     	model.addAttribute("weeks", weeks);
 
@@ -292,7 +293,7 @@ public class DiaryController {
 
   //일주일계획 해당 주의 목록
     @GetMapping("weekListDetail")
-    public String weekListDetail( Model model , @RequestParam("id") int id ) {
+    public String weekListDetail( Model model , @RequestParam("id") int id, Pagination pagination) {
 
     	Week week = weekRepository.findById(id).get();
 
@@ -306,7 +307,7 @@ public class DiaryController {
 
   //일주일계획 생성
     @GetMapping("weekCreate")
-    public String weekCreate(Model model) {
+    public String weekCreate(Model model, Pagination pagination) {
 
     	model.addAttribute("week", new Week());
 
@@ -315,20 +316,23 @@ public class DiaryController {
 
 
     @PostMapping("weekCreate")
-    public String weekCreate(Model model, Week week) {
+    public String weekCreate(Model model, Week week, Pagination pagination) {
 
     	week.setUserId( UserId.currentuserId );
 
     	weekRepository.save(week);
 
-        return "redirect:weekList";
+    	int lastPage=(int)Math.ceil((double)bukitRepository.count()/pagination.getSz());
+    	pagination.setPg(lastPage);
+
+        return "redirect:weekList?" + pagination.getQueryString();
     }
 
 
 
   //일주일계획 수정
     @GetMapping("weekEdit")
-    public String weekEdit(Model model, @RequestParam("id") int id) {
+    public String weekEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
 
     	Week week = weekRepository.findById(id).get();
 
@@ -338,8 +342,8 @@ public class DiaryController {
     }
 
 
-    @PostMapping("weekEdit")
-    public String weekEdit(Model model, Week week) {
+    @PostMapping(value="weekEdit", params="cmd=save")
+    public String weekEdit(Model model, Week week, Pagination pagination) {
 
     	week.setUserId(UserId.currentuserId);
 
@@ -347,16 +351,16 @@ public class DiaryController {
 
      	model.addAttribute("message", "저장했습니다.");
 
-        return "redirect:weekList";
+     	return "redirect:weekList?" + pagination.getQueryString();
     }
 
   //일주일계획 삭제
-    @RequestMapping("weekDelete")
-    public String weekDelete(Model model, @RequestParam("id") int id) {
+    @PostMapping(value="weekEdit", params="cmd=delete")
+    public String weekDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
 
     	weekRepository.deleteById(id);
 
-        return "redirect:weekList";
+    	return "redirect:weekList?" + pagination.getQueryString();
     }
 
 
@@ -381,11 +385,12 @@ public class DiaryController {
 
   //버킷리스트 목록 구현
     @RequestMapping("bukitlist")
-    public String bukitlist(Model model) {
+    public String bukitlist(Model model, Pagination pagination) {
 
-        List<Bukit> bukits = bukitRepository.findByUserId( UserId.currentuserId );
+        List<Bukit> bukits = bukitRepository.findByUserId(UserId.currentuserId, pagination);
 
     	model.addAttribute("bukits", bukits);
+
 
         return "diary/bukitlist";
     }
@@ -393,7 +398,7 @@ public class DiaryController {
 
 //버킷리스트 생성 구현
     @GetMapping("bukitCreate")
-    public String bukitCreate(Model model) {
+    public String bukitCreate(Model model, Pagination pagination) {
 
     	model.addAttribute("bukit", new Bukit());
 
@@ -402,19 +407,21 @@ public class DiaryController {
 
 
     @PostMapping("bukitCreate")
-    public String bukitCreate(Model model, Bukit bukit) {
+    public String bukitCreate(Model model, Bukit bukit, Pagination pagination) {
 
     	bukit.setUserId(UserId.currentuserId);
-
     	bukitRepository.save(bukit);
 
-        return "redirect:bukitlist";
+    	int lastPage=(int)Math.ceil((double)bukitRepository.count()/pagination.getSz());
+    	pagination.setPg(lastPage);
+
+        return "redirect:bukitlist?" + pagination.getQueryString();
     }
 
 
 //버킷리스트 수정 구현
     @GetMapping("bukitEdit")
-    public String bukitEdit(Model model, @RequestParam("id") int id) {
+    public String bukitEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
 
     	Bukit bukit=bukitRepository.findById(id).get();
 
@@ -424,33 +431,30 @@ public class DiaryController {
     }
 
 
-    @PostMapping("bukitEdit")
-    public String bukitEdit(Model model, Bukit bukit) {
+    @PostMapping(value="bukitEdit", params="cmd=save")
+    public String bukitEdit(Model model, Bukit bukit, Pagination pagination) {
 
         bukit.setUserId(UserId.currentuserId);
-
         bukitRepository.save(bukit);
 
-    	model.addAttribute("message", "저장했습니다.");
-
-        return "redirect:bukitlist";
+        return "redirect:bukitlist?" + pagination.getQueryString();
     }
 
 //버킷리스트 삭제구현
-    @RequestMapping("bukitDelete")
+    @PostMapping(value="bukitEdit", params="cmd=delete")
 
-    public String bukitDelete(Model model, @RequestParam("id") int id) {
+    public String bukitDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
 
     	bukitRepository.deleteById(id);
 
-        return "redirect:bukitlist";
+        return "redirect:bukitlist?" + pagination.getQueryString();
     }
 
 
 
 //일기 생성 구현
     @GetMapping("diaryCreate")
-    public String diaryCreate(Model model) {
+    public String diaryCreate(Model model, Pagination pagination) {
 
     	model.addAttribute("diary", new Diary());
 
@@ -458,21 +462,24 @@ public class DiaryController {
     }
 
     @PostMapping("diaryCreate")
-    public String diaryCreate(Model model, Diary diary) {
+    public String diaryCreate(Model model, Diary diary, Pagination pagination) {
 
     	diary.setUserId(UserId.currentuserId);
 
     	diaryMapper.insert(diary);
 
-        return "redirect:diarySpace";
+    	int lastPage=(int)Math.ceil((double)bukitRepository.count()/pagination.getSz());
+    	pagination.setPg(lastPage);
+
+        return "redirect:diarySpace?" + pagination.getQueryString();
     }
 
 
   //일기 목록 구현
     @RequestMapping("diarySpace")
-    public String diarySpace(Model model) {
+    public String diarySpace(Model model, Pagination pagination) {
 
-    	List<Diary> diary = diaryRepository.findByUserId( UserId.currentuserId );
+    	List<Diary> diary = diaryRepository.findByUserId( UserId.currentuserId, pagination );
 
     	model.addAttribute("diarys", diary);
 
@@ -482,7 +489,7 @@ public class DiaryController {
 
 //일기 수정 구현
     @GetMapping("diaryEdit")
-    public String diaryEdit(Model model,  @RequestParam("id") int id) {
+    public String diaryEdit(Model model,  @RequestParam("id") int id, Pagination pagination) {
 
     	Diary diary = diaryRepository.findById(id).get();
 
@@ -491,8 +498,8 @@ public class DiaryController {
     	return "diary/diaryEdit";
     }
 
-    @PostMapping("diaryEdit")
-    public String diaryEdit(Model model, Diary diary) {
+    @PostMapping(value="diaryEdit", params="cmd=save")
+    public String diaryEdit(Model model, Diary diary, Pagination pagination) {
 
     	diary.setUserId(UserId.currentuserId);
 
@@ -500,16 +507,16 @@ public class DiaryController {
 
      	model.addAttribute("message", "저장했습니다.");
 
-        return "redirect:diarySpace";
+     	return "redirect:diarySpace?" + pagination.getQueryString();
     }
 
   //일기 삭제구현
-    @RequestMapping("diaryDelete")
-    public String diaryDelete(Model model,  @RequestParam("id") int id) {
+    @PostMapping(value="diaryEdit", params="cmd=delete")
+    public String diaryDelete(Model model,  @RequestParam("id") int id, Pagination pagination) {
 
     	diaryRepository.deleteById(id);
 
-        return "redirect:diarySpace";
+    	return "redirect:diarySpace?" + pagination.getQueryString();
 
     }
 
@@ -518,9 +525,9 @@ public class DiaryController {
 
 //메모 목록 구현
     @RequestMapping("memopad")
-    public String memopad(Model model) {
+    public String memopad(Model model, Pagination pagination) {
 
-    	List<Memos> memos = memoRepository.findByUserId( UserId.currentuserId );
+    	List<Memos> memos = memoRepository.findByUserId( UserId.currentuserId, pagination );
 
     	model.addAttribute("memos", memos);
 
@@ -530,7 +537,7 @@ public class DiaryController {
 
 //메모 생성 구현
     @GetMapping("memoCreate")
-    public String memoCreate(Model model) {
+    public String memoCreate(Model model, Pagination pagination) {
 
     	model.addAttribute("memo", new Memos());
 
@@ -538,19 +545,22 @@ public class DiaryController {
     }
 
     @PostMapping("memoCreate")
-    public String memoCreate(Model model, Memos memo) {
+    public String memoCreate(Model model, Memos memo, Pagination pagination) {
 
     	memo.setUserId(UserId.currentuserId);
 
     	memoRepository.save(memo);
 
-        return "redirect:memopad";
+    	int lastPage=(int)Math.ceil((double)bukitRepository.count()/pagination.getSz());
+    	pagination.setPg(lastPage);
+
+        return "redirect:memopad?" + pagination.getQueryString();
     }
 
 
 //메모 수정 구현
     @GetMapping("memoEdit")
-    public String memoEdit(Model model, @RequestParam("id") int id) {
+    public String memoEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
 
     	Memos memo=memoRepository.findById(id).get();
 
@@ -560,8 +570,8 @@ public class DiaryController {
     }
 
 
-    @PostMapping("memoEdit")
-    public String memoEdit(Model model, Memos memo) {
+    @PostMapping(value="memoEdit", params="cmd=save")
+    public String memoEdit(Model model, Memos memo, Pagination pagination) {
 
     	memo.setUserId(UserId.currentuserId);
 
@@ -569,15 +579,15 @@ public class DiaryController {
 
       	model.addAttribute("message", "저장했습니다.");
 
-        return "redirect:memopad";
+      	return "redirect:memopad?" + pagination.getQueryString();
     }
 
 //메모 삭제구현
-    @RequestMapping("memoDelete")
-    public String memoDelete(Model model, @RequestParam("id") int id) {
+    @PostMapping(value="memoEdit", params="cmd=delete")
+    public String memoDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
 
     	memoRepository.deleteById(id);
 
-        return "redirect:memopad";
+    	return "redirect:memopad?" + pagination.getQueryString();
     }
 }

@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<c:url var="R" value="/" />
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -9,7 +13,7 @@
 <head>
   <title>Bukit Edit</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="${R}delete.js"></script>
   <link rel="stylesheet" type="text/css" href="${R}background.css" />
   <link rel="stylesheet" type="text/css" href="${R}edit.css" />
@@ -59,13 +63,12 @@
        
       </table>
       
-      <button type="submit" class="btn">저장</button>
-      
-      <a href="bukitlist" class="btn">버킷리스트 목록보기</a>
+      <button type="submit" class="btn" name="cmd" value="save">저장</button> 
+      <a href="bukitlist?${pagination.queryString}" class="btn">버킷리스트 목록보기</a>
       
       <c:if test="${ bukit.id>0 }">
       
-      	<a href="bukitDelete?id=${bukit.id}" class="btn" data-confirm-delete>삭제</a>
+      	<button type="submit" class="btn" name="cmd" value="delete" data-confirm-delete>삭제</button>
       	
       </c:if>
       

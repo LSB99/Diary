@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
+<c:url var="R" value="/" />
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <title>BukitList</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="${R}common.js"></script>
+  
   <link rel="stylesheet" type="text/css" href="/list.css" />
    <link rel="stylesheet" type="text/css" href="/background.css" />
 
@@ -50,7 +53,7 @@
     <c:forEach var="bukit" items="${ bukits }" >
       <tr>
       
-    	<td><a href="bukitEdit?id=${ bukit.id }">${ bukit.body }</a></td> 
+    	<td><a href="bukitEdit?id=${ bukit.id }&${pagination.queryString}">${ bukit.body }</a></td> 
       </tr>
       </c:forEach>
     <tr>
@@ -58,7 +61,10 @@
       </tr>
       
   </table>
-  <p><a href="bukitCreate" class="btn">버킷리스트 작성하기</a></p>
+  <my:pagination pageSize="${ pagination.sz }" recordCount="${ pagination.recordCount }" 
+                 queryStringName="pg" />
+  
+  <p><a href="bukitCreate?${pagination.queryString}" class="btn">버킷리스트 작성하기</a></p>
   <p><a href="index" class="btn">처음으로 가기</a></p>
 </main>
 

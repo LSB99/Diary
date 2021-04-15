@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
+<c:url var="R" value="/" />
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>BukitList</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="${R}common.js"></script>
 <link rel="stylesheet" type="text/css" href="/list.css" />
 <link rel="stylesheet" type="text/css" href="/background.css" />
 
@@ -66,15 +70,17 @@ p {
 
 							<td><fmt:formatDate value="${plan.today}" pattern="yyyy-MM-dd" /></td>
 
-							<td><a href="onedayEdit?id=${ plan.id }">${ plan.body }</a></td>
+							<td><a href="onedayEdit?id=${ plan.id }&${pagination.queryString}">${ plan.body }</a></td>
 
 						</tr>
 
 					</c:forEach>
 			</table>
+			<my:pagination pageSize="${ pagination.sz }" recordCount="${ pagination.recordCount }" 
+                 queryStringName="pg" />
 			
 			<p>
-				<a href="onedayCreate" class="btn">하루일정 작성하기</a>
+				<a href="onedayCreate?${pagination.queryString}" class="btn">하루일정 작성하기</a>
 			</p>
 
 			<p>

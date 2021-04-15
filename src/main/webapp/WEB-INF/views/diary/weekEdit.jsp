@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <c:url var="R" value="/" />
 
 <!DOCTYPE html>
@@ -10,17 +10,8 @@
 <head>
 <title>Week Edit</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="${R}delete.js"></script>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap"
-	rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
-	rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="${R}delete.js"></script>
 <link rel="stylesheet" type="text/css" href="${R}background.css" />
 <link rel="stylesheet" type="text/css" href="${R}edit.css" />
 <style>
@@ -103,23 +94,20 @@ textarea {
 				</table>
 
 
-				<button type="submit" class="btn">저장</button>
+				<button type="submit" class="btn" name="cmd" value="save">저장</button>
 
-				<a href="weekList" class="btn">일주일 계획 보기</a>
+				<a href="weekList?${pagination.queryString}" class="btn">일주일 계획 보기</a>
 
 
 				<c:if test="${ week.id > 0 }">
 
-					<a href="weekDelete?id=${week.id}" class="btn" data-confirm-delete>삭제</a>
+					<button type="submit" class="btn" name="cmd" value="delete" data-confirm-delete>삭제</button>
 
 				</c:if>
 
 			</form>
 
 		</main>
-		 <aside id="right-sidebar">
-  		
-  	</aside>
 		<footer>
 			소프캡스톤<br>임수빈, 김보미
 		</footer>
