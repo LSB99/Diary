@@ -26,6 +26,4 @@ public class Plan {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	Date today;
 
-
-
 }

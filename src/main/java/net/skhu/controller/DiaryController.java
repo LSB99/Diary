@@ -391,7 +391,6 @@ public class DiaryController {
 
     	model.addAttribute("bukits", bukits);
 
-
         return "diary/bukitlist";
     }
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <c:url var="R" value="/" />
 <!DOCTYPE html>
@@ -63,6 +64,31 @@ p {
 			</nav>
 		</header>
 		<main class="contents">
+		
+		
+		<form:form method="get" modelAttribute="pagination">
+			
+				<form:hidden path="pg" value="1" />
+				
+				<form:hidden path="sz" />
+				
+				
+				<span>일주일 리스트:</span>
+				
+				
+				<form:select path="di" class="form-control">
+				
+					<form:option value="0">전체</form:option>
+					
+					<form:options itemValue="id" itemLabel="myweek" items="${ weeks }" />
+
+                 </form:select>
+                             
+				<button type="submit" class="btn">검색</button>
+								
+			</form:form>
+		
+		
 			<table class="list1">
 				<thead>
 					<tr>
