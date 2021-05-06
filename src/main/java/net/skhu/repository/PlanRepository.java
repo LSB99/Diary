@@ -18,7 +18,6 @@ import net.skhu.model.Pagination;
 
 public interface PlanRepository extends JpaRepository<Plan, Integer>  {
 
-
 	Page<Plan> findByUserId(String userId, Pageable pageable);
 
 	public default List<Plan> findByUserId(String userId, Pagination pagination){
@@ -28,7 +27,6 @@ public interface PlanRepository extends JpaRepository<Plan, Integer>  {
 		return page.getContent();
 
 	}
-
 
 	@Modifying
 	@Query(value = "insert into plan(userId) VALUES (:userId)", nativeQuery = true)

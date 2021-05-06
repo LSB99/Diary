@@ -3,31 +3,24 @@ package net.skhu.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
 import net.skhu.entity.User;
 import net.skhu.model.UserRegistration;
-import net.skhu.repository.BukitRepository;
-import net.skhu.repository.DiaryRepository;
-import net.skhu.repository.MemoRepository;
-import net.skhu.repository.PlanRepository;
-import net.skhu.repository.TimeTableRepository;
 import net.skhu.repository.UserRepository;
-import net.skhu.repository.WeekRepository;
 
 @Service
 public class UserService {
 
-    @Autowired
+	@Autowired
     UserRepository userRepository;
-    PlanRepository planRepository;
-    WeekRepository weekRepository;
-    TimeTableRepository timeTableRepository;
-    BukitRepository bukitRepository;
-    DiaryRepository diaryRepository;
-    MemoRepository memoRepository;
+
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
 
     public List<User> findAll() {
@@ -54,7 +47,9 @@ public class UserService {
         User user = new User();
         user.setName(userRegistration.getName());
         user.setUserId(userRegistration.getUserId());
-        user.setPassword(userRegistration.getPassword1());
+        user.setPassword(passwordEncoder.encode(userRegistration.getPassword1()));
+        user.setEnabled(true);
+
 
         return user;
     }

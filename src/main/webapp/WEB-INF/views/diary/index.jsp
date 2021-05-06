@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url var="R" value="/" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,8 +59,8 @@ alt="" width="15%">
   			
   		</tr>
   		<tr>
-  		<th><a href="logout" class="btn">로그아웃</a></th>
-  		<th><a href="userDelete" class="btn">회원탈퇴</a></th>
+  		<th><a href="${R}user/index" class="btn">마이페이지</a></th>
+  		<th><a href="${R}user/userDelete" class="btn">회원탈퇴</a></th>
   		</tr>
     </thead>
   </table>

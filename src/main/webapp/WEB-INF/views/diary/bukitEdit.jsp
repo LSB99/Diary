@@ -6,7 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:url var="R" value="/" />
+
 
 <!DOCTYPE html>
 <html>
@@ -44,12 +44,8 @@
   	</header>
   
   	<main class="contents">
-  	
-  	
-    <form method="post">
-    
-    
-      <div class="title">버킷리스트 작성</div>
+  	<form method="post">
+        <div class="title">버킷리스트 작성</div>
       
       <table>
       
@@ -63,6 +59,7 @@
        
       </table>
       
+      
       <button type="submit" class="btn" name="cmd" value="save">저장</button> 
       <a href="bukitlist?${pagination.queryString}" class="btn">버킷리스트 목록보기</a>
       
@@ -71,9 +68,7 @@
       	<button type="submit" class="btn" name="cmd" value="delete" data-confirm-delete>삭제</button>
       	
       </c:if>
-      
-    </form>    
-    
+      </form>
     </main>
 
     

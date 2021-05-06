@@ -44,7 +44,7 @@
       </table>
 	
 	  <a href="index" class="btn">아니요</a>
-	  <a href="userTrueDelete?userId=${user.userId}" class="btn">네,회원탈퇴</a>	  
+	  <a href="userTrueDelete?userId=${user.userId}" href="${R}logout_processing" class="btn">네,회원탈퇴</a>	  
 	  
     </form>    
  </div>

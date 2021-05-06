@@ -6,11 +6,12 @@ import net.skhu.entity.UserId;
 public class Pagination {
 	int pg=1;
 	int sz=10;
-	String di=UserId.currentuserId;
+	String di=UserId.currentUserName();
 	int recordCount;
 
 	public String getQueryString() {
-		return String.format("pg=%d&sz=%d&di=%s", pg, sz, di);
+		return String.format("pg=%d&sz=%d", pg, sz);
 	}
+
 
 }

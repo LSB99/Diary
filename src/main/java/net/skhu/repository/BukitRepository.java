@@ -44,5 +44,6 @@ public interface BukitRepository extends JpaRepository<Bukit, Integer>  {
 
 
 
+
 }
 

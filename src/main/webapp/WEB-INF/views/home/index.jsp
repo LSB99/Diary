@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url var="R" value="/" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,14 +24,25 @@
   <h1>${message}</h1>
   
    <table class="index">
+       <sec:authorize access="not authenticated">
   	<thead>
   		<tr> 
-  			<th><a href="login" class="btn">로그인</a></th> 
+  			<th><a href="${R}login" class="btn">로그인</a></th> 
   			
   			<th><a href="join" class="btn">회원가입</a></th>
   			
   		</tr>
     </thead>
+  	</sec:authorize>
+  	<sec:authorize access="authenticated">
+  	<thead>
+  	<tr>
+      	<th><a class="btn" href="${R}logout_processing">로그아웃</a></th>
+      	<th><a class="btn" href="${R}diary/index">시작하기</a></th>
+    </tr>
+    </thead>
+    </sec:authorize>
+  	
   </table>
   
 </div>
