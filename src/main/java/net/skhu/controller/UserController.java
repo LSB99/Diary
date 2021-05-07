@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.skhu.entity.User;
+import net.skhu.entity.UserId;
 import net.skhu.repository.BukitRepository;
 import net.skhu.repository.DiaryRepository;
 import net.skhu.repository.MemoRepository;
@@ -43,11 +44,13 @@ public class UserController {
         return "user/index";
     }
 
+
   //회원탈퇴 구현
-  	@GetMapping("user/userDelete")
+ 	@GetMapping("user/userDelete")
       public String userDelete(Model model) {
 
   		model.addAttribute("user", new User());
+  		model.addAttribute("userId", new UserId());
 
           return "user/userDelete";
       }
@@ -65,14 +68,16 @@ public class UserController {
   	@RequestMapping("user/userTrueDelete")
       public String userDelete(Model model, @RequestParam("userId") String userId) {
 
-  		bukitRepository.deleteBukit(userId);
-  		diaryRepository.deleteDiary(userId);
-  		memoRepository.deleteMemos(userId);
-  		planRepository.deletePlan(userId);
-  		timetableRepository.deleteTimeTable(userId);
-  		weekRepository.deleteWeek(userId);
-  		userService.deleteByUserId(userId);
 
-          return "redirect:${R}home/index";
+  			bukitRepository.deleteBukit(userId);
+  	  		diaryRepository.deleteDiary(userId);
+  	  		memoRepository.deleteMemos(userId);
+  	  		planRepository.deletePlan(userId);
+  	  		timetableRepository.deleteTimeTable(userId);
+  	  		weekRepository.deleteWeek(userId);
+  	  		userService.deleteByUserId(userId);
+
+  	        return "redirect:/logout_processing";
       }
+
 }

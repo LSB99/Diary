@@ -64,7 +64,8 @@ public class DiaryController {
 //홈(메뉴)화면 구현
     @RequestMapping("index")
     public String index(Model model) {
-
+    	String userid=UserId.currentUserName();
+    	model.addAttribute("userid", userid);
         return "diary/index";
     }
 

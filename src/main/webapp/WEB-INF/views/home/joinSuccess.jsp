@@ -5,17 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" href="${R}common.css">
+ <link rel="stylesheet" href="${R}background.css" />
+<link rel="stylesheet" href="${R}account.css" />
 <style>
-  div.box { padding: 50px; width: 300px; }
+h1 { font-size:50pt; }
+.btn { margin: 100px 600px; top:50%; left:50%; height:40%; width: 17%; font-size: 25pt;}
+  
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="box">
-    <h3>회원 가입 성공</h3>
-    <a href="login" class="btn">로그인</a>
-  </div>
+ 
+    <h1>회원 가입 완료</h1>
+    <a href="login" class="btn">로그인 하러가기</a>
+  
 </div>
 </body>
 </html>

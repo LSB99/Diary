@@ -52,6 +52,7 @@ textarea {
 		</header>
 		<main class="contents">
 			<form method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<div class="title">메모 쓰기</div>
 				<table>
 

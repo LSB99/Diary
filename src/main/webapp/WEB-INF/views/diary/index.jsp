@@ -12,10 +12,10 @@
   <style>
   
   h1 { margin: -10% auto; text-align: center; font-size: 65pt; text-shadow: 5px 5px 3px #7200da; color:#9068be; }
-  
+  h2 { margin: 1% 15% 10% 10%; font-size: 18pt; color: #e9bba9; }
   div.container { height:100%; width: 1200px; margin: 12% auto; font-size: 23pt; text-align: center;}
 
-a.btn { width: 80%; margin: 1% auto; padding: 1em 3em; border: 8px solid #e9bba9;
+a.btn { width: 80%; margin: 10% auto; padding: 1em 3em; border: 8px solid #e9bba9;
        border-radius: 5em; background: linear-gradient(#fff, #ddd);
        text-decoration: none; color: black; font-size: 13pt;
        display: inline-block; float: center; }
@@ -40,6 +40,7 @@ h3:hover { opacity: 1; transform: translateY(-50px); }
 <img id="diary" src="https://images.unsplash.com/photo-1511871893393-82e9c16b81e3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
 alt="" width="15%">
 <h1>My Diary</h1>
+<h2>${ userid }님, 안녕하세요</h2>
 <div class="container">
    <table class="index">
   	<thead>

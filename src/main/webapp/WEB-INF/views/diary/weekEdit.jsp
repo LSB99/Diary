@@ -46,6 +46,7 @@ textarea {
 		<main class="contents">
 
 			<form method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 				<div class="title">일주일 계획</div>
 

@@ -163,6 +163,7 @@ input {
 		<main class="contents">
 
 			<form method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 				<h1
 					style="font-style: italic; text-shadow: 5px 5px 3px white; margin: 10px 500px; text-align: right; font-size: 50pt;">

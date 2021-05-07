@@ -6,17 +6,18 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" href="${R}common.css">
+  <link rel="stylesheet" href="${R}background.css" />
+<link rel="stylesheet" href="${R}account.css" />
   <style>
-    div.box { padding: 30px; }
-    table { border-collapse: collapse; width: 400px; margin-bottom: 20px; }
-    td { border: 1px solid #aaa; padding: 8px; }
+  	h1 { font-size: 70pt; }
+    table { border-collapse: collapse; width: 500px; margin: 150px 500px; margin-bottom: 20px; background-color: #f6ded4;
+    		box-shadow: 0 0 8px black, 5px 5px 4px gray; }
+    td { border: 1px solid #aaa; padding: 8px; font-size: 20pt;}
   </style>
 </head>
 <body>
 <div class="container">
-  <div class="box">
-    <h1>마이페이지</h1>
+    <h1>My Page</h1>
     <table>
       <tr>
           <td>로그인ID</td>
@@ -26,7 +27,7 @@
           <td>이름</td>
           <td><sec:authentication property="principal.name" /></td>
       </tr>
-  </div>
+      </table>
 </div>
 </body>
 </html>

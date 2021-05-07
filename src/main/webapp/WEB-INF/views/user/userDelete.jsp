@@ -40,31 +40,32 @@ td {
 	<div id="container">
 		<header>
 			<div id="logo">
-				<a href="index"><h1>My Diary</h1></a>
+				<a href="${R}diary/index"><h1>My Diary</h1></a>
 			</div>
 			<nav>
 				<ul id="topMenu">
-					<li><a href="memopad">메모장</a></li>
-					<li><a href="diarySpace">일기</a></li>
-					<li><a href="bukitlist">버킷리스트</a></li>
-					<li><a href="timetable">시간표</a></li>
-					<li><a href="weekList">일주일 계획</a></li>
-					<li><a href="onedayList">하루일정</a></li>
+					<li><a href="${R}diary/memopad">메모장</a></li>
+					<li><a href="${R}diary/diarySpace">일기</a></li>
+					<li><a href="${R}diary/bukitlist">버킷리스트</a></li>
+					<li><a href="${R}diary/timetable">시간표</a></li>
+					<li><a href="${R}diary/weekList">일주일 계획</a></li>
+					<li><a href="${R}diary/onedayList">하루일정</a></li>
 				</ul>
 			</nav>
 		</header>
 		<main class="contents">
 			<form method="post" autocomplete="off">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<div class="title">회원정보를 입력하세요</div>
 				<table>
 
 					<tr>
 						<td>이름:</td>
-						<td><input type="text" name="name" value="${ user.name }" autofocus required /></td>
+						 <td><input type="text" name="name" value="${ user.name }" required/></td>
 					</tr>
 					<tr>
 						<td>아이디:</td>
-						<td><input type="text" name="userId" value="${ user.userId }" required /></td>
+						<td><input type="text" name="userId" value="${ user.userId }"  required/></td>
 					</tr>
 					<tr>
 						<td>비밀번호:</td>

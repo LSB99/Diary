@@ -14,7 +14,6 @@
 
     a.btn{ top:50%; left:50%; height:40%; width: 40%; font-size:15pt; 
           margin: 100% 0 0 270px; }
-      
     h1 { font-size: 400%; margin: -10% auto; cursive; text-shadow:5px 5px 3px #9068be; }
   </style>
 </head>

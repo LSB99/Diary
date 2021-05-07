@@ -27,6 +27,7 @@
 <h1>정말 탈퇴하겠습니까?</h1>
   <div class="container">
     <form method="post" autocomplete="off">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
       <div class="title">최종 탈퇴</div>
       <table>
        <tr>
@@ -44,7 +45,7 @@
       </table>
 	
 	  <a href="index" class="btn">아니요</a>
-	  <a href="userTrueDelete?userId=${user.userId}" href="${R}logout_processing" class="btn">네,회원탈퇴</a>	  
+	  <a href="userTrueDelete?userId=${user.userId}" class="btn">네,회원탈퇴</a>	  
 	  
     </form>    
  </div>

@@ -10,6 +10,4 @@ public class UserId {
 		String userid=authentication.getName();
 		return userid;
 	}
-
-
 }
