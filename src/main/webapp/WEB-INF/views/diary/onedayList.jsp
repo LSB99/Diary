@@ -62,7 +62,7 @@ p {
 				<span>하루 리스트:</span>
 				
 				
-				<form:select path="di" class="form-control">
+				<form:select path="du" class="form-control">
 				
 					<form:option value="0">전체</form:option>
 					
@@ -70,7 +70,7 @@ p {
 
                  </form:select>
                              
-				<button type="submit" class="btn">검색</button>
+				<button type="submit" class="btn" name="cmd" value="save">검색</button>
 								
 			</form:form>
 			

@@ -21,12 +21,39 @@ public interface DiaryRepository extends JpaRepository<Diary, Integer> {
 
 	Page<Diary> findByUserId(String userId, Pageable pageable);
 
+	Page<Diary> findByTitle(int du, PageRequest of);
+
+
 	public default List<Diary> findByUserId(String userId, Pagination pagination){
 		Page<Diary> page=this.findByUserId(pagination.getDi(), PageRequest.of(pagination.getPg()-1, pagination.getSz(),
 				Sort.Direction.DESC, "id"));
 		pagination.setRecordCount((int)page.getTotalElements());
 		return page.getContent();
 
+	}
+
+
+	public default List<Diary> findAll(Pagination pagination) {
+
+		Page<Diary> page = this
+
+				.findAll(PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+
+		pagination.setRecordCount((int) page.getTotalElements());
+
+		return page.getContent();
+	}
+
+
+	public default List<Diary> findByTitle(Pagination pagination) {
+
+		Page<Diary> page = this.findByTitle(pagination.getDu(),
+
+				PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+
+		pagination.setRecordCount((int) page.getTotalElements());
+
+		return page.getContent();
 	}
 
 

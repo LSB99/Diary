@@ -16,17 +16,50 @@ import org.springframework.data.repository.query.Param;
 import net.skhu.entity.Bukit;
 import net.skhu.model.Pagination;
 
-public interface BukitRepository extends JpaRepository<Bukit, Integer>  {
+public interface BukitRepository extends JpaRepository<Bukit, Integer> {
 
 
 	Page<Bukit> findByUserId(String userId, Pageable pageable);
 
-	public default List<Bukit> findByUserId(String userId, Pagination pagination){
-		Page<Bukit> page=this.findByUserId(pagination.getDi(), PageRequest.of(pagination.getPg()-1, pagination.getSz(),
-				Sort.Direction.DESC, "id"));
-		pagination.setRecordCount((int)page.getTotalElements());
+	Page<Bukit> findByBody(int du, PageRequest of);
+
+
+	public default List<Bukit> findByUserId(String userId, Pagination pagination) {
+
+		Page<Bukit> page = this.findByUserId(pagination.getDi(),
+
+				PageRequest.of(pagination.getPg() - 1, pagination.getSz(),
+
+						Sort.Direction.DESC, "id"));
+
+		pagination.setRecordCount((int) page.getTotalElements());
+
 		return page.getContent();
 
+	}
+
+
+	public default List<Bukit> findAll(Pagination pagination) {
+
+		Page<Bukit> page = this
+
+				.findAll(PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+
+		pagination.setRecordCount((int) page.getTotalElements());
+
+		return page.getContent();
+	}
+
+
+	public default List<Bukit> findByBody(Pagination pagination) {
+
+		Page<Bukit> page = this.findByBody(pagination.getDu(),
+
+				PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+
+		pagination.setRecordCount((int) page.getTotalElements());
+
+		return page.getContent();
 	}
 
 
@@ -35,15 +68,8 @@ public interface BukitRepository extends JpaRepository<Bukit, Integer>  {
 	@Transactional
 	void deleteBukit(@Param("userId") String userId);
 
-
 	Bukit findOneByUserId(String userId);
+
 	List<Bukit> findByUserId(String userId);
 
-
-
-
-
-
-
 }
-

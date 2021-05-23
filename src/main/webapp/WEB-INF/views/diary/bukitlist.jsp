@@ -61,8 +61,8 @@ p {
 		<main class="contents">
 
 
-
 			<form:form method="get" modelAttribute="pagination">
+			
 			
 				<form:hidden path="pg" value="1" />
 				
@@ -71,22 +71,24 @@ p {
 				
 				<span>버킷리스트:</span>
 				
-				
-				<form:select path="di" class="form-control">
+											
+				<form:select path="du" class="form-control">
 				
 					<form:option value="0">전체</form:option>
 					
 					<form:options itemValue="id" itemLabel="body" items="${ bukits }" />
 
-                 </form:select>
-                             
-				<button type="submit" class="btn">검색</button>
+                </form:select>
+                
+                                        
+				<button type="submit" class="btn" name="cmd" value="save">검색</button>
 								
+													
 			</form:form>
 
 
-
 			<table class="list">
+			
 				<thead>
 					<tr>
 

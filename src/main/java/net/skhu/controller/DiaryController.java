@@ -37,425 +37,493 @@ import net.skhu.service.BukitService;
 @RequestMapping("/diary")
 public class DiaryController {
 
-	@Autowired UserRepository userRepository;
+	@Autowired
+	UserRepository userRepository;
 
-	@Autowired BukitRepository bukitRepository;
-	@Autowired BukitMapper bukitMapper;
+	@Autowired
+	BukitRepository bukitRepository;
+	@Autowired
+	BukitMapper bukitMapper;
 
-	@Autowired DiaryRepository diaryRepository;
-	@Autowired DiaryMapper diaryMapper;
+	@Autowired
+	DiaryRepository diaryRepository;
+	@Autowired
+	DiaryMapper diaryMapper;
 
-	@Autowired MemoRepository memoRepository;
-	@Autowired MemosMapper memoMapper;
+	@Autowired
+	MemoRepository memoRepository;
+	@Autowired
+	MemosMapper memoMapper;
 
-	@Autowired PlanRepository planRepository;
-	@Autowired PlanMapper planMapper;
+	@Autowired
+	PlanRepository planRepository;
+	@Autowired
+	PlanMapper planMapper;
 
-	@Autowired TimeTableRepository timetableRepository;
-	@Autowired TimeTableMapper timetableMapper;
+	@Autowired
+	TimeTableRepository timetableRepository;
+	@Autowired
+	TimeTableMapper timetableMapper;
 
-	@Autowired WeekRepository weekRepository;
-	@Autowired WeekMapper weekMapper;
+	@Autowired
+	WeekRepository weekRepository;
+	@Autowired
+	WeekMapper weekMapper;
 
-	@Autowired BukitService bukitService;
-
-
+	@Autowired
+	BukitService bukitService;
 
 //홈(메뉴)화면 구현
-    @RequestMapping("index")
-    public String index(Model model) {
-    	String userid=UserId.currentUserName();
-    	model.addAttribute("userid", userid);
-        return "diary/index";
-    }
+	@RequestMapping("index")
+	public String index(Model model) {
+		String userid = UserId.currentUserName();
+		model.addAttribute("userid", userid);
+		return "diary/index";
+	}
 
+	// 하루일정 생성
 
+	@GetMapping("onedayCreate")
+	public String onedayCreate(Model model, Pagination pagination) {
 
-    //하루일정 생성
+		model.addAttribute("plan", new Plan());
 
-    @GetMapping("onedayCreate")
-    public String onedayCreate(Model model, Pagination pagination) {
+		return "diary/onedayEdit";
+	}
 
-    	model.addAttribute("plan", new Plan());
+	@PostMapping("onedayCreate")
+	public String onedayCreate(Model model, Plan plan, Pagination pagination) {
 
-        return "diary/onedayEdit";
-    }
+		String userid = UserId.currentUserName();
+		plan.setUserId(userid);
 
+		planRepository.save(plan);
 
-    @PostMapping("onedayCreate")
-    public String onedayCreate(Model model , Plan plan, Pagination pagination) {
+		int lastPage = (int) Math.ceil((double) bukitRepository.count() / pagination.getSz());
+		pagination.setPg(lastPage);
 
-    	String userid=UserId.currentUserName();
-    	plan.setUserId(userid);
+		return "redirect:onedayList?" + pagination.getQueryString();
+	}
 
-    	planRepository.save(plan);
+	// 하루일정 목록
+	@GetMapping("onedayList")
+	public String onedaylist(Model model, Pagination pagination) {
 
-    	int lastPage=(int)Math.ceil((double)bukitRepository.count()/pagination.getSz());
-    	pagination.setPg(lastPage);
+		String userid = UserId.currentUserName();
+		List<Plan> plans = planRepository.findByUserId(userid, pagination);
 
-        return "redirect:onedayList?" + pagination.getQueryString();
-    }
+		model.addAttribute("plans", plans);
 
+		return "diary/onedayList";
 
-    // 하루일정 목록
-    @RequestMapping("onedayList")
-    public String onedaylist(Model model, Pagination pagination) {
+	}
 
-    	String userid=UserId.currentUserName();
-    	List<Plan> plans = planRepository.findByUserId( userid, pagination );
+	@PostMapping(value = "onedayList", params = "cmd=save")
+	public String onedayList(Model model, Plan plan, Pagination pagination) {
 
-    	model.addAttribute("plans", plans);
+		List<Plan> plans =
 
-        return "diary/onedayList";
+				pagination.getDu() == 0 ?
 
-    }
+						planRepository.findAll(pagination) :
 
+						planRepository.findByBody(pagination);
 
+		model.addAttribute("plans", plans);
 
-    //하루일정 수정
-    @GetMapping("onedayEdit")
-    public String onedayEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
+		return "diary/onedayList";
+	}
 
-    	Plan plan = planRepository.findById(id).get();
+	// 하루일정 수정
+	@GetMapping("onedayEdit")
+	public String onedayEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
 
-    	model.addAttribute("plan", plan);
+		Plan plan = planRepository.findById(id).get();
 
-    	return "diary/onedayEdit";
-    }
+		model.addAttribute("plan", plan);
 
+		return "diary/onedayEdit";
+	}
 
-    @PostMapping(value="onedayEdit", params="cmd=save")
-    public String onedayEdit(Model model, Plan plan, Pagination pagination) {
+	@PostMapping(value = "onedayEdit", params = "cmd=save")
+	public String onedayEdit(Model model, Plan plan, Pagination pagination) {
 
-    	plan.setUserId(UserId.currentUserName());
+		plan.setUserId(UserId.currentUserName());
 
-    	planRepository.save(plan);
+		planRepository.save(plan);
 
-     	model.addAttribute("message", "저장했습니다.");
+		model.addAttribute("message", "저장했습니다.");
 
-     	return "redirect:onedayList?" + pagination.getQueryString();
-    }
+		return "redirect:onedayList?" + pagination.getQueryString();
+	}
 
+	// 하루일정 삭제구현
+	@PostMapping(value = "onedayEdit", params = "cmd=delete")
+	public String onedayDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
 
+		planRepository.deleteById(id);
 
-  //하루일정 삭제구현
-    @PostMapping(value="onedayEdit", params="cmd=delete")
-    public String onedayDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
+		return "redirect:onedayList?" + pagination.getQueryString();
+	}
 
-    	planRepository.deleteById(id);
 
-    	return "redirect:onedayList?" + pagination.getQueryString();
-    }
 
+	// 일주일 주별 리스트
+	@GetMapping("weekList")
+	public String weekList(Model model, Pagination pagination) {
 
-  //일주일 주별 리스트
-    @GetMapping("weekList")
-    public String weekList(Model model, Pagination pagination) {
+		List<Week> weeks = weekRepository.findByUserId(UserId.currentUserName(), pagination);
 
-    	List<Week> weeks = weekRepository.findByUserId( UserId.currentUserName(), pagination );
+		model.addAttribute("weeks", weeks);
 
-    	model.addAttribute("weeks", weeks);
+		return "diary/weekList";
+	}
 
-    	return "diary/weekList";
-    }
 
+	@PostMapping(value = "weekList", params = "cmd=save")
+	public String weekList(Model model, Week week, Pagination pagination) {
 
-  //일주일계획 해당 주의 목록
-    @GetMapping("weekListDetail")
-    public String weekListDetail( Model model , @RequestParam("id") int id, Pagination pagination) {
+		List<Week> weeks =
 
-    	Week week = weekRepository.findById(id).get();
+				pagination.getDu() == 0 ?
 
-     	model.addAttribute("week", week);
+						weekRepository.findAll(pagination) :
 
-        return "diary/weekListDetail";
-    }
+						weekRepository.findByMyweek(pagination);
 
+		model.addAttribute("weeks", weeks);
 
+		return "diary/weekList";
+	}
 
 
-  //일주일계획 생성
-    @GetMapping("weekCreate")
-    public String weekCreate(Model model, Pagination pagination) {
 
-    	model.addAttribute("week", new Week());
+	// 일주일계획 해당 주의 목록
+	@GetMapping("weekListDetail")
+	public String weekListDetail(Model model, @RequestParam("id") int id, Pagination pagination) {
 
-    	return "diary/weekEdit";
-    }
+		Week week = weekRepository.findById(id).get();
 
+		model.addAttribute("week", week);
 
-    @PostMapping("weekCreate")
-    public String weekCreate(Model model, Week week, Pagination pagination) {
+		return "diary/weekListDetail";
+	}
 
-    	week.setUserId( UserId.currentUserName() );
+	// 일주일계획 생성
+	@GetMapping("weekCreate")
+	public String weekCreate(Model model, Pagination pagination) {
 
-    	weekRepository.save(week);
+		model.addAttribute("week", new Week());
 
-    	int lastPage=(int)Math.ceil((double)bukitRepository.count()/pagination.getSz());
-    	pagination.setPg(lastPage);
+		return "diary/weekEdit";
+	}
 
-        return "redirect:weekList?" + pagination.getQueryString();
-    }
+	@PostMapping("weekCreate")
+	public String weekCreate(Model model, Week week, Pagination pagination) {
 
+		week.setUserId(UserId.currentUserName());
 
+		weekRepository.save(week);
 
-  //일주일계획 수정
-    @GetMapping("weekEdit")
-    public String weekEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
+		int lastPage = (int) Math.ceil((double) bukitRepository.count() / pagination.getSz());
+		pagination.setPg(lastPage);
 
-    	Week week = weekRepository.findById(id).get();
+		return "redirect:weekList?" + pagination.getQueryString();
+	}
 
-    	model.addAttribute("week", week);
+	// 일주일계획 수정
+	@GetMapping("weekEdit")
+	public String weekEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
 
-    	return "diary/weekEdit";
-    }
+		Week week = weekRepository.findById(id).get();
 
+		model.addAttribute("week", week);
 
-    @PostMapping(value="weekEdit", params="cmd=save")
-    public String weekEdit(Model model, Week week, Pagination pagination) {
+		return "diary/weekEdit";
+	}
 
-    	week.setUserId(UserId.currentUserName());
+	@PostMapping(value = "weekEdit", params = "cmd=save")
+	public String weekEdit(Model model, Week week, Pagination pagination) {
 
-    	weekRepository.save(week);
+		week.setUserId(UserId.currentUserName());
 
-     	model.addAttribute("message", "저장했습니다.");
+		weekRepository.save(week);
 
-     	return "redirect:weekList?" + pagination.getQueryString();
-    }
+		model.addAttribute("message", "저장했습니다.");
 
-  //일주일계획 삭제
-    @PostMapping(value="weekEdit", params="cmd=delete")
-    public String weekDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
+		return "redirect:weekList?" + pagination.getQueryString();
+	}
 
-    	weekRepository.deleteById(id);
+	// 일주일계획 삭제
+	@PostMapping(value = "weekEdit", params = "cmd=delete")
+	public String weekDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
 
-    	return "redirect:weekList?" + pagination.getQueryString();
-    }
+		weekRepository.deleteById(id);
 
+		return "redirect:weekList?" + pagination.getQueryString();
+	}
 
-  //시간표
-    @GetMapping("timetable")
-    public String timetable(Model model) {
+	// 시간표
+	@GetMapping("timetable")
+	public String timetable(Model model) {
 
-    	model.addAttribute( "timetable" ,  timetableMapper.findByUserId( UserId.currentUserName()));
+		model.addAttribute("timetable", timetableMapper.findByUserId(UserId.currentUserName()));
 
-        return "diary/timetable";
-    }
+		return "diary/timetable";
+	}
 
+	@PostMapping("timetable")
+	public String timetable(Model model, TimeTable timetable) {
 
-    @PostMapping("timetable")
-    public String timetable( Model model ,  TimeTable timetable ) {
+		timetableMapper.update(timetable);
 
-    	timetableMapper.update(timetable);
+		return "redirect:timetable";
+	}
 
-        return "redirect:timetable";
-    }
+	// 버킷리스트 목록 구현
+	@GetMapping("bukitlist")
+	public String bukitlist(Model model, Pagination pagination) {
 
+		List<Bukit> bukits = bukitRepository.findByUserId(UserId.currentUserName(), pagination);
 
-  //버킷리스트 목록 구현
-    @RequestMapping("bukitlist")
-    public String bukitlist(Model model, Pagination pagination) {
+		model.addAttribute("bukits", bukits);
 
-        List<Bukit> bukits = bukitRepository.findByUserId(UserId.currentUserName(), pagination);
+		return "diary/bukitlist";
+	}
 
-    	model.addAttribute("bukits", bukits);
+	@PostMapping(value = "bukitlist", params = "cmd=save")
+	public String bukitlist(Model model, Bukit bukit, Pagination pagination) {
 
-        return "diary/bukitlist";
-    }
+		List<Bukit> bukits =
 
+				pagination.getDu() == 0 ?
+
+						bukitRepository.findAll(pagination) :
+
+						bukitRepository.findByBody(pagination);
+
+		model.addAttribute("bukits", bukits);
+
+		return "diary/bukitlist";
+	}
 
 //버킷리스트 생성 구현
-    @GetMapping("bukitCreate")
-    public String bukitCreate(Model model, Pagination pagination) {
+	@GetMapping("bukitCreate")
+	public String bukitCreate(Model model, Pagination pagination) {
 
-    	model.addAttribute("bukit", new Bukit());
+		model.addAttribute("bukit", new Bukit());
 
-    	return "diary/bukitEdit";
-    }
+		return "diary/bukitEdit";
+	}
 
+	@PostMapping("bukitCreate")
+	public String bukitCreate(Model model, Bukit bukit, Pagination pagination) {
 
-    @PostMapping("bukitCreate")
-    public String bukitCreate(Model model, Bukit bukit, Pagination pagination) {
+		bukit.setUserId(UserId.currentUserName());
+		bukitRepository.save(bukit);
 
-    	bukit.setUserId(UserId.currentUserName());
-    	bukitRepository.save(bukit);
+		int lastPage = (int) Math.ceil((double) bukitRepository.count() / pagination.getSz());
+		pagination.setPg(lastPage);
 
-    	int lastPage=(int)Math.ceil((double)bukitRepository.count()/pagination.getSz());
-    	pagination.setPg(lastPage);
-
-        return "redirect:bukitlist?" + pagination.getQueryString();
-    }
-
+		return "redirect:bukitlist?" + pagination.getQueryString();
+	}
 
 //버킷리스트 수정 구현
-    @GetMapping("bukitEdit")
-    public String bukitEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
+	@GetMapping("bukitEdit")
+	public String bukitEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
 
-    	Bukit bukit=bukitRepository.findById(id).get();
+		Bukit bukit = bukitRepository.findById(id).get();
 
-    	model.addAttribute("bukit", bukit);
+		model.addAttribute("bukit", bukit);
 
-    	return "diary/bukitEdit";
-    }
+		return "diary/bukitEdit";
+	}
 
+	@PostMapping(value = "bukitEdit", params = "cmd=save")
+	public String bukitEdit(Model model, Bukit bukit, Pagination pagination) {
 
-    @PostMapping(value="bukitEdit", params="cmd=save")
-    public String bukitEdit(Model model, Bukit bukit, Pagination pagination) {
+		bukit.setUserId(UserId.currentUserName());
+		bukitRepository.save(bukit);
 
-        bukit.setUserId(UserId.currentUserName());
-        bukitRepository.save(bukit);
-
-        return "redirect:bukitlist?" + pagination.getQueryString();
-    }
+		return "redirect:bukitlist?" + pagination.getQueryString();
+	}
 
 //버킷리스트 삭제구현
-    @PostMapping(value="bukitEdit", params="cmd=delete")
+	@PostMapping(value = "bukitEdit", params = "cmd=delete")
 
-    public String bukitDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
+	public String bukitDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
 
-    	bukitRepository.deleteById(id);
+		bukitRepository.deleteById(id);
 
-        return "redirect:bukitlist?" + pagination.getQueryString();
-    }
-
-
+		return "redirect:bukitlist?" + pagination.getQueryString();
+	}
 
 //일기 생성 구현
-    @GetMapping("diaryCreate")
-    public String diaryCreate(Model model, Pagination pagination) {
+	@GetMapping("diaryCreate")
+	public String diaryCreate(Model model, Pagination pagination) {
 
-    	model.addAttribute("diary", new Diary());
+		model.addAttribute("diary", new Diary());
 
-    	return "diary/diaryEdit";
-    }
+		return "diary/diaryEdit";
+	}
 
-    @PostMapping("diaryCreate")
-    public String diaryCreate(Model model, Diary diary, Pagination pagination) {
+	@PostMapping("diaryCreate")
+	public String diaryCreate(Model model, Diary diary, Pagination pagination) {
 
-    	diary.setUserId(UserId.currentUserName());
+		diary.setUserId(UserId.currentUserName());
 
-    	diaryMapper.insert(diary);
+		diaryMapper.insert(diary);
 
-    	int lastPage=(int)Math.ceil((double)bukitRepository.count()/pagination.getSz());
-    	pagination.setPg(lastPage);
+		int lastPage = (int) Math.ceil((double) bukitRepository.count() / pagination.getSz());
+		pagination.setPg(lastPage);
 
-        return "redirect:diarySpace?" + pagination.getQueryString();
-    }
+		return "redirect:diarySpace?" + pagination.getQueryString();
+	}
+
+	// 일기 목록 구현
+	@GetMapping("diarySpace")
+	public String diarySpace(Model model, Pagination pagination) {
+
+		List<Diary> diary = diaryRepository.findByUserId(UserId.currentUserName(), pagination);
+
+		model.addAttribute("diarys", diary);
+
+		return "diary/diarySpace";
+	}
 
 
-  //일기 목록 구현
-    @RequestMapping("diarySpace")
-    public String diarySpace(Model model, Pagination pagination) {
+	@PostMapping(value = "diarySpace", params = "cmd=save")
+	public String diarySpace(Model model, Diary diary, Pagination pagination) {
 
-    	List<Diary> diary = diaryRepository.findByUserId( UserId.currentUserName(), pagination );
+		List<Diary> diarys =
 
-    	model.addAttribute("diarys", diary);
+				pagination.getDu() == 0 ?
 
-        return "diary/diarySpace";
-    }
+						diaryRepository.findAll(pagination) :
+
+							diaryRepository.findByTitle(pagination);
+
+		model.addAttribute("diarys", diarys);
+
+		return "diary/diarySpace";
+	}
+
 
 
 //일기 수정 구현
-    @GetMapping("diaryEdit")
-    public String diaryEdit(Model model,  @RequestParam("id") int id, Pagination pagination) {
+	@GetMapping("diaryEdit")
+	public String diaryEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
 
-    	Diary diary = diaryRepository.findById(id).get();
+		Diary diary = diaryRepository.findById(id).get();
 
-    	model.addAttribute("diary", diary);
+		model.addAttribute("diary", diary);
 
-    	return "diary/diaryEdit";
-    }
+		return "diary/diaryEdit";
+	}
 
-    @PostMapping(value="diaryEdit", params="cmd=save")
-    public String diaryEdit(Model model, Diary diary, Pagination pagination) {
+	@PostMapping(value = "diaryEdit", params = "cmd=save")
+	public String diaryEdit(Model model, Diary diary, Pagination pagination) {
 
-    	diary.setUserId(UserId.currentUserName());
+		diary.setUserId(UserId.currentUserName());
 
-    	diaryRepository.save(diary);
+		diaryRepository.save(diary);
 
-     	model.addAttribute("message", "저장했습니다.");
+		model.addAttribute("message", "저장했습니다.");
 
-     	return "redirect:diarySpace?" + pagination.getQueryString();
-    }
+		return "redirect:diarySpace?" + pagination.getQueryString();
+	}
 
-  //일기 삭제구현
-    @PostMapping(value="diaryEdit", params="cmd=delete")
-    public String diaryDelete(Model model,  @RequestParam("id") int id, Pagination pagination) {
+	// 일기 삭제구현
+	@PostMapping(value = "diaryEdit", params = "cmd=delete")
+	public String diaryDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
 
-    	diaryRepository.deleteById(id);
+		diaryRepository.deleteById(id);
 
-    	return "redirect:diarySpace?" + pagination.getQueryString();
+		return "redirect:diarySpace?" + pagination.getQueryString();
 
-    }
-
-
-
+	}
 
 //메모 목록 구현
-    @RequestMapping("memopad")
-    public String memopad(Model model, Pagination pagination) {
+	@GetMapping("memopad")
+	public String memopad(Model model, Pagination pagination) {
 
-    	List<Memos> memos = memoRepository.findByUserId( UserId.currentUserName(), pagination );
+		List<Memos> memos = memoRepository.findByUserId(UserId.currentUserName(), pagination);
 
-    	model.addAttribute("memos", memos);
+		model.addAttribute("memos", memos);
 
-        return "diary/memopad";
-    }
+		return "diary/memopad";
+	}
+
+
+
+	@PostMapping(value = "memopad", params = "cmd=save")
+	public String memopad(Model model, Memos memo, Pagination pagination) {
+
+		List<Memos> memos =
+
+				pagination.getDu() == 0 ?
+
+						memoRepository.findAll(pagination) :
+
+							memoRepository.findByBody(pagination);
+
+		model.addAttribute("memos", memos);
+
+		return "diary/memopad";
+	}
 
 
 //메모 생성 구현
-    @GetMapping("memoCreate")
-    public String memoCreate(Model model, Pagination pagination) {
+	@GetMapping("memoCreate")
+	public String memoCreate(Model model, Pagination pagination) {
 
-    	model.addAttribute("memo", new Memos());
+		model.addAttribute("memo", new Memos());
 
-    	return "diary/memoEdit";
-    }
+		return "diary/memoEdit";
+	}
 
-    @PostMapping("memoCreate")
-    public String memoCreate(Model model, Memos memo, Pagination pagination) {
+	@PostMapping("memoCreate")
+	public String memoCreate(Model model, Memos memo, Pagination pagination) {
 
-    	memo.setUserId(UserId.currentUserName());
+		memo.setUserId(UserId.currentUserName());
 
-    	memoRepository.save(memo);
+		memoRepository.save(memo);
 
-    	int lastPage=(int)Math.ceil((double)bukitRepository.count()/pagination.getSz());
-    	pagination.setPg(lastPage);
+		int lastPage = (int) Math.ceil((double) bukitRepository.count() / pagination.getSz());
+		pagination.setPg(lastPage);
 
-        return "redirect:memopad?" + pagination.getQueryString();
-    }
-
+		return "redirect:memopad?" + pagination.getQueryString();
+	}
 
 //메모 수정 구현
-    @GetMapping("memoEdit")
-    public String memoEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
+	@GetMapping("memoEdit")
+	public String memoEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
 
-    	Memos memo=memoRepository.findById(id).get();
+		Memos memo = memoRepository.findById(id).get();
 
-    	model.addAttribute("memo", memo);
+		model.addAttribute("memo", memo);
 
-    	return "diary/memoEdit";
-    }
+		return "diary/memoEdit";
+	}
 
+	@PostMapping(value = "memoEdit", params = "cmd=save")
+	public String memoEdit(Model model, Memos memo, Pagination pagination) {
 
-    @PostMapping(value="memoEdit", params="cmd=save")
-    public String memoEdit(Model model, Memos memo, Pagination pagination) {
+		memo.setUserId(UserId.currentUserName());
 
-    	memo.setUserId(UserId.currentUserName());
+		memoRepository.save(memo);
 
-    	memoRepository.save(memo);
+		model.addAttribute("message", "저장했습니다.");
 
-      	model.addAttribute("message", "저장했습니다.");
-
-      	return "redirect:memopad?" + pagination.getQueryString();
-    }
+		return "redirect:memopad?" + pagination.getQueryString();
+	}
 
 //메모 삭제구현
-    @PostMapping(value="memoEdit", params="cmd=delete")
-    public String memoDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
+	@PostMapping(value = "memoEdit", params = "cmd=delete")
+	public String memoDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
 
-    	memoRepository.deleteById(id);
+		memoRepository.deleteById(id);
 
-    	return "redirect:memopad?" + pagination.getQueryString();
-    }
+		return "redirect:memopad?" + pagination.getQueryString();
+	}
 }

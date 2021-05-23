@@ -62,6 +62,8 @@
       
       
       <button type="submit" class="btn" name="cmd" value="save">저장</button> 
+      
+      
       <a href="bukitlist?${pagination.queryString}" class="btn">버킷리스트 목록보기</a>
       
       <c:if test="${ bukit.id>0 }">

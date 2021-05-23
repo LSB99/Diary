@@ -21,6 +21,9 @@ public interface WeekRepository extends JpaRepository<Week, Integer>  {
 
 	Page<Week> findByUserId(String userId, Pageable pageable);
 
+	Page<Week> findByMyweek(int du, PageRequest of);
+
+
 	public default List<Week> findByUserId(String userId, Pagination pagination){
 		Page<Week> page=this.findByUserId(pagination.getDi(), PageRequest.of(pagination.getPg()-1, pagination.getSz(),
 				Sort.Direction.DESC, "id"));
@@ -28,6 +31,32 @@ public interface WeekRepository extends JpaRepository<Week, Integer>  {
 		return page.getContent();
 
 	}
+
+
+	public default List<Week> findAll(Pagination pagination) {
+
+		Page<Week> page = this
+
+				.findAll(PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+
+		pagination.setRecordCount((int) page.getTotalElements());
+
+		return page.getContent();
+	}
+
+
+	public default List<Week> findByMyweek(Pagination pagination) {
+
+		Page<Week> page = this.findByMyweek(pagination.getDu(),
+
+				PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+
+		pagination.setRecordCount((int) page.getTotalElements());
+
+		return page.getContent();
+	}
+
+
 
 
 	@Modifying

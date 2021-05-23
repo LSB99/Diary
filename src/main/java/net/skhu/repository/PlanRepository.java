@@ -18,14 +18,46 @@ import net.skhu.model.Pagination;
 
 public interface PlanRepository extends JpaRepository<Plan, Integer>  {
 
+
 	Page<Plan> findByUserId(String userId, Pageable pageable);
 
+	Page<Plan> findByBody(int du, PageRequest of);
+
+
 	public default List<Plan> findByUserId(String userId, Pagination pagination){
+
 		Page<Plan> page=this.findByUserId(pagination.getDi(), PageRequest.of(pagination.getPg()-1, pagination.getSz(),
+
 				Sort.Direction.DESC, "id"));
+
 		pagination.setRecordCount((int)page.getTotalElements());
+
 		return page.getContent();
 
+	}
+
+
+	public default List<Plan> findAll(Pagination pagination) {
+
+		Page<Plan> page = this
+
+				.findAll(PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+
+		pagination.setRecordCount((int) page.getTotalElements());
+
+		return page.getContent();
+	}
+
+
+	public default List<Plan> findByBody(Pagination pagination) {
+
+		Page<Plan> page = this.findByBody(pagination.getDu(),
+
+				PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+
+		pagination.setRecordCount((int) page.getTotalElements());
+
+		return page.getContent();
 	}
 
 	@Modifying

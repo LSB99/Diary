@@ -22,6 +22,9 @@ public interface MemoRepository extends JpaRepository<Memos, Integer>  {
 
 	Page<Memos> findByUserId(String userId, Pageable pageable);
 
+	Page<Memos> findByBody(int du, PageRequest of);
+
+
 	public default List<Memos> findByUserId(String userId, Pagination pagination){
 		Page<Memos> page=this.findByUserId(pagination.getDi(), PageRequest.of(pagination.getPg()-1, pagination.getSz(),
 				Sort.Direction.DESC, "id"));
@@ -29,6 +32,32 @@ public interface MemoRepository extends JpaRepository<Memos, Integer>  {
 		return page.getContent();
 
 	}
+
+
+	public default List<Memos> findAll(Pagination pagination) {
+
+		Page<Memos> page = this
+
+				.findAll(PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+
+		pagination.setRecordCount((int) page.getTotalElements());
+
+		return page.getContent();
+	}
+
+
+	public default List<Memos> findByBody(Pagination pagination) {
+
+		Page<Memos> page = this.findByBody(pagination.getDu(),
+
+				PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+
+		pagination.setRecordCount((int) page.getTotalElements());
+
+		return page.getContent();
+
+	}
+
 
 
 	@Modifying
