@@ -426,10 +426,6 @@ public class DiaryController {
     @PostMapping(value="diaryEdit")
     public String diaryEdit(Model model, Diary diary, @Valid DiaryModel a, BindingResult bindingResult, Pagination pagination) {
 
-    	if(bindingResult.hasErrors()) {
-        	model.addAttribute("diaryModel", diary);
-        	return "diary/diaryEdit";
-    	}
     	diary.setUserId(UserId.currentUserName());
 
     	diaryRepository.update(a.getId(), a.getTitle(), a.getBody());
