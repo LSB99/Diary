@@ -63,10 +63,12 @@ p {
 				</ul>
 			</nav>
 		</header>
+		
+		
 		<main class="contents">
 		
 		
-		<form:form method="get" modelAttribute="pagination">
+		  <form:form method="get" modelAttribute="pagination">
 			
 				<form:hidden path="pg" value="1" />
 				
@@ -76,20 +78,23 @@ p {
 				<span>일주일 리스트:</span>
 				
 				
-				<form:select path="du" class="form-control">
+				 <form:select path="du" class="form-control">
 				
 					<form:option value="0">전체</form:option>
 					
 					<form:options itemValue="id" itemLabel="myweek" items="${ weeks }" />
 
                  </form:select>
+                 
                              
 				<button type="submit" class="btn" name="cmd" value="save">검색</button>
+								
 								
 			</form:form>
 		
 		
 			<table class="list1">
+			
 				<thead>
 					<tr>
 						<th>몇월 / 몇주 </th>
@@ -97,22 +102,33 @@ p {
 				<tbody>
 
 					<c:forEach var="week" items="${ weeks }">
+					
 						<tr>
+						
 							<td><a href="weekListDetail?id=${ week.id }&${pagination.queryString}">${ week.myweek }</a></td>
 						</tr>
+						
+						
 					</c:forEach>
 
 				</tbody>
+				
 			</table>
+			
+			
 			<my:pagination pageSize="${ pagination.sz }" recordCount="${ pagination.recordCount }" 
                  queryStringName="pg" />
+
 
 			<p>
 				<a href="weekCreate?${pagination.queryString}" class="btn">일주일계획 작성</a>
 			</p>
+			
+			
 			<p>
 				<a href="index" class="btn">처음으로 가기</a>
 			</p>
+			
 		</main>
 		<footer>
 			소프캡스톤<br>임수빈, 김보미

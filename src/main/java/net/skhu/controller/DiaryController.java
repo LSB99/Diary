@@ -180,20 +180,17 @@ public class DiaryController {
 	}
 
 
+
+
 	@PostMapping(value = "weekList", params = "cmd=save")
-	public String weekList(Model model, Week week, Pagination pagination) {
+	public String weekList(Model model, @RequestParam("du") int du, Pagination pagination) {
 
-		List<Week> weeks =
-
-				pagination.getDu() == 0 ?
-
-						weekRepository.findAll(pagination) :
-
-						weekRepository.findByMyweek(pagination);
+		List<Week> weeks = weekRepository.findWeek(du);
 
 		model.addAttribute("weeks", weeks);
 
 		return "diary/weekList";
+
 	}
 
 
@@ -208,6 +205,8 @@ public class DiaryController {
 
 		return "diary/weekListDetail";
 	}
+
+
 
 	// 일주일계획 생성
 	@GetMapping("weekCreate")
@@ -391,7 +390,6 @@ public class DiaryController {
 		return "diary/diarySpace";
 	}
 
-
 	@PostMapping(value = "diarySpace", params = "cmd=save")
 	public String diarySpace(Model model, Diary diary, Pagination pagination) {
 
@@ -401,14 +399,12 @@ public class DiaryController {
 
 						diaryRepository.findAll(pagination) :
 
-							diaryRepository.findByTitle(pagination);
+						diaryRepository.findByTitle(pagination);
 
 		model.addAttribute("diarys", diarys);
 
 		return "diary/diarySpace";
 	}
-
-
 
 //일기 수정 구현
 	@GetMapping("diaryEdit")
@@ -454,8 +450,6 @@ public class DiaryController {
 		return "diary/memopad";
 	}
 
-
-
 	@PostMapping(value = "memopad", params = "cmd=save")
 	public String memopad(Model model, Memos memo, Pagination pagination) {
 
@@ -465,13 +459,12 @@ public class DiaryController {
 
 						memoRepository.findAll(pagination) :
 
-							memoRepository.findByBody(pagination);
+						memoRepository.findByBody(pagination);
 
 		model.addAttribute("memos", memos);
 
 		return "diary/memopad";
 	}
-
 
 //메모 생성 구현
 	@GetMapping("memoCreate")
