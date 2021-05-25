@@ -19,6 +19,7 @@ public class Diary {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
+	int no;
 	String userId;
 	String title;
 	String body;

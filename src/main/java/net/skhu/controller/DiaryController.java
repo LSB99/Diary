@@ -1,10 +1,15 @@
 package net.skhu.controller;
 
+import java.util.Date;
 import java.util.List;
+
+import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +28,7 @@ import net.skhu.mapper.MemosMapper;
 import net.skhu.mapper.PlanMapper;
 import net.skhu.mapper.TimeTableMapper;
 import net.skhu.mapper.WeekMapper;
+import net.skhu.model.DiaryModel;
 import net.skhu.model.Pagination;
 import net.skhu.repository.BukitRepository;
 import net.skhu.repository.DiaryRepository;
@@ -33,45 +39,34 @@ import net.skhu.repository.UserRepository;
 import net.skhu.repository.WeekRepository;
 import net.skhu.service.BukitService;
 
+
+
 @Controller
 @RequestMapping("/diary")
 public class DiaryController {
 
-	@Autowired
-	UserRepository userRepository;
+	@Autowired UserRepository userRepository;
 
-	@Autowired
-	BukitRepository bukitRepository;
-	@Autowired
-	BukitMapper bukitMapper;
+	@Autowired BukitRepository bukitRepository;
+	@Autowired BukitMapper bukitMapper;
 
-	@Autowired
-	DiaryRepository diaryRepository;
-	@Autowired
-	DiaryMapper diaryMapper;
+	@Autowired DiaryRepository diaryRepository;
+	@Autowired DiaryMapper diaryMapper;
 
-	@Autowired
-	MemoRepository memoRepository;
-	@Autowired
-	MemosMapper memoMapper;
+	@Autowired MemoRepository memoRepository;
+	@Autowired MemosMapper memoMapper;
 
-	@Autowired
-	PlanRepository planRepository;
-	@Autowired
-	PlanMapper planMapper;
+	@Autowired PlanRepository planRepository;
+	@Autowired PlanMapper planMapper;
 
-	@Autowired
-	TimeTableRepository timetableRepository;
-	@Autowired
-	TimeTableMapper timetableMapper;
+	@Autowired TimeTableRepository timetableRepository;
+	@Autowired TimeTableMapper timetableMapper;
 
-	@Autowired
-	WeekRepository weekRepository;
-	@Autowired
-	WeekMapper weekMapper;
+	@Autowired WeekRepository weekRepository;
+	@Autowired WeekMapper weekMapper;
 
-	@Autowired
-	BukitService bukitService;
+	@Autowired BukitService bukitService;
+
 
 //홈(메뉴)화면 구현
 	@RequestMapping("index")
@@ -358,90 +353,102 @@ public class DiaryController {
 		return "redirect:bukitlist?" + pagination.getQueryString();
 	}
 
-//일기 생성 구현
-	@GetMapping("diaryCreate")
-	public String diaryCreate(Model model, Pagination pagination) {
+	//일기 생성 구현
+    @GetMapping("diaryCreate")
+    public String diaryCreate(Model model, Pagination pagination) {
 
-		model.addAttribute("diary", new Diary());
+    	model.addAttribute("diaryModel", new DiaryModel());
 
-		return "diary/diaryEdit";
-	}
+    	return "diary/diaryEdit";
+    }
 
-	@PostMapping("diaryCreate")
-	public String diaryCreate(Model model, Diary diary, Pagination pagination) {
-
-		diary.setUserId(UserId.currentUserName());
-
-		diaryMapper.insert(diary);
-
-		int lastPage = (int) Math.ceil((double) bukitRepository.count() / pagination.getSz());
-		pagination.setPg(lastPage);
-
-		return "redirect:diarySpace?" + pagination.getQueryString();
-	}
-
-	// 일기 목록 구현
-	@GetMapping("diarySpace")
-	public String diarySpace(Model model, Pagination pagination) {
-
-		List<Diary> diary = diaryRepository.findByUserId(UserId.currentUserName(), pagination);
-
-		model.addAttribute("diarys", diary);
-
-		return "diary/diarySpace";
-	}
+    @Transactional
+    @PostMapping("diaryCreate")
+    public String diaryCreate(Model model, @Valid DiaryModel a, BindingResult bindingResult, Pagination pagination) {
 
 
-	@PostMapping(value = "diarySpace", params = "cmd=save")
-	public String diarySpace(Model model, Diary diary, Pagination pagination) {
+    	String currentid=UserId.currentUserName();
+    	int id=insertDiary(a, currentid);
 
-		List<Diary> diarys =
+    	int lastPage=(int)Math.ceil((double)bukitRepository.count()/pagination.getSz());
+    	pagination.setPg(lastPage);
 
-				pagination.getDu() == 0 ?
+        return "redirect:diarySpace?" + id + "&" + pagination.getQueryString();
+    }
+    	private int insertDiary(DiaryModel a, String userId) {
+    		int maxNo=diaryRepository.findMaxNo(userId);
 
-						diaryRepository.findAll(pagination) :
+    		Diary diary= new Diary();
+    		diary.setUserId(UserId.currentUserName());
+    		diary.setTitle(a.getTitle());
+    		diary.setWriteDate(new Date());
+    		diary.setBody(a.getBody());
+    		diary.setNo(maxNo+1);
+    		diaryRepository.save(diary);
+    		return diary.getId();
+    	}
 
-							diaryRepository.findByTitle(pagination);
 
-		model.addAttribute("diarys", diarys);
 
-		return "diary/diarySpace";
-	}
+  	//일기 목록 구현
+    @RequestMapping("diarySpace")
+    public String diarySpace(Model model, Pagination pagination) {
+
+    	List<Diary> diary = diaryRepository.findByUserId( UserId.currentUserName(), pagination );
+
+    	model.addAttribute("diarys", diary);
+
+        return "diary/diarySpace";
+    }
+
+    //일기 보기 구현
+    @RequestMapping("diaryView")
+    public String diaryView(@RequestParam("id") int id, Pagination pagination, Model model) {
+        Diary diary = diaryRepository.findById(id).get();
+        model.addAttribute("diary", diary);
+        return "diary/diaryView";
+    }
 
 
 
 //일기 수정 구현
-	@GetMapping("diaryEdit")
-	public String diaryEdit(Model model, @RequestParam("id") int id, Pagination pagination) {
+    @GetMapping("diaryEdit")
+    public String diaryEdit(Model model,  @RequestParam("id") int id, Pagination pagination) {
 
-		Diary diary = diaryRepository.findById(id).get();
+    	Diary diary = diaryRepository.findById(id).get();
 
-		model.addAttribute("diary", diary);
+    	model.addAttribute("diaryModel", diary);
 
-		return "diary/diaryEdit";
-	}
+    	return "diary/diaryEdit";
+    }
 
-	@PostMapping(value = "diaryEdit", params = "cmd=save")
-	public String diaryEdit(Model model, Diary diary, Pagination pagination) {
+    @Transactional
+    @PostMapping(value="diaryEdit")
+    public String diaryEdit(Model model, Diary diary, @Valid DiaryModel a, BindingResult bindingResult, Pagination pagination) {
 
-		diary.setUserId(UserId.currentUserName());
+    	if(bindingResult.hasErrors()) {
+        	model.addAttribute("diaryModel", diary);
+        	return "diary/diaryEdit";
+    	}
+    	diary.setUserId(UserId.currentUserName());
 
-		diaryRepository.save(diary);
+    	diaryRepository.update(a.getId(), a.getTitle(), a.getBody());
 
-		model.addAttribute("message", "저장했습니다.");
+     	model.addAttribute("message", "저장했습니다.");
 
-		return "redirect:diarySpace?" + pagination.getQueryString();
-	}
+     	return "redirect:diarySpace?" +a.getId()+"&"+ pagination.getQueryString();
+    }
 
-	// 일기 삭제구현
-	@PostMapping(value = "diaryEdit", params = "cmd=delete")
-	public String diaryDelete(Model model, @RequestParam("id") int id, Pagination pagination) {
 
-		diaryRepository.deleteById(id);
+  //일기 삭제구현
+    @PostMapping(value="diaryEdit", params="cmd=delete")
+    public String diaryDelete(Model model,  @RequestParam("id") int id, Pagination pagination) {
 
-		return "redirect:diarySpace?" + pagination.getQueryString();
+    	diaryRepository.deleteById(id);
 
-	}
+    	return "redirect:diarySpace?" + pagination.getQueryString();
+
+    }
 
 //메모 목록 구현
 	@GetMapping("memopad")

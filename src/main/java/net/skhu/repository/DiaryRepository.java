@@ -68,6 +68,13 @@ public interface DiaryRepository extends JpaRepository<Diary, Integer> {
 	@Transactional
 	void deleteDiary(@Param("userId") String userId);
 
+	@Query("SELECT MAX(a.no) FROM Diary a WHERE a.userId = ?1")
+    public int findMaxNo(String userId);
+
+    @Modifying
+    @Query("UPDATE Diary SET title=:title, body=:body, writeDate=CURRENT_TIMESTAMP() WHERE id=:id")
+    public void update(@Param("id") int id, @Param("title") String title, @Param("body") String body);
+
 
 	Diary findOneByUserId(String userId);
 
