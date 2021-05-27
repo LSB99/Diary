@@ -11,7 +11,7 @@
 <title>DiaryList</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="${R}common.js"></script>
+<script src="${R}res/common.js"></script>
 <link rel="stylesheet" type="text/css" href="/list.css" />
 <link rel="stylesheet" type="text/css" href="/background.css" />
 <style>
@@ -49,22 +49,17 @@ td:nth-child(1) {
 			
 				<form:hidden path="pg" value="1" />
 				
-				<form:hidden path="sz" />
-				
-				
-				<span>일기 리스트:</span>
-				
-				
-				<form:select path="du" class="form-control">
-				
-					<form:option value="0">전체</form:option>
-					
-					<form:options itemValue="id" itemLabel="title" items="${ diarys }" />
+				<form:select path="sb" class="form-control ml20" itemValue="value" itemLabel="label" items="${ searchBy }" />
+				<form:input path="st" class="form-control" placeholder="검색문자열" />
+				 <button type="submit" class="btn btn-default">
+     				 <i class="glyphicon glyphicon-search"></i> 검색</button>
+   				<c:if test="${ pagination.sb > 0 }">
+     			 <a class="btn btn-default" href="diarySpace?pg=1">
+        			<i class="glyphicon glyphicon-ban-circle"></i> 검색취소</a>
+   				 </c:if>
 
-                 </form:select>
-                             
-				<button type="submit" class="btn" name="cmd" value="save">검색</button>
-								
+				<form:hidden path="sz" />
+							
 			</form:form>
 		
 		

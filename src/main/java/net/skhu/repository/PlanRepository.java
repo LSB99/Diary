@@ -14,14 +14,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import net.skhu.entity.Plan;
+import net.skhu.model.Option;
 import net.skhu.model.Pagination;
 
 public interface PlanRepository extends JpaRepository<Plan, Integer>  {
 
 
-	Page<Plan> findByUserId(String userId, Pageable pageable);
-
-	Page<Plan> findByBody(int du, PageRequest of);
+	Option[] searchBy= {new Option(0, "검색없음"), new Option(1, "본문")};
 
 
 	public default List<Plan> findByUserId(String userId, Pagination pagination){
@@ -39,26 +38,22 @@ public interface PlanRepository extends JpaRepository<Plan, Integer>  {
 
 	public default List<Plan> findAll(Pagination pagination) {
 
-		Page<Plan> page = this
+        Pageable pageable =
+                PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.DESC, "today");
 
-				.findAll(PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+      Page<Plan> page;
+      String userId = pagination.getDi();
+      String searchText = pagination.getSt();
+      switch (pagination.getSb()) {
+      case 1: page = this.findByUserIdAndBodyContains(userId, searchText, pageable); break;
+      default: page = this.findByUserId(userId, pageable); break;
+      }
+      pagination.setRecordCount((int)page.getTotalElements());
+      return page.getContent();
+  }
 
-		pagination.setRecordCount((int) page.getTotalElements());
-
-		return page.getContent();
-	}
-
-
-	public default List<Plan> findByBody(Pagination pagination) {
-
-		Page<Plan> page = this.findByBody(pagination.getDu(),
-
-				PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
-
-		pagination.setRecordCount((int) page.getTotalElements());
-
-		return page.getContent();
-	}
+  public Page<Plan> findByUserId(String userId, Pageable pageable);
+  public Page<Plan> findByUserIdAndBodyContains(String userId, String body, Pageable pageable);
 
 	@Modifying
 	@Query(value = "insert into plan(userId) VALUES (:userId)", nativeQuery = true)

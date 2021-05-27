@@ -14,14 +14,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import net.skhu.entity.Diary;
+import net.skhu.model.Option;
 import net.skhu.model.Pagination;
 
 public interface DiaryRepository extends JpaRepository<Diary, Integer> {
 
 
-	Page<Diary> findByUserId(String userId, Pageable pageable);
 
-	Page<Diary> findByTitle(int du, PageRequest of);
+	Option[] searchBy= {new Option(0, "검색없음"), new Option(1, "제목"), new Option(2, "본문")};
 
 
 	public default List<Diary> findByUserId(String userId, Pagination pagination){
@@ -35,26 +35,26 @@ public interface DiaryRepository extends JpaRepository<Diary, Integer> {
 
 	public default List<Diary> findAll(Pagination pagination) {
 
-		Page<Diary> page = this
+        Pageable pageable =
+                PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.DESC, "writeDate");
 
-				.findAll(PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+      Page<Diary> page;
+      String userId = pagination.getDi();
+      String searchText = pagination.getSt();
+      switch (pagination.getSb()) {
+      case 1: page = this.findByUserIdAndTitleContains(userId, searchText, pageable); break;
+      case 2: page = this.findByUserIdAndBodyContains(userId, searchText, pageable); break;
+      default: page = this.findByUserId(userId, pageable); break;
+      }
+      pagination.setRecordCount((int)page.getTotalElements());
+      return page.getContent();
+  }
 
-		pagination.setRecordCount((int) page.getTotalElements());
+  public Page<Diary> findByUserId(String userId, Pageable pageable);
+  public Page<Diary> findByUserIdAndTitleContains(String userId, String title, Pageable pageable);
+  public Page<Diary> findByUserIdAndBodyContains(String userId, String body, Pageable pageable);
 
-		return page.getContent();
-	}
 
-
-	public default List<Diary> findByTitle(Pagination pagination) {
-
-		Page<Diary> page = this.findByTitle(pagination.getDu(),
-
-				PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
-
-		pagination.setRecordCount((int) page.getTotalElements());
-
-		return page.getContent();
-	}
 
 
 	@Modifying

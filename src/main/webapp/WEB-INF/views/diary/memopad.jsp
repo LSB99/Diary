@@ -54,18 +54,14 @@ td:nth-child(1) {
 				<form:hidden path="sz" />
 				
 				
-				<span>메모 리스트:</span>
-				
-				
-				<form:select path="du" class="form-control">
-				
-					<form:option value="0">전체</form:option>
-					
-					<form:options itemValue="id" itemLabel="body" items="${ memos }" />
-
-                 </form:select>
-                             
-				<button type="submit" class="btn" name="cmd" value="save">검색</button>
+				<form:select path="sb" class="form-control ml20" itemValue="value" itemLabel="label" items="${ searchBy }" />
+				<form:input path="st" class="form-control" placeholder="검색문자열" />
+				 <button type="submit" class="btn btn-default">
+     				 <i class="glyphicon glyphicon-search"></i> 검색</button>
+   				<c:if test="${ pagination.sb > 0 }">
+     			 <a class="btn btn-default" href="memopad?pg=1">
+        			<i class="glyphicon glyphicon-ban-circle"></i> 검색취소</a>
+   				 </c:if>
 								
 			</form:form>
 		

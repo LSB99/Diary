@@ -104,29 +104,13 @@ public class DiaryController {
 	@GetMapping("onedayList")
 	public String onedaylist(Model model, Pagination pagination) {
 
-		String userid = UserId.currentUserName();
-		List<Plan> plans = planRepository.findByUserId(userid, pagination);
+		List<Plan> plan = planRepository.findAll( pagination );
 
-		model.addAttribute("plans", plans);
-
-		return "diary/onedayList";
-
-	}
-
-	@PostMapping(value = "onedayList", params = "cmd=save")
-	public String onedayList(Model model, Plan plan, Pagination pagination) {
-
-		List<Plan> plans =
-
-				pagination.getDu() == 0 ?
-
-						planRepository.findAll(pagination) :
-
-						planRepository.findByBody(pagination);
-
-		model.addAttribute("plans", plans);
+    	model.addAttribute("plans", plan);
+    	model.addAttribute("searchBy", planRepository.searchBy);
 
 		return "diary/onedayList";
+
 	}
 
 	// 하루일정 수정
@@ -167,30 +151,13 @@ public class DiaryController {
 	@GetMapping("weekList")
 	public String weekList(Model model, Pagination pagination) {
 
-		List<Week> weeks = weekRepository.findByUserId(UserId.currentUserName(), pagination);
+		List<Week> week = weekRepository.findAll( pagination );
 
-		model.addAttribute("weeks", weeks);
-
-		return "diary/weekList";
-	}
-
-
-	@PostMapping(value = "weekList", params = "cmd=save")
-	public String weekList(Model model, Week week, Pagination pagination) {
-
-		List<Week> weeks =
-
-				pagination.getDu() == 0 ?
-
-						weekRepository.findAll(pagination) :
-
-						weekRepository.findByMyweek(pagination);
-
-		model.addAttribute("weeks", weeks);
+    	model.addAttribute("weeks", week);
+    	model.addAttribute("searchBy", weekRepository.searchBy);
 
 		return "diary/weekList";
 	}
-
 
 
 	// 일주일계획 해당 주의 목록
@@ -276,31 +243,17 @@ public class DiaryController {
 	}
 
 	// 버킷리스트 목록 구현
-	@GetMapping("bukitlist")
+	@RequestMapping("bukitlist")
 	public String bukitlist(Model model, Pagination pagination) {
 
-		List<Bukit> bukits = bukitRepository.findByUserId(UserId.currentUserName(), pagination);
+		List<Bukit> bukit = bukitRepository.findAll( pagination );
 
-		model.addAttribute("bukits", bukits);
-
+    	model.addAttribute("bukits", bukit);
+    	model.addAttribute("searchBy", BukitRepository.searchBy);
 		return "diary/bukitlist";
 	}
 
-	@PostMapping(value = "bukitlist", params = "cmd=save")
-	public String bukitlist(Model model, Bukit bukit, Pagination pagination) {
 
-		List<Bukit> bukits =
-
-				pagination.getDu() == 0 ?
-
-						bukitRepository.findAll(pagination) :
-
-						bukitRepository.findByBody(pagination);
-
-		model.addAttribute("bukits", bukits);
-
-		return "diary/bukitlist";
-	}
 
 //버킷리스트 생성 구현
 	@GetMapping("bukitCreate")
@@ -394,9 +347,10 @@ public class DiaryController {
     @RequestMapping("diarySpace")
     public String diarySpace(Model model, Pagination pagination) {
 
-    	List<Diary> diary = diaryRepository.findByUserId( UserId.currentUserName(), pagination );
+    	List<Diary> diary = diaryRepository.findAll( pagination );
 
     	model.addAttribute("diarys", diary);
+    	model.addAttribute("searchBy", DiaryRepository.searchBy);
 
         return "diary/diarySpace";
     }
@@ -450,28 +404,10 @@ public class DiaryController {
 	@GetMapping("memopad")
 	public String memopad(Model model, Pagination pagination) {
 
-		List<Memos> memos = memoRepository.findByUserId(UserId.currentUserName(), pagination);
+		List<Memos> memo = memoRepository.findAll( pagination );
 
-		model.addAttribute("memos", memos);
-
-		return "diary/memopad";
-	}
-
-
-
-	@PostMapping(value = "memopad", params = "cmd=save")
-	public String memopad(Model model, Memos memo, Pagination pagination) {
-
-		List<Memos> memos =
-
-				pagination.getDu() == 0 ?
-
-						memoRepository.findAll(pagination) :
-
-							memoRepository.findByBody(pagination);
-
-		model.addAttribute("memos", memos);
-
+    	model.addAttribute("memos", memo);
+    	model.addAttribute("searchBy", memoRepository.searchBy);
 		return "diary/memopad";
 	}
 

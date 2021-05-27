@@ -14,53 +14,44 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import net.skhu.entity.Bukit;
+import net.skhu.model.Option;
 import net.skhu.model.Pagination;
 
 public interface BukitRepository extends JpaRepository<Bukit, Integer> {
 
+	Option[] searchBy= {new Option(0, "검색없음"), new Option(1, "본문")};
 
-	Page<Bukit> findByUserId(String userId, Pageable pageable);
-
-	Page<Bukit> findByBody(int du, PageRequest of);
-
-
-	public default List<Bukit> findByUserId(String userId, Pagination pagination) {
-
-		Page<Bukit> page = this.findByUserId(pagination.getDi(),
-
-				PageRequest.of(pagination.getPg() - 1, pagination.getSz(),
-
-						Sort.Direction.DESC, "id"));
-
-		pagination.setRecordCount((int) page.getTotalElements());
-
+	public default List<Bukit> findByUserId(String userId, Pagination pagination){
+		Page<Bukit> page=this.findByUserId(pagination.getDi(), PageRequest.of(pagination.getPg()-1, pagination.getSz(),
+				Sort.Direction.DESC, "id"));
+		pagination.setRecordCount((int)page.getTotalElements());
 		return page.getContent();
 
 	}
+
 
 
 	public default List<Bukit> findAll(Pagination pagination) {
 
-		Page<Bukit> page = this
+        Pageable pageable =
+                PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.DESC, "id");
 
-				.findAll(PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
+      Page<Bukit> page;
+      String userId = pagination.getDi();
+      String searchText = pagination.getSt();
+      switch (pagination.getSb()) {
+      case 1: page = this.findByUserIdAndBodyContains(userId, searchText, pageable); break;
+      default: page = this.findByUserId(userId, pageable); break;
+      }
+      pagination.setRecordCount((int)page.getTotalElements());
+      return page.getContent();
+  }
 
-		pagination.setRecordCount((int) page.getTotalElements());
-
-		return page.getContent();
-	}
+  public Page<Bukit> findByUserId(String userId, Pageable pageable);
+  public Page<Bukit> findByUserIdAndBodyContains(String userId, String body, Pageable pageable);
 
 
-	public default List<Bukit> findByBody(Pagination pagination) {
 
-		Page<Bukit> page = this.findByBody(pagination.getDu(),
-
-				PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.ASC, "id"));
-
-		pagination.setRecordCount((int) page.getTotalElements());
-
-		return page.getContent();
-	}
 
 
 	@Modifying
