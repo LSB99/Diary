@@ -77,13 +77,12 @@ td:nth-child(1) { text-align: center; }
 					<tr>
 						<td>제목:</td>
 						<td><form:input path="title" class="form-control" /></td>
+						<form:errors path="title" class="error" />
 					</tr>
 
 					<tr>
-
-						
-
-						<td colspan="2"><div id="summernote">${ diaryModel.body }</div></td>
+						<td colspan="2" style="text-align: left"><div id="summernote">${ diaryModel.body }</div></td>
+						<form:errors path="body" class="error" />
 						<input type="hidden" name="body" />
 
 					</tr>
@@ -132,25 +131,6 @@ td:nth-child(1) { text-align: center; }
 		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
   		height: 500
 });
-
-/**
-* 이미지 파일 업로드
-*/
-function uploadSummernoteImageFile(file, editor) {
-data = new FormData();
-data.append("file", file);
-$.ajax({
-	data : data,
-	type : "POST",
-	url : "/uploadSummernoteImageFile",
-	contentType : false,
-	processData : false,
-	success : function(data) {
-  	//항상 업로드된 파일의 url이 있어야 한다.
-		$(editor).summernote('insertImage', data.url);
-	}
-});
-}
    
   function save() {
     var s = $('#summernote').summernote('code');

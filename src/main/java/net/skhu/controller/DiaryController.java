@@ -319,6 +319,9 @@ public class DiaryController {
     @PostMapping("diaryCreate")
     public String diaryCreate(Model model, @Valid DiaryModel a, BindingResult bindingResult, Pagination pagination) {
 
+    	if(bindingResult.hasErrors()) {
+    		return "diary/diaryEdit";
+    	}
 
     	String currentid=UserId.currentUserName();
     	int id=insertDiary(a, currentid);
@@ -364,7 +367,6 @@ public class DiaryController {
     }
 
 
-
 //일기 수정 구현
     @GetMapping("diaryEdit")
     public String diaryEdit(Model model,  @RequestParam("id") int id, Pagination pagination) {
@@ -380,6 +382,9 @@ public class DiaryController {
     @PostMapping(value="diaryEdit")
     public String diaryEdit(Model model, Diary diary, @Valid DiaryModel a, BindingResult bindingResult, Pagination pagination) {
 
+    	if(bindingResult.hasErrors()) {
+    		return "diary/diaryEdit";
+    	}
     	diary.setUserId(UserId.currentUserName());
 
     	diaryRepository.update(a.getId(), a.getTitle(), a.getBody());

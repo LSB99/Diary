@@ -77,7 +77,7 @@ td:nth-child(1) {
 
 							<td><fmt:formatDate value="${ diary.writeDate }" pattern="yyyy-MM-dd" /></td>
 
-							<td><a href="diaryEdit?id=${ diary.id }&${pagination.queryString}"> ${ diary.title }
+							<td><a href="diaryView?id=${ diary.id }&${pagination.queryString}"> ${ diary.title }
 							</a></td>
 
 						</tr>

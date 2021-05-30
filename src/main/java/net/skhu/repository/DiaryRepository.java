@@ -26,7 +26,7 @@ public interface DiaryRepository extends JpaRepository<Diary, Integer> {
 
 	public default List<Diary> findByUserId(String userId, Pagination pagination){
 		Page<Diary> page=this.findByUserId(pagination.getDi(), PageRequest.of(pagination.getPg()-1, pagination.getSz(),
-				Sort.Direction.DESC, "id"));
+				Sort.Direction.DESC, "no"));
 		pagination.setRecordCount((int)page.getTotalElements());
 		return page.getContent();
 
@@ -36,7 +36,7 @@ public interface DiaryRepository extends JpaRepository<Diary, Integer> {
 	public default List<Diary> findAll(Pagination pagination) {
 
         Pageable pageable =
-                PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.DESC, "writeDate");
+                PageRequest.of(pagination.getPg() - 1, pagination.getSz(), Sort.Direction.DESC, "no");
 
       Page<Diary> page;
       String userId = pagination.getDi();
