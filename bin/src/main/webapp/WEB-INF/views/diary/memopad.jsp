@@ -1,19 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
+<c:url var="R" value="/" />
 <!DOCTYPE html>
 <html>
 <head>
 <title>Memo List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap"
-	rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
-	rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="${R}common.js"></script>
 <link rel="stylesheet" type="text/css" href="/list.css" />
 <link rel="stylesheet" type="text/css" href="/background.css" />
 
@@ -43,12 +40,32 @@ td:nth-child(1) {
 					<li><a href="timetable">시간표</a></li>
 					<li><a href="weekList">일주일 계획</a></li>
 					<li><a href="onedayList">하루일정</a></li>
-					<li><a href="calendar">달력</a></li>
 
 				</ul>
 			</nav>
 		</header>
 		<main class="contents">
+		
+		
+		<form:form method="get" modelAttribute="pagination">
+			
+				<form:hidden path="pg" value="1" />
+				
+				<form:hidden path="sz" />
+				
+				
+				<form:select path="sb" class="form-control ml20" itemValue="value" itemLabel="label" items="${ searchBy }" />
+				<form:input path="st" class="form-control" placeholder="검색문자열" />
+				 <button type="submit" class="btn btn-default">
+     				 <i class="glyphicon glyphicon-search"></i> 검색</button>
+   				<c:if test="${ pagination.sb > 0 }">
+     			 <a class="btn btn-default" href="memopad?pg=1">
+        			<i class="glyphicon glyphicon-ban-circle"></i> 검색취소</a>
+   				 </c:if>
+								
+			</form:form>
+		
+		
 			<table class="list">
 				<thead>
 					<tr>
@@ -58,14 +75,16 @@ td:nth-child(1) {
 				<tbody>
 					<c:forEach var="memo" items="${ memos }">
 						<tr>
-							<td><a href="memoEdit?id=${ memo.id }">${ memo.memolist }</a></td>
+							<td><a href="memoEdit?id=${ memo.id }&${pagination.queryString}">${ memo.body }</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+			<my:pagination pageSize="${ pagination.sz }" recordCount="${ pagination.recordCount }" 
+                 queryStringName="pg" />
 			
 			<p>
-				<a href="memoCreate" class="btn">메모 작성하기</a>
+				<a href="memoCreate?${pagination.queryString}" class="btn">메모 작성하기</a>
 			</p>
 			
 			<p>

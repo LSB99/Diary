@@ -1,23 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url var="R" value="/" />
 <!DOCTYPE html>
 <html>
 <head>
 <title>Main Home</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" type="text/css" href="/background.css" />
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+
   
   <style>
-  * {font-family: 'Gamja Flower', cursive;}
-  h1 { margin: -10% auto; text-align: center; font-size: 65pt; color: purple; font-family: 'Pangolin', cursive; text-shadow:5px 5px 3px lightpink;}
   
+  h1 { margin: -10% auto; text-align: center; font-size: 65pt; text-shadow: 5px 5px 3px #7200da; color:#9068be; }
+  h2 { margin: 1% 15% 10% 10%; font-size: 18pt; color: #e9bba9; }
   div.container { height:100%; width: 1200px; margin: 12% auto; font-size: 23pt; text-align: center;}
 
-a.btn { width: 80%; margin: 1% auto; padding: 1em 3em; border: 8px solid pink;
+a.btn { width: 80%; margin: 10% auto; padding: 1em 3em; border: 8px solid #e9bba9;
        border-radius: 5em; background: linear-gradient(#fff, #ddd);
        text-decoration: none; color: black; font-size: 13pt;
        display: inline-block; float: center; }
@@ -42,11 +40,11 @@ h3:hover { opacity: 1; transform: translateY(-50px); }
 <img id="diary" src="https://images.unsplash.com/photo-1511871893393-82e9c16b81e3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
 alt="" width="15%">
 <h1>My Diary</h1>
+<h2>${ userid }님, 안녕하세요</h2>
 <div class="container">
    <table class="index">
   	<thead>
   		<tr> 
-  			<th><a href="calendar" class="btn">달력</a></th>
   			
   			<th><a href="onedayList" class="btn">하루일정</a></th>
   			
@@ -62,8 +60,8 @@ alt="" width="15%">
   			
   		</tr>
   		<tr>
-  		<th><a href="logout" class="btn">로그아웃</a></th>
-  		<th><a href="userDelete" class="btn">회원탈퇴</a></th>
+  		<th><a href="${R}user/index" class="btn">마이페이지</a></th>
+  		<th><a href="${R}user/userDelete" class="btn">회원탈퇴</a></th>
   		</tr>
     </thead>
   </table>

@@ -1,44 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <c:url var="R" value="/" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>Diary Edit</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script src="${R}delete.js"></script>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap"
-	rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
-	rel="stylesheet">
+
+<script src="${R}res/summernote/summernote.js"></script>
+
+
 <link rel="stylesheet" type="text/css" href="${R}background.css" />
 <link rel="stylesheet" type="text/css" href="${R}edit.css" />
 
 <style>
 input {
 	width: 600px;
-	font-size: 30px;
-}
-
-td:nth-child(1) {
-	font-size: 28px;
+	font-size: 20pt;
 }
 
 textarea {
-	font-size: 20px;
+	font-size: 15pt;
 	display: block;
 	width: 600px;
 }
+
+td { min-width: 10; padding: 10px; font-weight:bold;}
+td:nth-child(1) { text-align: center; }
+
+
+ .contents { width:900px; margin: 100px auto; }
 </style>
 
 </head>
@@ -56,13 +61,14 @@ textarea {
 					<li><a href="timetable">시간표</a></li>
 					<li><a href="weekList">일주일 계획</a></li>
 					<li><a href="onedayList">하루일정</a></li>
-					<li><a href="calendar">달력</a></li>
+					
 				</ul>
 			</nav>
 		</header>
 		<main class="contents">
 
-			<form method="post">
+			<form:form method="post" modelAttribute="diaryModel">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 				<div class="title">일기 쓰기</div>
 
@@ -70,47 +76,68 @@ textarea {
 
 					<tr>
 						<td>제목:</td>
-						<td><input type="text" name="title" value="${ diary.title }" required /></td>
+						<td><form:input path="title" class="form-control" /></td>
+						<form:errors path="title" class="error" />
 					</tr>
 
 					<tr>
-						<td>날짜:</td>
-						<td><input type="date" name="writeDate" value="${ diary.writeDate }" /></td>
-					</tr>
-
-					<tr>
-
-						<td>내용:</td>
-
-						<td><textarea name="diarylist" placeholder="오늘은 무슨 일이 있었는지 적어보세요!" required><c:out value="${ diary.diarylist }" /></textarea></td>
+						<td colspan="2" style="text-align: left"><div id="summernote">${ diaryModel.body }</div></td>
+						<form:errors path="body" class="error" />
+						<input type="hidden" name="body" />
 
 					</tr>
 
 				</table>
+				
+				<a class="btn btn-primary" onclick="save()">저장</a>
+
+				<a href="diarySpace?${pagination.queryString}" class="btn">일기 목록보기</a>
 
 
-				<button type="submit" class="btn">저장</button>
-
-				<a href="diarySpace" class="btn">일기 목록보기</a>
-
-
-				<c:if test="${ diary.id > 0 }">
-
-					<a href="diaryDelete?id=${diary.id}" class="btn" data-confirm-delete>삭제</a>
-
+				<c:if test="${ diaryModel.id > 0 }">
+					<c:if test="${ diaryModel.no != 1 }">
+					<button type="submit" class="btn" name="cmd" value="delete" data-confirm-delete>삭제</button>
+					</c:if>
 				</c:if>
-
+				
+			
 				<c:if test="${ not empty message }">
 
 					<div class="message">${ message }</div>
 
 				</c:if>
 
-			</form>
+			</form:form>
 		</main>
+		 
 		<footer>
 			소프캡스톤<br>임수빈, 김보미
 		</footer>
 	</div>
+	<script>
+  $('#summernote').summernote({
+	  toolbar: [
+		    ['fontname', ['fontname']],
+		    ['fontsize', ['fontsize']],
+		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+		    ['color', ['forecolor','color']],
+		    ['table', ['table']],
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    ['height', ['height']],
+		    ['insert',['picture','link','video']],
+		    ['view', ['fullscreen', 'help']]
+		  ],
+		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+  		height: 500
+});
+   
+  function save() {
+    var s = $('#summernote').summernote('code');
+    $('input[name=body]').val(s);
+    $('form').submit();
+  }
+</script>
+	
 </body>
 </html>

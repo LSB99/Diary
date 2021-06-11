@@ -8,20 +8,13 @@
 <title>Time Table</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="/background.css" />
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap"
-	rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
-	rel="stylesheet">
+
 <style>
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Gamja Flower', cursive;
+	
 }
 
 a {
@@ -40,7 +33,6 @@ ul {
 }
 
 #logo {
-	font-style: italic;
 	float: left;
 	width: 250px;
 	height: 100px;
@@ -51,17 +43,16 @@ ul {
 header {
 	font-size: 43px;
 	width: 100%;
-	height: 100%;
-	background-color: #045;
+	height: 120%;
+	 background: linear-gradient(45deg, #e9bba9, #854e4b);
 }
 
 h1 {
-	font-family: 'Della Respira', serif;
-	text-shadow: 5px 5px 3px purple;
+	  text-shadow: 5px 5px 3px #7200da; color:#9068be; font-size: 70pt;
 }
 
 nav {
-	font-size: 23px;
+	font-size: 18pt;
 	float: right;
 	width: 100%;
 	height: 100px;
@@ -81,13 +72,13 @@ nav {
 #topMenu>li>a {
 	display: block;
 	font-size: 1.1em;
-	color: gray;
+	color: white;
 	font-weight: 600;
-	padding: 20px 60px;
+	padding: 50px 57px;
 }
 
 #topMenu>li>a:hover {
-	color: #1fa8f8;
+	color: #B9A7C2;
 	text-shadow: 0 -2px #222;
 }
 
@@ -104,13 +95,13 @@ footer {
 }
 
 table, th, td {
-	border: 1px solid lightyellow;
+	border: 1px solid #f6ded4;
 	border-collapse: collapse;
 	text-align: center;
 	width: 100%;
 	height: 40%;
-	background: lightblue;
-	font-size: 23px;
+	background: #e9bba9;
+	font-size: 18pt;
 }
 
 th, td {
@@ -124,7 +115,7 @@ th {
 input.time {
 	width: 180px;
 	height: 50px;
-	font-size: 15pt;
+	font-size: 12pt;
 	font-weight: bold;
 	text-align: center;
 }
@@ -132,7 +123,7 @@ input.time {
 input {
 	width: 180px;
 	height: 50px;
-	font-size: 20pt;
+	font-size: 12pt;
 	font-weight: bold;
 	text-align: center;
 }
@@ -141,7 +132,7 @@ input {
 	width: auto;
 	margin: 10px 5px;
 	padding: 0.4em 1.5em;
-	border: 5px solid lightblue;
+	border: 5px solid #e9bba9;
 	border-radius: 5em;
 	background: linear-gradient(#fff, #ddd);
 	text-decoration: none;
@@ -166,13 +157,13 @@ input {
 					<li><a href="timetable">시간표</a></li>
 					<li><a href="weekList">일주일 계획</a></li>
 					<li><a href="onedayList">하루일정</a></li>
-					<li><a href="calendar">달력</a></li>
 				</ul>
 			</nav>
 		</header>
 		<main class="contents">
 
 			<form method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 				<h1
 					style="font-style: italic; text-shadow: 5px 5px 3px white; margin: 10px 500px; text-align: right; font-size: 50pt;">
