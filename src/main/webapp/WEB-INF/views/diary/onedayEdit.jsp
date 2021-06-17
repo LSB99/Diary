@@ -56,7 +56,7 @@ textarea {
 
 					<tr>
 						<td>오늘날짜:</td>
-						<td><input type="date" name="today" value="${ plan.today }" /></td>
+						<td><input type="date" name="today" value="${ plan.today }" required/></td>
 					</tr>
 
 					<tr>
