@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="${R}account.css" />
 <style>
 h1 { font-size:50pt; }
-.btn { margin: 100px 600px; top:50%; left:50%; height:40%; width: 17%; font-size: 25pt;}
+.btn { margin: 100px 40%; text-align: center; top:50%; left:50%; height:40%; width: 17%; font-size: 25pt;}
   
 </style>
 </head>

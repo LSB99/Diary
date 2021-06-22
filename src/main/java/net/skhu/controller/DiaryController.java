@@ -39,8 +39,6 @@ import net.skhu.repository.UserRepository;
 import net.skhu.repository.WeekRepository;
 import net.skhu.service.BukitService;
 
-
-
 @Controller
 @RequestMapping("/diary")
 public class DiaryController {

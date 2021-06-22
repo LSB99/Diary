@@ -12,8 +12,8 @@
   
   <style>
 
-    a.btn{ top:50%; left:50%; height:40%; width: 40%; font-size:15pt; 
-          margin: 100% 0 0 270px; }
+    a.btn{ top:100%; left:50%; height:40%; width: 50%; font-size:15pt; 
+          margin: 400px 0 0 250px; }
     h1 { font-size: 400%; margin: -10% auto; cursive; text-shadow:5px 5px 3px #9068be; }
   </style>
 </head>
@@ -26,7 +26,7 @@
        <sec:authorize access="not authenticated">
   	<thead>
   		<tr> 
-  			<th><a href="${R}login" class="btn">로그인</a></th> 
+  			<th><a href="login" class="btn">로그인</a></th> 
   			
   			<th><a href="join" class="btn">회원가입</a></th>
   			
