@@ -55,12 +55,12 @@ textarea {
 					<tr>
 						<td>몇월 <br /> 몇주:
 						</td>
-						<td><textarea name="myweek" placeholder="몇월 몇주를 적어주세요!"><c:out value="${ week.myweek }" /></textarea></td>
+						<td><textarea name="myweek" placeholder="몇월 몇주를 적어주세요!" required><c:out value="${ week.myweek }" /></textarea></td>
 					</tr>
 
 					<tr>
 						<td>월요일:</td>
-						<td><textarea name="mon" placeholder="월요일에 할 일을 적어주세요!"><c:out value="${ week.mon }" /></textarea></td>
+						<td><textarea name="mon" placeholder="(계획 생성 시 월요일에는 점이라도 적어주셔야 저장가능합니다)" required><c:out value="${ week.mon }" /></textarea></td>
 					</tr>
 
 					<tr>

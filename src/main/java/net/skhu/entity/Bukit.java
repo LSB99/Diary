@@ -19,9 +19,4 @@ public class Bukit {
 
 	String body;
 
-	/*
-	 * @ManyToOne
-	 *
-	 * @JoinColumn(name="userId") User user;
-	 */
 }

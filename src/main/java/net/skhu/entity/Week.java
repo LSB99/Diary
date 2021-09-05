@@ -10,16 +10,15 @@ import lombok.Data;
 @Data
 @Entity
 public class Week {
-	
-	
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
 
 	String userId;
-	
-	
+
 	String myweek;
 
 	String mon;

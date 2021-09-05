@@ -1,79 +1,202 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:url var="R" value="/" />
 <!DOCTYPE html>
 <html>
 <head>
 <title>Main Home</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" type="text/css" href="/background.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/background.css" />
+<link rel="stylesheet" type="text/css" href="/list.css" />
 
-  
-  <style>
-  
-  h1 { margin: -10% auto; text-align: center; font-size: 65pt; text-shadow: 5px 5px 3px #7200da; color:#9068be; }
-  h2 { margin: 1% 15% 10% 10%; font-size: 18pt; color: #e9bba9; }
-  div.container { height:100%; width: 1200px; margin: 12% auto; font-size: 23pt; text-align: center;}
+<style>
+h1 {
+	margin: 10% auto;
+	text-align: center;
+	font-size: 80pt;
+	text-shadow: 5px 5px 3px #7200da;
+	color: #9068be;
+}
 
-a.btn { width: 80%; margin: 10% auto; padding: 1em 3em; border: 8px solid #e9bba9;
-       border-radius: 5em; background: linear-gradient(#fff, #ddd);
-       text-decoration: none; color: black; font-size: 13pt;
-       display: inline-block; float: center; }
+table.userInfo {
+	margin: -35% 0% 0% 65%;
+	font-size: 15pt;
+	color: #9068be;
+}
+
+#topMenu {
+	margin: auto 10%;
+}
+
+div.container {
+	height: 200%;
+	width: 1200px;
+	margin: 10% auto;
+	font-size: 23pt;
+	text-align: center;
+}
+
+#image {
+	margin: 10% auto;
+	width: 70%;
+}
+
+.caption {
+	position: absolute;
+	top: 500px;
+	width: 70%;
+	height: 60%;
+	padding-top: 200px;
+	background: rgba(0, 0, 0, 0.6);
+	opacity: 0;
+	transition: all 0.6s ease-in-out;
+	z-index: 10;
+}
+
+.prod-list li {
+	float: center;
+	padding: 0;
+	overflow: hidden;
+	position: relative;
+}
+
+.prod-list li:hover .caption {
+	opacity: 1;
+	transform: translateY(-200px);
+}
+
+.prod-list .caption h2, .prod-list {
+	color: #fff;
+	text-align: center;
+}
+
+a.btn {
+	width: 80%;
+	margin: 10% auto;
+	padding: 1em 3em;
+	border: 8px solid #e9bba9;
+	border-radius: 5em;
+	background: linear-gradient(#fff, #ddd);
+	text-decoration: none;
+	color: black;
+	font-size: 13pt;
+	display: inline-block;
+	float: center;
+}
 
 .btn:active {
-      -ms-transform: translateY(2px);
-      -webkit-transform: translateY(2px);
-      transform: translateY(2px);
-      background: #ccc; }
+	-ms-transform: translateY(2px);
+	-webkit-transform: translateY(2px);
+	transform: translateY(2px);
+	background: #ccc;
+}
 
-table.list { border-collapse: collapse; width: 200%; }
-table.list th { padding: 100px; border: 10px solid gray;  background-color: #eee; }
+table.list {
+	border-collapse: collapse;
+	width: 200%;
+}
 
-#circle { border-radius: 50%; margin: -50px 400px;} 
-h3 { opacity: 0; transition: all 0.6s ease-in-out; z-index: 10;}
-h3:hover { opacity: 1; transform: translateY(-50px); }
-#diary { border-radius: 15%; margin: 50px 800px; transition-property: width, height; transition-duration: 2s, 1s; }
-#diary:hover { width: 300px; height: 200px; }
-  </style>
+table.list th {
+	padding: 100px;
+	border: 10px solid gray;
+	background-color: #eee;
+}
+
+#circle {
+	border-radius: 50%;
+	margin: -50px 400px;
+}
+
+h3 {
+	opacity: 0;
+	transition: all 0.6s ease-in-out;
+	z-index: 10;
+}
+
+h3:hover {
+	opacity: 1;
+	transform: translateY(-50px);
+}
+
+#diary {
+	margin: 0px 0px;
+	width: 100%;
+	height: 700px;
+}
+</style>
 </head>
+
+
 <body>
-<img id="diary" src="https://images.unsplash.com/photo-1511871893393-82e9c16b81e3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-alt="" width="15%">
-<h1>My Diary</h1>
-<h2>${ userid }님, 안녕하세요</h2>
-<div class="container">
-   <table class="index">
-  	<thead>
-  		<tr> 
-  			
-  			<th><a href="onedayList" class="btn">하루일정</a></th>
-  			
-  			<th><a href="weekList" class="btn">일주일 계획</a></th>
-  			
-  			<th><a href="timetable" class="btn">시간표</a></th>
-  			
-  			<th><a href="bukitlist" class="btn">버킷리스트</a></th>
-  			
-  			<th><a href="diarySpace" class="btn">일기장</a></th>
-  			
-  			<th><a href="memopad" class="btn">메모장</a></th>
-  			
-  		</tr>
-  		<tr>
-  		<th><a href="${R}user/index" class="btn">마이페이지</a></th>
-  		<th><a href="${R}user/userDelete" class="btn">회원탈퇴</a></th>
-  		</tr>
-    </thead>
-  </table>
-  <h3>기록으로 하여금 기억하기</h3>
-  <img id="circle" src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"
-  alt="" width="25%" >
-  
- 
-  
-   <footer>
-    		소프캡스톤<br>임수빈, 김보미
-    </footer>
-</div>
+	<img id="diary" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80">
+	<table class="userInfo">
+		<col style="width: 200px;">
+		<col style="width: 100px;">
+		<col style="width: 100px;">
+		<col style="width: 100px;">
+		<thead>
+			<tr>
+				<th>${ userid }님,안녕하세요</th>
+				<th><a href="${R}logout_processing" style="font-size: 13pt;">로그아웃</a></th>
+				<th><a href="${R}user/index" style="font-size: 13pt;">마이페이지</a></th>
+				<th><a href="${R}user/userDelete" style="font-size: 13pt;">회원탈퇴</a></th>
+			</tr>
+		</thead>
+	</table>
+
+
+	<h1>My Diary</h1>
+
+	<nav>
+		<ul id="topMenu">
+			<li><a href="memopad">메모장</a></li>
+			<li><a href="diarySpace">일기</a></li>
+			<li><a href="bukitlist">버킷리스트</a></li>
+			<li><a href="timetable">시간표</a></li>
+			<li><a href="weekList">일주일 계획</a></li>
+			<li><a href="onedayList">하루일정</a></li>
+		</ul>
+	</nav>
+
+	<div class="container">
+		<ul class="prod-list">
+
+			<li><a href="onedayList"> <img id="image" src="https://images.unsplash.com/photo-1503876466-1fc5143eda57?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80">
+			</a>
+				<div class="caption">
+					<h2>오늘의 일정을 적어보세요!</h2>
+				</div></li>
+
+			<li><a href="weekList"> <img id="image" src="https://images.unsplash.com/photo-1506485338023-6ce5f36692df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80">
+			</a>
+				<div class="caption">
+					<h2>이번주 계획을 적어보세요!</h2>
+				</div></li>
+			<li><a href="timetable"> <img id="image" src="https://images.unsplash.com/photo-1490430657723-4d607c1503fc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80">
+			</a>
+				<div class="caption">
+					<h2>시간에 따른 계획을 적어보세요!</h2>
+				</div></li>
+			<li><a href="bukitlist"> <img id="image" src="https://images.unsplash.com/photo-1484264121943-78dd345bd494?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80">
+			</a>
+				<div class="caption">
+					<h2>이루고 싶은 일, 소원을 적어보세요!</h2>
+				</div></li>
+			<li><a href="diarySpace"> <img id="image" src="https://images.unsplash.com/photo-1511871893393-82e9c16b81e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80">
+			</a>
+				<div class="caption">
+					<h2>오늘 하루 어땠는지 적어보세요!</h2>
+				</div></li>
+			<li><a href="memopad"> <img id="image" src="https://images.unsplash.com/photo-1611079829529-fe31a9531295?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80">
+			</a>
+				<div class="caption">
+					<h2>이외의 것들을 적어보세요!</h2>
+				</div></li>
+		</ul>
+		<h3>기록으로 하여금 기억하기</h3>
+
+
+
+	</div>
 </body>
 </html>

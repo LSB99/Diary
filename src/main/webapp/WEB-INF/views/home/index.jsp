@@ -33,14 +33,6 @@
   		</tr>
     </thead>
   	</sec:authorize>
-  	<sec:authorize access="authenticated">
-  	<thead>
-  	<tr>
-      	<th><a class="btn" href="${R}logout_processing">로그아웃</a></th>
-      	<th><a class="btn" href="${R}diary/index">시작하기</a></th>
-    </tr>
-    </thead>
-    </sec:authorize>
   	
   </table>
   
