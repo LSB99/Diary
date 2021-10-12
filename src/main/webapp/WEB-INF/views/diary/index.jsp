@@ -1,41 +1,116 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:url var="R" value="/" />
 <!DOCTYPE html>
 <html>
 <head>
 <title>Main Home</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" type="text/css" href="/background.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/background.css" />
+<link rel="stylesheet" type="text/css" href="/list.css" />
 
-  
-  <style>
-  
-  h1 { margin: -10% auto; text-align: center; font-size: 65pt; text-shadow: 5px 5px 3px #7200da; color:#9068be; }
-  h2 { margin: 1% 15% 10% 10%; font-size: 18pt; color: #e9bba9; }
-  div.container { height:100%; width: 1200px; margin: 12% auto; font-size: 23pt; text-align: center;}
-
-a.btn { width: 80%; margin: 10% auto; padding: 1em 3em; border: 8px solid #e9bba9;
-       border-radius: 5em; background: linear-gradient(#fff, #ddd);
-       text-decoration: none; color: black; font-size: 13pt;
-       display: inline-block; float: center; }
-
+<style>
+h1 {
+	margin: 10% auto;
+	text-align: center;
+	font-size: 80pt;
+	text-shadow: 5px 5px 3px #7200da;
+	color: #9068be;
+}
+table.userInfo {
+	margin: -35% 0% 0% 65%;
+	font-size: 15pt;
+	color: #9068be;
+}
+#topMenu {
+	margin: auto 10%;
+}
+div.container {
+	height: 200%;
+	width: 1200px;
+	margin: 10% auto;
+	font-size: 23pt;
+	text-align: center;
+}
+#image {
+	margin: 10% auto;
+	width: 70%;
+}
+.caption {
+	position: absolute;
+	top: 500px;
+	width: 70%;
+	height: 60%;
+	padding-top: 200px;
+	background: rgba(0, 0, 0, 0.6);
+	opacity: 0;
+	transition: all 0.6s ease-in-out;
+	z-index: 10;
+}
+.prod-list li {
+	float: center;
+	padding: 0;
+	overflow: hidden;
+	position: relative;
+}
+.prod-list li:hover .caption {
+	opacity: 1;
+	transform: translateY(-200px);
+}
+.prod-list .caption h2, .prod-list {
+	color: #fff;
+	text-align: center;
+}
+a.btn {
+	width: 80%;
+	margin: 10% auto;
+	padding: 1em 3em;
+	border: 8px solid #e9bba9;
+	border-radius: 5em;
+	background: linear-gradient(#fff, #ddd);
+	text-decoration: none;
+	color: black;
+	font-size: 13pt;
+	display: inline-block;
+	float: center;
+}
 .btn:active {
-      -ms-transform: translateY(2px);
-      -webkit-transform: translateY(2px);
-      transform: translateY(2px);
-      background: #ccc; }
-
-table.list { border-collapse: collapse; width: 200%; }
-table.list th { padding: 100px; border: 10px solid gray;  background-color: #eee; }
-
-#circle { border-radius: 50%; margin: -50px 400px;} 
-h3 { opacity: 0; transition: all 0.6s ease-in-out; z-index: 10;}
-h3:hover { opacity: 1; transform: translateY(-50px); }
-#diary { border-radius: 15%; margin: 50px 800px; transition-property: width, height; transition-duration: 2s, 1s; }
-#diary:hover { width: 300px; height: 200px; }
-  </style>
+	-ms-transform: translateY(2px);
+	-webkit-transform: translateY(2px);
+	transform: translateY(2px);
+	background: #ccc;
+}
+table.list {
+	border-collapse: collapse;
+	width: 200%;
+}
+table.list th {
+	padding: 100px;
+	border: 10px solid gray;
+	background-color: #eee;
+}
+#circle {
+	border-radius: 50%;
+	margin: -50px 400px;
+}
+h3 {
+	opacity: 0;
+	transition: all 0.6s ease-in-out;
+	z-index: 10;
+}
+h3:hover {
+	opacity: 1;
+	transform: translateY(-50px);
+}
+#diary {
+	margin: 0px 0px;
+	width: 100%;
+	height: 700px;
+}
+</style>
 </head>
+
+
 <body>
 	<img id="diary" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80">
 	<table class="userInfo">
@@ -102,6 +177,9 @@ h3:hover { opacity: 1; transform: translateY(-50px); }
 				</div></li>
 		</ul>
 		<h3>기록으로 하여금 기억하기</h3>
+
+
+
 	</div>
 </body>
 </html>
