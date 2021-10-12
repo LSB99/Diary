@@ -61,8 +61,6 @@ public class UserService {
 
     @Transactional
     public void deleteByUserId(String userId) {
-
-
     		userRepository.deleteByUserId(userId);
     }
 

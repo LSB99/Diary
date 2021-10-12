@@ -25,7 +25,7 @@ public class HomeController {
 	@Autowired TimeTableRepository timetableRepository;
 	@Autowired DiaryRepository diaryRepository;
 
-	//표지 구현
+	//표지
 		@RequestMapping({"/", "index"})
 		public String home(Model model) {
 
@@ -34,11 +34,13 @@ public class HomeController {
 			return "home/index";
 		}
 
+	//로그인
 	    @RequestMapping("login")
 	    public String login() {
 	        return "home/login";
 	    }
 
+	//회원가입
 	    @GetMapping("join")
 	    public String join(Model model) {
 
@@ -62,27 +64,21 @@ public class HomeController {
    		diary.setUserId(userRegistration.getUserId());
    		diary.setTitle("일기 사용법");
    		diary.setWriteDate(new Date());
-   		diary.setBody("1. 매일매일 경험하고 느낀 바를 적어보세요!\r\n"
-   				+ "\r\n"
-   				+ "2. 글씨를 꾸미고 표도 추가해보세요\r\n"
-   				+ "\r\n"
-   				+ "3. 다양하게 꾸며서 나만의 일기를 적어보세요\r\n"
-   				+ "\r\n"
-   				+ "* 하루의 한 줄이라도 꾸준히 적어볼까요?\r\n"
-   				+ "\r\n"+ "\r\n"
-   				+ "습관을 길러봅시다!!\r\n"
-   				+ "\r\n"
+   		diary.setBody("1. 매일매일 경험하고 느낀 바를 적어보세요!"
+   				+ "2. 글씨를 꾸미고 표도 추가해보세요"
+   				+ "3. 다양하게 꾸며서 나만의 일기를 적어보세요"
+   				+ "4. 하루의 한 줄이라도 꾸준히 적어볼까요?"
+   				+ "습관을 길러봅시다!!"
    				+ "(본 글은 삭제가 불가능합니다)");
    		diary.setNo(1);
    		diaryRepository.save(diary);
 
 			return "redirect:joinSuccess";
 		}
+
+	    //회원가입 성공시
 		@RequestMapping("joinSuccess")
 	    public String registerSurccess() {
 	        return "home/joinSuccess";
 	    }
-
-
-
 }

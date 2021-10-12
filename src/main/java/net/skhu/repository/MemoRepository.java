@@ -63,9 +63,4 @@ public interface MemoRepository extends JpaRepository<Memos, Integer>  {
 	@Query(value = "delete from memos where userId=:userId", nativeQuery = true)
 	@Transactional
 	void deleteMemos(@Param("userId") String userId);
-
-
-	Memos findOneByUserId(String userId);
-
-	List<Memos> findByUserId(String userId);
 }

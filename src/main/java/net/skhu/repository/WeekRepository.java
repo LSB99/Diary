@@ -52,8 +52,6 @@ public interface WeekRepository extends JpaRepository<Week, Integer>  {
   public Page<Week> findByUserIdAndMyweekContains(String userId, String title, Pageable pageable);
 
 
-
-
 	@Modifying
 	@Query(value = "insert into week(userId) VALUES (:userId)", nativeQuery = true)
 	@Transactional
@@ -64,13 +62,5 @@ public interface WeekRepository extends JpaRepository<Week, Integer>  {
 	@Query(value = "delete from week where userId=:userId", nativeQuery = true)
 	@Transactional
 	void deleteWeek(@Param("userId") String userId);
-
-
-
-
-	Week findOneByUserId(String userId);
-
-	List<Week> findByUserId(String userId);
-
 }
 

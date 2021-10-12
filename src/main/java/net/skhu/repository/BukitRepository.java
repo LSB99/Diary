@@ -51,16 +51,8 @@ public interface BukitRepository extends JpaRepository<Bukit, Integer> {
   public Page<Bukit> findByUserIdAndBodyContains(String userId, String body, Pageable pageable);
 
 
-
-
-
 	@Modifying
 	@Query(value = "delete from bukit where userId=:userId", nativeQuery = true)
 	@Transactional
 	void deleteBukit(@Param("userId") String userId);
-
-	Bukit findOneByUserId(String userId);
-
-	List<Bukit> findByUserId(String userId);
-
 }

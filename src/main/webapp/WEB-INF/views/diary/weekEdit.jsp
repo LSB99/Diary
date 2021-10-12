@@ -11,7 +11,6 @@
 <title>Week Edit</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="${R}delete.js"></script>
 <link rel="stylesheet" type="text/css" href="${R}background.css" />
 <link rel="stylesheet" type="text/css" href="${R}edit.css" />
 <style>
@@ -109,9 +108,6 @@ textarea {
 			</form>
 
 		</main>
-		<footer>
-			소프캡스톤<br>임수빈, 김보미
-		</footer>
 	</div>
 </body>
 </html>

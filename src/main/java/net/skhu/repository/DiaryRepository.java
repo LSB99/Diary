@@ -2,8 +2,6 @@ package net.skhu.repository;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -56,27 +54,10 @@ public interface DiaryRepository extends JpaRepository<Diary, Integer> {
 
 
 
-
-	@Modifying
-	@Query(value = "insert into diary(userId) VALUES (:userId)", nativeQuery = true)
-	@Transactional
-	void joinDiary(@Param("userId") String userId);
-
-
-	@Modifying
-	@Query(value = "delete from diary where userId=:userId", nativeQuery = true)
-	@Transactional
-	void deleteDiary(@Param("userId") String userId);
-
 	@Query("SELECT MAX(a.no) FROM Diary a WHERE a.userId = ?1")
     public int findMaxNo(String userId);
 
     @Modifying
     @Query("UPDATE Diary SET title=:title, body=:body, writeDate=CURRENT_TIMESTAMP() WHERE id=:id")
     public void update(@Param("id") int id, @Param("title") String title, @Param("body") String body);
-
-
-	Diary findOneByUserId(String userId);
-
-	List<Diary> findByUserId(String userId);
 }

@@ -22,12 +22,7 @@ import net.skhu.entity.Plan;
 import net.skhu.entity.TimeTable;
 import net.skhu.entity.UserId;
 import net.skhu.entity.Week;
-import net.skhu.mapper.BukitMapper;
-import net.skhu.mapper.DiaryMapper;
-import net.skhu.mapper.MemosMapper;
-import net.skhu.mapper.PlanMapper;
 import net.skhu.mapper.TimeTableMapper;
-import net.skhu.mapper.WeekMapper;
 import net.skhu.model.DiaryModel;
 import net.skhu.model.Pagination;
 import net.skhu.repository.BukitRepository;
@@ -37,9 +32,6 @@ import net.skhu.repository.PlanRepository;
 import net.skhu.repository.TimeTableRepository;
 import net.skhu.repository.UserRepository;
 import net.skhu.repository.WeekRepository;
-import net.skhu.service.BukitService;
-
-
 
 @Controller
 @RequestMapping("/diary")
@@ -48,24 +40,19 @@ public class DiaryController {
 	@Autowired UserRepository userRepository;
 
 	@Autowired BukitRepository bukitRepository;
-	@Autowired BukitMapper bukitMapper;
 
 	@Autowired DiaryRepository diaryRepository;
-	@Autowired DiaryMapper diaryMapper;
 
 	@Autowired MemoRepository memoRepository;
-	@Autowired MemosMapper memoMapper;
 
 	@Autowired PlanRepository planRepository;
-	@Autowired PlanMapper planMapper;
 
 	@Autowired TimeTableRepository timetableRepository;
 	@Autowired TimeTableMapper timetableMapper;
 
 	@Autowired WeekRepository weekRepository;
-	@Autowired WeekMapper weekMapper;
 
-	@Autowired BukitService bukitService;
+
 
 
 //홈(메뉴)화면 구현
@@ -146,7 +133,6 @@ public class DiaryController {
 	}
 
 
-
 	// 일주일 주별 리스트
 	@GetMapping("weekList")
 	public String weekList(Model model, Pagination pagination) {
@@ -187,7 +173,7 @@ public class DiaryController {
 
 		weekRepository.save(week);
 
-		int lastPage = (int) Math.ceil((double) bukitRepository.count() / pagination.getSz());
+		int lastPage = (int) Math.ceil((double) weekRepository.count() / pagination.getSz());
 		pagination.setPg(lastPage);
 
 		return "redirect:weekList?" + pagination.getQueryString();
