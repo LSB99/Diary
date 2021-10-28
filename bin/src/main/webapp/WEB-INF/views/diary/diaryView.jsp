@@ -81,10 +81,6 @@ form { background-color:white; box-shadow: 0 0 10px #e2af90, 10px 10px 10px gray
 				<a class="btn btn-primary" href="diaryEdit?id=${ diary.id }&${ pagination.queryString }"> 수정하기 </a>
     			<a class="btn btn-default" href="diarySpace?${ pagination.queryString }"> 목록으로</a>
 		</main>
-		 
-		<footer>
-			소프캡스톤<br>임수빈, 김보미
-		</footer>
 	</div>
 </body>
 </html>

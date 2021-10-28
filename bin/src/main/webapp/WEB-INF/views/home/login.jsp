@@ -6,8 +6,6 @@
 <head>
 <title>Login</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 	 <link rel="stylesheet" type="text/css" href="/background.css" />
   	<link rel="stylesheet" type="text/css" href="/account.css" />
   <style>

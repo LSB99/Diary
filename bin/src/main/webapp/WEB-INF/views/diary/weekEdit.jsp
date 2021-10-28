@@ -11,7 +11,6 @@
 <title>Week Edit</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="${R}delete.js"></script>
 <link rel="stylesheet" type="text/css" href="${R}background.css" />
 <link rel="stylesheet" type="text/css" href="${R}edit.css" />
 <style>
@@ -55,12 +54,12 @@ textarea {
 					<tr>
 						<td>몇월 <br /> 몇주:
 						</td>
-						<td><textarea name="myweek" placeholder="몇월 몇주를 적어주세요!"><c:out value="${ week.myweek }" /></textarea></td>
+						<td><textarea name="myweek" placeholder="몇월 몇주를 적어주세요!" required><c:out value="${ week.myweek }" /></textarea></td>
 					</tr>
 
 					<tr>
 						<td>월요일:</td>
-						<td><textarea name="mon" placeholder="월요일에 할 일을 적어주세요!"><c:out value="${ week.mon }" /></textarea></td>
+						<td><textarea name="mon" placeholder="(계획 생성 시 월요일에는 점이라도 적어주셔야 저장가능합니다)" required><c:out value="${ week.mon }" /></textarea></td>
 					</tr>
 
 					<tr>
@@ -109,9 +108,6 @@ textarea {
 			</form>
 
 		</main>
-		<footer>
-			소프캡스톤<br>임수빈, 김보미
-		</footer>
 	</div>
 </body>
 </html>

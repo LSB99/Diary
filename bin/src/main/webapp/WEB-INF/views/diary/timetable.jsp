@@ -339,9 +339,6 @@ input {
 
 			</form>
 		</main>
-		<footer>
-			소프캡스톤<br>임수빈, 김보미
-		</footer>
 	</div>
 </body>
 </html>

@@ -19,10 +19,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<script src="${R}delete.js"></script>
-
 <script src="${R}res/summernote/summernote.js"></script>
-
 
 <link rel="stylesheet" type="text/css" href="${R}background.css" />
 <link rel="stylesheet" type="text/css" href="${R}edit.css" />
@@ -109,10 +106,6 @@ td:nth-child(1) { text-align: center; }
 
 			</form:form>
 		</main>
-		 
-		<footer>
-			소프캡스톤<br>임수빈, 김보미
-		</footer>
 	</div>
 	<script>
   $('#summernote').summernote({

@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="${R}account.css" />
   <style>
   	h1 { font-size: 70pt; }
-    table { border-collapse: collapse; width: 500px; margin: 150px 500px; margin-bottom: 20px; background-color: #f6ded4;
+    table { border-collapse: collapse; width: 30%; margin: 10% 35%; margin-bottom: 20px; background-color: #f6ded4;
     		box-shadow: 0 0 8px black, 5px 5px 4px gray; }
     td { border: 1px solid #aaa; padding: 8px; font-size: 20pt;}
   </style>
