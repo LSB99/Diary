@@ -17,7 +17,6 @@
   <link rel="stylesheet" type="text/css" href="${R}background.css" />
   <link rel="stylesheet" type="text/css" href="${R}edit.css" />
   
- 
   <style>
   input { width: 550px; font-size:20pt; }
  
